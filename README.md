@@ -1,5 +1,6 @@
 # SwiftVideoBackground
 
+[![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)][mitLink]
 
 ## About
@@ -22,4 +23,5 @@ TO BE ADDED...
 
 *Please provide attribution, it is greatly appreciated.*
 
+[podLink]:https://cocoapods.org/pods/SwiftVideoBackground
 [mitLink]:http://opensource.org/licenses/MIT

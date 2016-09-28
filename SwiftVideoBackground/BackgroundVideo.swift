@@ -13,36 +13,28 @@ public class BackgroundVideo: UIView {
 
     private var player: AVPlayer?
     
-    public func createBackgroundVideo(url: String, type: String) {
-        let path = Bundle.main.path(forResource: url, ofType: type)
-        player = AVPlayer(url: URL(fileURLWithPath: path!))
-        player!.actionAtItemEnd = AVPlayerActionAtItemEnd.none;
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.frame
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        self.layer.insertSublayer(playerLayer, at: 0)
-        
-        // Set observer for when video ends and loop video infinitely
-        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: player!.currentItem)
-        player!.seek(to: kCMTimeZero)
-        player!.play()
+    /*
+     createBackgroundVideo(name: String, type: String) function:
+     - name: String - take in the name of the video file
+     - type: String - take in the file type of the video file
+     */
+    
+    public func createBackgroundVideo(name: String, type: String) {
+        createBackground(name: name, type: type)
     }
     
-    public func createBackgroundVideo(url: String, type: String, alpha: CGFloat) {
+    
+    /*
+      createBackgroundVideo(name: String, type: String, alpha: CGFloat) function:
+      - name: String - take in the name of the video file
+      - type: String - take in the file type of the video file
+      - alpha: CGFloat - take in the desired alpha/darkness of the background video
+    */
+    
+    public func createBackgroundVideo(name: String, type: String, alpha: CGFloat) {
         createAlpha(alpha: alpha)
         
-        let path = Bundle.main.path(forResource: url, ofType: type)
-        player = AVPlayer(url: URL(fileURLWithPath: path!))
-        player!.actionAtItemEnd = AVPlayerActionAtItemEnd.none;
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.frame
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        self.layer.insertSublayer(playerLayer, at: 0)
-        
-        // Set observer for when video ends and loop video infinitely
-        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: player!.currentItem)
-        player!.seek(to: kCMTimeZero)
-        player!.play()
+        createBackground(name: name, type: type)
     }
     
     private func createAlpha(alpha: CGFloat) {
@@ -51,6 +43,21 @@ public class BackgroundVideo: UIView {
         overlayView.alpha = alpha
         self.addSubview(overlayView)
         self.sendSubview(toBack: overlayView)
+    }
+    
+    private func createBackground(name: String, type: String) {
+        let path = Bundle.main.path(forResource: name, ofType: type)
+        player = AVPlayer(url: URL(fileURLWithPath: path!))
+        player!.actionAtItemEnd = AVPlayerActionAtItemEnd.none;
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.frame
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.layer.insertSublayer(playerLayer, at: 0)
+        
+        // Set observer for when video ends and loop video infinitely
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: player!.currentItem)
+        player!.seek(to: kCMTimeZero)
+        player!.play()
     }
     
     @objc private func playerItemDidReachEnd() {

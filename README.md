@@ -1,4 +1,6 @@
-# SwiftVideoBackground
+<p align="center">
+  <img src="Assets/banner.png" width="780" title="SwiftVideoBackground">
+</p>
 
 [![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
 [![MIT License](https://badges.frapsoft.com/os/mit/mit.png?v=103)][mitLink]

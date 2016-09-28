@@ -1,7 +1,7 @@
 # SwiftVideoBackground
 
 [![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)][mitLink]
+[![MIT License](https://badges.frapsoft.com/os/mit/mit.png?v=103)][mitLink]
 ![Platform](https://img.shields.io/badge/platforms-iOS%2010.0+-333333.svg)
 
 SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
@@ -32,7 +32,7 @@ target 'MyApp' do
 	pod 'SwiftVideoBackground'
 end
 ```
-Note your iOS deployment target to be at least 10.0:
+Note: your iOS deployment target must be 10.0:
 
 ####Swift Package Manager
 You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SwiftVideoBackground` by adding the proper description to your `Package.swift` file:
@@ -48,7 +48,7 @@ let package = Package(
 )
 ```
 
-Note that the [Swift Package Manager](https://swift.org/package-manager) is still in early design and development, for more infomation checkout its [GitHub Page](https://github.com/apple/swift-package-manager)
+Note: the [Swift Package Manager](https://swift.org/package-manager) is still in early design and development, for more infomation checkout its [GitHub Page](https://github.com/apple/swift-package-manager)
 
 ####Manually
 
@@ -72,7 +72,7 @@ Link a UIView within a ViewController within the Storyboard to a BackgroundVideo
 ```swift
 backgroundVideo.createBackgroundVideo(url: "Background", type: mp4", alpha: 0.5)
 ```
-Use the createBackground function, with the name of the video or gif under `url`, the file type (popular ones include mp4, mov, and gif) under `type`, and an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video. 
+Use the `createBackgroundVideo` function, with the name of the video or gif under `url`, the file type (popular ones include mp4, mov, and gif) under `type`, and an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video. 
 
 Note: Make sure you have added a video file to the project, and targeted the project.
 

@@ -3,6 +3,7 @@
 </p>
 
 [![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
+[![Build Status](https://travis-ci.org/dingwilson/SwiftVideoBackground.svg?branch=master)](https://travis-ci.org/dingwilson/SwiftVideoBackground)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 ![Platform](https://img.shields.io/badge/platforms-iOS%2010.0+-333333.svg)
 

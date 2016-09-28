@@ -26,9 +26,29 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C82AAF871D9C1C4800A13307"
+               BuildableName = "SwiftVideoBackgroundTests.xctest"
+               BlueprintName = "SwiftVideoBackgroundTests"
+               ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C8D0633D1D99B62E006A5F00"
+            BuildableName = "SwiftVideoBackground.framework"
+            BlueprintName = "SwiftVideoBackground"
+            ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

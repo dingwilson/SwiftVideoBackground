@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ExampleLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8C-B5-vGN" customClass="BackgroundVideo" customModule="SwiftVideoBackground">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45X-fo-t4E">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8B-Jb-FYW">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example Login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rs-PF-AiE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="NIE-mf-CeD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Rs-PF-AiE" firstAttribute="centerX" secondItem="R8B-Jb-FYW" secondAttribute="centerX" id="6QO-6D-y4G"/>
+                            <constraint firstItem="R8B-Jb-FYW" firstAttribute="leading" secondItem="45X-fo-t4E" secondAttribute="leading" id="GKu-8J-eHT"/>
+                            <constraint firstItem="R8B-Jb-FYW" firstAttribute="trailing" secondItem="45X-fo-t4E" secondAttribute="trailing" id="IX4-wF-CY9"/>
+                            <constraint firstItem="4Rs-PF-AiE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="231" id="RsX-V4-zqd"/>
+                            <constraint firstItem="R8B-Jb-FYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="VOz-oz-pmL"/>
+                            <constraint firstItem="I8C-B5-vGN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZfV-MF-po6"/>
+                            <constraint firstItem="45X-fo-t4E" firstAttribute="top" secondItem="R8B-Jb-FYW" secondAttribute="bottom" constant="8" symbolic="YES" id="eh3-Ce-Ca4"/>
+                            <constraint firstItem="I8C-B5-vGN" firstAttribute="centerX" secondItem="45X-fo-t4E" secondAttribute="centerX" id="g04-wC-phx"/>
+                            <constraint firstAttribute="trailing" secondItem="I8C-B5-vGN" secondAttribute="trailing" id="kfF-OD-Wve"/>
+                            <constraint firstItem="I8C-B5-vGN" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="kg7-Eq-IkJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="45X-fo-t4E" secondAttribute="bottom" constant="8" symbolic="YES" id="nsS-lz-m6L"/>
+                            <constraint firstItem="4Rs-PF-AiE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="r32-k5-kLo"/>
+                            <constraint firstItem="I8C-B5-vGN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ySz-JI-xjh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundVideo" destination="I8C-B5-vGN" id="5cS-bj-EjC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>

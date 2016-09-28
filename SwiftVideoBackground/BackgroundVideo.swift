@@ -23,7 +23,6 @@ public class BackgroundVideo: UIView {
         createBackground(name: name, type: type)
     }
     
-    
     /*
       createBackgroundVideo(name: String, type: String, alpha: CGFloat) function:
       - name: String - take in the name of the video file

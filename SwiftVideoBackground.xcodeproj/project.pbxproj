@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C82AAF8B1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */; };
+		C82AAF8D1D9C1C4800A13307 /* SwiftVideoBackground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D0633E1D99B62E006A5F00 /* SwiftVideoBackground.framework */; };
 		C8D063431D99B62E006A5F00 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8D0634A1D99B639006A5F00 /* BackgroundVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D063491D99B639006A5F00 /* BackgroundVideo.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C82AAF8E1D9C1C4800A13307 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8D063351D99B62E006A5F00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8D0633D1D99B62E006A5F00;
+			remoteInfo = SwiftVideoBackground;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C82AAF881D9C1C4800A13307 /* SwiftVideoBackgroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftVideoBackgroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftVideoBackgroundTests.swift; sourceTree = "<group>"; };
+		C82AAF8C1D9C1C4800A13307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D0633E1D99B62E006A5F00 /* SwiftVideoBackground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftVideoBackground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftVideoBackground.h; sourceTree = "<group>"; };
 		C8D063421D99B62E006A5F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -19,6 +34,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C82AAF851D9C1C4800A13307 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82AAF8D1D9C1C4800A13307 /* SwiftVideoBackground.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D0633A1D99B62E006A5F00 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +52,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C82AAF891D9C1C4800A13307 /* SwiftVideoBackgroundTests */ = {
+			isa = PBXGroup;
+			children = (
+				C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */,
+				C82AAF8C1D9C1C4800A13307 /* Info.plist */,
+			);
+			path = SwiftVideoBackgroundTests;
+			sourceTree = "<group>";
+		};
 		C8D063341D99B62E006A5F00 = {
 			isa = PBXGroup;
 			children = (
 				C8D063401D99B62E006A5F00 /* SwiftVideoBackground */,
+				C82AAF891D9C1C4800A13307 /* SwiftVideoBackgroundTests */,
 				C8D0633F1D99B62E006A5F00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				C8D0633E1D99B62E006A5F00 /* SwiftVideoBackground.framework */,
+				C82AAF881D9C1C4800A13307 /* SwiftVideoBackgroundTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +103,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C82AAF871D9C1C4800A13307 /* SwiftVideoBackgroundTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C82AAF921D9C1C4800A13307 /* Build configuration list for PBXNativeTarget "SwiftVideoBackgroundTests" */;
+			buildPhases = (
+				C82AAF841D9C1C4800A13307 /* Sources */,
+				C82AAF851D9C1C4800A13307 /* Frameworks */,
+				C82AAF861D9C1C4800A13307 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C82AAF8F1D9C1C4800A13307 /* PBXTargetDependency */,
+			);
+			name = SwiftVideoBackgroundTests;
+			productName = SwiftVideoBackgroundTests;
+			productReference = C82AAF881D9C1C4800A13307 /* SwiftVideoBackgroundTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C8D0633D1D99B62E006A5F00 /* SwiftVideoBackground */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8D063461D99B62E006A5F00 /* Build configuration list for PBXNativeTarget "SwiftVideoBackground" */;
@@ -93,9 +145,15 @@
 		C8D063351D99B62E006A5F00 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Wilson Ding";
 				TargetAttributes = {
+					C82AAF871D9C1C4800A13307 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 585SNYAD83;
+						ProvisioningStyle = Automatic;
+					};
 					C8D0633D1D99B62E006A5F00 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 585SNYAD83;
@@ -117,11 +175,19 @@
 			projectRoot = "";
 			targets = (
 				C8D0633D1D99B62E006A5F00 /* SwiftVideoBackground */,
+				C82AAF871D9C1C4800A13307 /* SwiftVideoBackgroundTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C82AAF861D9C1C4800A13307 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D0633C1D99B62E006A5F00 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +198,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C82AAF841D9C1C4800A13307 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82AAF8B1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D063391D99B62E006A5F00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,7 +216,39 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C82AAF8F1D9C1C4800A13307 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8D0633D1D99B62E006A5F00 /* SwiftVideoBackground */;
+			targetProxy = C82AAF8E1D9C1C4800A13307 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C82AAF901D9C1C4800A13307 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 585SNYAD83;
+				INFOPLIST_FILE = SwiftVideoBackgroundTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilsonding.SwiftVideoBackgroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C82AAF911D9C1C4800A13307 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 585SNYAD83;
+				INFOPLIST_FILE = SwiftVideoBackgroundTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilsonding.SwiftVideoBackgroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		C8D063441D99B62E006A5F00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -286,6 +392,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C82AAF921D9C1C4800A13307 /* Build configuration list for PBXNativeTarget "SwiftVideoBackgroundTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C82AAF901D9C1C4800A13307 /* Debug */,
+				C82AAF911D9C1C4800A13307 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C8D063381D99B62E006A5F00 /* Build configuration list for PBXProject "SwiftVideoBackground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -302,6 +416,7 @@
 				C8D063481D99B62E006A5F00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -2,18 +2,79 @@
 
 [![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)][mitLink]
+![Platform](https://img.shields.io/badge/platforms-iOS%2010.0+-333333.svg)
 
-## About
+SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
 
-SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController.
+1. [Requirements](#requrements)
+2. [Integration](#integration)
+    - [Cocoapods](#cocoapods)
+    - [Swift Package Manager](#swift-package-manager)
+    - [Manually](#manually)
+3. [Usage](#usage)
+4. [License](#license)
 
-## Installation
+## Requirements
 
-TO BE ADDED... Once cocoapods support is added later on.
+- Swift 3
+- iOS 10
+- Xcode 8
 
-## How To Use
+## Integration
 
-TO BE ADDED...
+####CocoaPods
+You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`by adding it to your `Podfile`:
+```ruby
+platform :ios, '10.0'
+use_frameworks!
+
+target 'MyApp' do
+	pod 'SwiftVideoBackground'
+end
+```
+Note your iOS deployment target to be at least 10.0:
+
+####Swift Package Manager
+You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SwiftVideoBackground` by adding the proper description to your `Package.swift` file:
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .Package(url: "https://github.com/dingwilson/SwiftVideoBackground.git", versions: Version(1,0,0)..<Version(2, .max, .max)),
+    ]
+)
+```
+
+Note that the [Swift Package Manager](https://swift.org/package-manager) is still in early design and development, for more infomation checkout its [GitHub Page](https://github.com/apple/swift-package-manager)
+
+####Manually
+
+To use this library in your project manually you may:  
+
+1. for Projects, just drag BackgroundVideo.swift to the project tree
+2. for Workspaces, include the whole SwiftVideoBackground.xcodeproj
+
+## Usage
+
+```swift
+import SwiftVideoBackground
+```
+Import the framework into the ViewController
+
+```swift
+var backgroundVideo : BackgroundVideo!
+```
+Link a UIView within a ViewController within the Storyboard to a BackgroundVideo item, or link it programmatically.
+
+```swift
+backgroundVideo.createBackgroundVideo(url: "Background", type: mp4", alpha: 0.5)
+```
+Use the createBackground function, with the name of the video or gif under `url`, the file type (popular ones include mp4, mov, and gif) under `type`, and an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video. 
+
+Note: Make sure you have added a video file to the project, and targeted the project.
 
 ## License
 

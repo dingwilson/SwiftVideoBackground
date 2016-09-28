@@ -3,7 +3,7 @@
 </p>
 
 [![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
-[![MIT License](https://badges.frapsoft.com/os/mit/mit.png?v=103)][mitLink]
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 ![Platform](https://img.shields.io/badge/platforms-iOS%2010.0+-333333.svg)
 
 <p align="center">

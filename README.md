@@ -90,6 +90,8 @@ Note: Make sure you have added a video file to the project, and targeted the pro
 
 To view the included example `ExampleLogin`, simply run `pod install` to get the latest version of the `SwiftVideoBackground`, and then open the `ExampleLogin.xcworkspace and run on a compatible iPhone simulator or iOS device.
 
+Note: If you have used SwiftVideoBackground in your own app, please feel free to submit a PR to have a link of your app added to this section!
+
 ## License
 
 `SwiftVideoBackground` is released under an [MIT License][mitLink]. See `LICENSE` for details.

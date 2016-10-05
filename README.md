@@ -15,6 +15,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 1. [Requirements](#requrements)
 2. [Integration](#integration)
     - [Cocoapods](#cocoapods)
+    - [Carthage](#carthage)
     - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
 3. [Usage](#usage)
@@ -40,6 +41,12 @@ target 'MyApp' do
 end
 ```
 Note: your iOS deployment target must be 10.0:
+
+####Carthage
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftVideoBackground` by adding it to your `Cartfile`:
+```
+github "dingwilson/SwiftVideoBackground"
+```
 
 ####Swift Package Manager
 You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SwiftVideoBackground` by adding the proper description to your `Package.swift` file:

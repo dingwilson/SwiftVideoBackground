@@ -45,21 +45,23 @@ public class BackgroundVideo: UIView {
     }
     
     private func createBackground(name: String, type: String) {
-        let path = Bundle.main.path(forResource: name, ofType: type)
-        player = AVPlayer(url: URL(fileURLWithPath: path!))
-        player!.actionAtItemEnd = AVPlayerActionAtItemEnd.none;
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.frame
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        self.layer.insertSublayer(playerLayer, at: 0)
-        
-        // Set observer for when video ends and loop video infinitely
-        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: player!.currentItem)
-        player!.seek(to: kCMTimeZero)
-        player!.play()
+        guard let path = Bundle.main.path(forResource: name, ofType: type) else { return }
+        player = AVPlayer(url: URL(fileURLWithPath: path))
+        if let player = player {
+            player.actionAtItemEnd = AVPlayerActionAtItemEnd.none;
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.frame = self.frame
+            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            self.layer.insertSublayer(playerLayer, at: 0)
+            
+            // Set observer for when video ends and loop video infinitely
+            NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+            player.seek(to: kCMTimeZero)
+            player.play()
+        }
     }
     
     @objc private func playerItemDidReachEnd() {
-        player!.seek(to: kCMTimeZero)
+        player?.seek(to: kCMTimeZero)
     }
 }

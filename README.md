@@ -30,7 +30,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 
 ## Integration
 
-####CocoaPods
+#### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`by adding it to your `Podfile`:
 ```ruby
 platform :ios, '10.0'
@@ -42,29 +42,13 @@ end
 ```
 Note: your iOS deployment target must be 10.0:
 
-####Carthage
+#### Carthage
 You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftVideoBackground` by adding it to your `Cartfile`:
 ```
 github "dingwilson/SwiftVideoBackground"
 ```
 
-####Swift Package Manager
-You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SwiftVideoBackground` by adding the proper description to your `Package.swift` file:
-```swift
-import PackageDescription
-
-let package = Package(
-    name: "YOUR_PROJECT_NAME",
-    targets: [],
-    dependencies: [
-        .Package(url: "https://github.com/dingwilson/SwiftVideoBackground.git", versions: Version(1,0,0)..<Version(2, .max, .max)),
-    ]
-)
-```
-
-Note: the [Swift Package Manager](https://swift.org/package-manager) is still in early design and development, for more infomation checkout its [GitHub Page](https://github.com/apple/swift-package-manager)
-
-####Manually
+#### Manually
 
 To use this library in your project manually you may:  
 

@@ -16,7 +16,6 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 2. [Integration](#integration)
     - [Cocoapods](#cocoapods)
     - [Carthage](#carthage)
-    - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
 3. [Usage](#usage)
 4. [Example](#example)

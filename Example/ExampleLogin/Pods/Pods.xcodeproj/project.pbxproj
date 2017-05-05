@@ -7,43 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		232A56D0EFD903B243B926DED2990FBE /* SwiftVideoBackground-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8FAFA6CC6C95399EC10BC6D256FABD /* SwiftVideoBackground-dummy.m */; };
-		374EE8E5E88CA6F2EE8EFF48B568C18A /* SwiftVideoBackground-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E2081D0E9D1828EF6B802892BFC88A7 /* SwiftVideoBackground-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		520093105CCC7B0571C5584EC310E006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		5C8FC7BF7914819D1D57D79D3AA7C391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		692BC15244494CCED4977896765D9CB3 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED86D146CC062E9DBA4C44656DEA98 /* SwiftVideoBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B603EBE31F25175501FF4CAC11F9CDCD /* BackgroundVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84E07D960719F03D5BF17A8B0F9D9D0 /* BackgroundVideo.swift */; };
-		C3DDF5E46EF20CF4673F7DFD5806EC6B /* Pods-ExampleLogin-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7697FE237D58492DA97320C6CC77C140 /* Pods-ExampleLogin-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D81621154EB36DA460AE684FBB837563 /* Pods-ExampleLogin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBC03379AA94E2FE8A80936ECDBAFC /* Pods-ExampleLogin-dummy.m */; };
+		57970C23556162ED2E67824B085E3E9E /* SwiftVideoBackground-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E2081D0E9D1828EF6B802892BFC88A7 /* SwiftVideoBackground-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		805EE4E8D5A6F450017ED171A7F1CEA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		82712A2074249FCFCB229DBC001ACB16 /* Pods-ExampleLogin-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7697FE237D58492DA97320C6CC77C140 /* Pods-ExampleLogin-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B3C502689F73F3239DBFF1A19AB572A /* SwiftVideoBackground-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8FAFA6CC6C95399EC10BC6D256FABD /* SwiftVideoBackground-dummy.m */; };
+		9FB494374580A6FA7D5A817AEEF0A938 /* BackgroundVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84E07D960719F03D5BF17A8B0F9D9D0 /* BackgroundVideo.swift */; };
+		B6B57F5F454E0405A1BEB42BEF91CE01 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AED86D146CC062E9DBA4C44656DEA98 /* SwiftVideoBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C89B56AC0F8D1468FC7AF1495E89869B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		D10F4F057DD094237B3DECF0B19136EF /* Pods-ExampleLogin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBC03379AA94E2FE8A80936ECDBAFC /* Pods-ExampleLogin-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7A6E556093C4E478E204133E8924B459 /* PBXContainerItemProxy */ = {
+		905D7B7F59C55F0B232BA943548380FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BF2B1E4BB0A1B0A4960B3B5B1D68A01F;
+			remoteGlobalIDString = D9F64AAF3580A288A70AE362A0A9205D;
 			remoteInfo = SwiftVideoBackground;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E2081D0E9D1828EF6B802892BFC88A7 /* SwiftVideoBackground-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftVideoBackground-umbrella.h"; sourceTree = "<group>"; };
-		1854718C84966EC743DAD1E5A1E9D42A /* SwiftVideoBackground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftVideoBackground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DF143D52C9FBB01AA3B6FBD77404377 /* SwiftVideoBackground.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftVideoBackground.modulemap; sourceTree = "<group>"; };
+		1854718C84966EC743DAD1E5A1E9D42A /* SwiftVideoBackground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftVideoBackground.framework; path = SwiftVideoBackground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DF143D52C9FBB01AA3B6FBD77404377 /* SwiftVideoBackground.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftVideoBackground.modulemap; sourceTree = "<group>"; };
 		3AED86D146CC062E9DBA4C44656DEA98 /* SwiftVideoBackground.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftVideoBackground.h; path = SwiftVideoBackground/SwiftVideoBackground.h; sourceTree = "<group>"; };
 		4C0248C0A4514EFDCC78E9A75D43E9B4 /* SwiftVideoBackground.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftVideoBackground.xcconfig; sourceTree = "<group>"; };
 		4CEE73971759A56F9FF7D46CD1519020 /* Pods-ExampleLogin-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ExampleLogin-frameworks.sh"; sourceTree = "<group>"; };
 		55BBC03379AA94E2FE8A80936ECDBAFC /* Pods-ExampleLogin-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ExampleLogin-dummy.m"; sourceTree = "<group>"; };
 		7697FE237D58492DA97320C6CC77C140 /* Pods-ExampleLogin-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ExampleLogin-umbrella.h"; sourceTree = "<group>"; };
 		7803857E6F947C6C56C99F2AF31BFB29 /* Pods-ExampleLogin-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ExampleLogin-resources.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		96B700646C9E6AD1DB1D3A2FF85574E1 /* Pods-ExampleLogin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ExampleLogin.modulemap"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96B700646C9E6AD1DB1D3A2FF85574E1 /* Pods-ExampleLogin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ExampleLogin.modulemap"; sourceTree = "<group>"; };
 		AB7C1B370E7DCDA15780A75205DF0F7A /* Pods-ExampleLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ExampleLogin.debug.xcconfig"; sourceTree = "<group>"; };
 		B6397017816A3B4B5C442B3930FA4721 /* Pods-ExampleLogin-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ExampleLogin-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BDC15B1E09BD0C103EC001C29111A291 /* Pods_ExampleLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC15B1E09BD0C103EC001C29111A291 /* Pods_ExampleLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ExampleLogin.framework; path = "Pods-ExampleLogin.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CC45F9F21DC89EB265BF1444E10338B9 /* SwiftVideoBackground-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftVideoBackground-prefix.pch"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E84E07D960719F03D5BF17A8B0F9D9D0 /* BackgroundVideo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BackgroundVideo.swift; path = SwiftVideoBackground/BackgroundVideo.swift; sourceTree = "<group>"; };
 		E963CD0799C1D51F8CE363D8C10F7011 /* Pods-ExampleLogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ExampleLogin.release.xcconfig"; sourceTree = "<group>"; };
 		E9BE23E49F312F1B7ECA5516F48A3C14 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,19 +53,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8CC375DA95B309B3944EC8DB08A87131 /* Frameworks */ = {
+		AF3B654F837E9CDBC2F9BA512F08896C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C8FC7BF7914819D1D57D79D3AA7C391 /* Foundation.framework in Frameworks */,
+				C89B56AC0F8D1468FC7AF1495E89869B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAEB2B1E636BDEB74540BA5528CDA00B /* Frameworks */ = {
+		BDE1523067BE2866DBE87F8D603B0597 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				520093105CCC7B0571C5584EC310E006 /* Foundation.framework in Frameworks */,
+				805EE4E8D5A6F450017ED171A7F1CEA8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +93,7 @@
 				3AED86D146CC062E9DBA4C44656DEA98 /* SwiftVideoBackground.h */,
 				258E51AA855AC31137B48C84C47630B2 /* Support Files */,
 			);
+			name = SwiftVideoBackground;
 			path = SwiftVideoBackground;
 			sourceTree = "<group>";
 		};
@@ -104,10 +105,10 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -143,7 +144,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,51 +170,51 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0E90A599A63C0C4774E22AAEDC6DCE01 /* Headers */ = {
+		A938FAD7C8EB980A77C143C485DE6CD5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3DDF5E46EF20CF4673F7DFD5806EC6B /* Pods-ExampleLogin-umbrella.h in Headers */,
+				57970C23556162ED2E67824B085E3E9E /* SwiftVideoBackground-umbrella.h in Headers */,
+				B6B57F5F454E0405A1BEB42BEF91CE01 /* SwiftVideoBackground.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C7D372F42BD755F4A683F1DB0138EC86 /* Headers */ = {
+		AB80005DE1E24A3EA6533F4425BB1BD4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				374EE8E5E88CA6F2EE8EFF48B568C18A /* SwiftVideoBackground-umbrella.h in Headers */,
-				692BC15244494CCED4977896765D9CB3 /* SwiftVideoBackground.h in Headers */,
+				82712A2074249FCFCB229DBC001ACB16 /* Pods-ExampleLogin-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		00E9178305EF8F162A3EDDAF36CDFFB4 /* Pods-ExampleLogin */ = {
+		689B9CF49A3DCE72B905F83A95823786 /* Pods-ExampleLogin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D438B940C330832DE17CD2F77C884EB4 /* Build configuration list for PBXNativeTarget "Pods-ExampleLogin" */;
+			buildConfigurationList = D6EB4D0B5BC55749E9B1EA8A6235D08D /* Build configuration list for PBXNativeTarget "Pods-ExampleLogin" */;
 			buildPhases = (
-				E1FB7F6BEF5197411CCFDCCE179EE0D4 /* Sources */,
-				8CC375DA95B309B3944EC8DB08A87131 /* Frameworks */,
-				0E90A599A63C0C4774E22AAEDC6DCE01 /* Headers */,
+				A7DEE303ED7221E5A1718812B9872839 /* Sources */,
+				BDE1523067BE2866DBE87F8D603B0597 /* Frameworks */,
+				AB80005DE1E24A3EA6533F4425BB1BD4 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8CF9FF9DFD37293B3E60854C9590470B /* PBXTargetDependency */,
+				80428C1EFA4526DA1B3C128670A13A0F /* PBXTargetDependency */,
 			);
 			name = "Pods-ExampleLogin";
 			productName = "Pods-ExampleLogin";
 			productReference = BDC15B1E09BD0C103EC001C29111A291 /* Pods_ExampleLogin.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BF2B1E4BB0A1B0A4960B3B5B1D68A01F /* SwiftVideoBackground */ = {
+		D9F64AAF3580A288A70AE362A0A9205D /* SwiftVideoBackground */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BD223A4E20DD6EFAC40F9875C70934D2 /* Build configuration list for PBXNativeTarget "SwiftVideoBackground" */;
+			buildConfigurationList = 32D55062C4900B6085D1F75F1885B2BA /* Build configuration list for PBXNativeTarget "SwiftVideoBackground" */;
 			buildPhases = (
-				BA10BEE7421B09380B195AD4A7BEC8FA /* Sources */,
-				DAEB2B1E636BDEB74540BA5528CDA00B /* Frameworks */,
-				C7D372F42BD755F4A683F1DB0138EC86 /* Headers */,
+				3E6600DDD8741021EE350CFCDEE832BE /* Sources */,
+				AF3B654F837E9CDBC2F9BA512F08896C /* Frameworks */,
+				A938FAD7C8EB980A77C143C485DE6CD5 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -245,78 +246,42 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00E9178305EF8F162A3EDDAF36CDFFB4 /* Pods-ExampleLogin */,
-				BF2B1E4BB0A1B0A4960B3B5B1D68A01F /* SwiftVideoBackground */,
+				689B9CF49A3DCE72B905F83A95823786 /* Pods-ExampleLogin */,
+				D9F64AAF3580A288A70AE362A0A9205D /* SwiftVideoBackground */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BA10BEE7421B09380B195AD4A7BEC8FA /* Sources */ = {
+		3E6600DDD8741021EE350CFCDEE832BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B603EBE31F25175501FF4CAC11F9CDCD /* BackgroundVideo.swift in Sources */,
-				232A56D0EFD903B243B926DED2990FBE /* SwiftVideoBackground-dummy.m in Sources */,
+				9FB494374580A6FA7D5A817AEEF0A938 /* BackgroundVideo.swift in Sources */,
+				9B3C502689F73F3239DBFF1A19AB572A /* SwiftVideoBackground-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1FB7F6BEF5197411CCFDCCE179EE0D4 /* Sources */ = {
+		A7DEE303ED7221E5A1718812B9872839 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81621154EB36DA460AE684FBB837563 /* Pods-ExampleLogin-dummy.m in Sources */,
+				D10F4F057DD094237B3DECF0B19136EF /* Pods-ExampleLogin-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8CF9FF9DFD37293B3E60854C9590470B /* PBXTargetDependency */ = {
+		80428C1EFA4526DA1B3C128670A13A0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftVideoBackground;
-			target = BF2B1E4BB0A1B0A4960B3B5B1D68A01F /* SwiftVideoBackground */;
-			targetProxy = 7A6E556093C4E478E204133E8924B459 /* PBXContainerItemProxy */;
+			target = D9F64AAF3580A288A70AE362A0A9205D /* SwiftVideoBackground */;
+			targetProxy = 905D7B7F59C55F0B232BA943548380FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		00DD243CE939C7E4243CEB0359AC22CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB7C1B370E7DCDA15780A75205DF0F7A /* Pods-ExampleLogin.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ExampleLogin/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ExampleLogin/Pods-ExampleLogin.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ExampleLogin;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -361,72 +326,7 @@
 			};
 			name = Debug;
 		};
-		8E166BA1963360F17524974DC8D44180 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C0248C0A4514EFDCC78E9A75D43E9B4 /* SwiftVideoBackground.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftVideoBackground/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftVideoBackground;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A0089A80354B44F8CD313755A9CA97BF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C0248C0A4514EFDCC78E9A75D43E9B4 /* SwiftVideoBackground.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftVideoBackground/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftVideoBackground;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A5147DE1D29A6641869CDB7BADDB7124 /* Release */ = {
+		13E40C9157FB3A798B1F83ADD227E8E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E963CD0799C1D51F8CE363D8C10F7011 /* Pods-ExampleLogin.release.xcconfig */;
 			buildSettings = {
@@ -460,6 +360,107 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		3CF795C344DC2BAB970A502C4E3E49DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C0248C0A4514EFDCC78E9A75D43E9B4 /* SwiftVideoBackground.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftVideoBackground/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftVideoBackground;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		85015B3B2CE5866B5EBD19C1F86C550C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C0248C0A4514EFDCC78E9A75D43E9B4 /* SwiftVideoBackground.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftVideoBackground/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftVideoBackground/SwiftVideoBackground.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftVideoBackground;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A00E9A67956B8F2BCEC44C63DB73F207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB7C1B370E7DCDA15780A75205DF0F7A /* Pods-ExampleLogin.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ExampleLogin/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ExampleLogin/Pods-ExampleLogin.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ExampleLogin;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -513,20 +514,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BD223A4E20DD6EFAC40F9875C70934D2 /* Build configuration list for PBXNativeTarget "SwiftVideoBackground" */ = {
+		32D55062C4900B6085D1F75F1885B2BA /* Build configuration list for PBXNativeTarget "SwiftVideoBackground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A0089A80354B44F8CD313755A9CA97BF /* Debug */,
-				8E166BA1963360F17524974DC8D44180 /* Release */,
+				85015B3B2CE5866B5EBD19C1F86C550C /* Debug */,
+				3CF795C344DC2BAB970A502C4E3E49DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D438B940C330832DE17CD2F77C884EB4 /* Build configuration list for PBXNativeTarget "Pods-ExampleLogin" */ = {
+		D6EB4D0B5BC55749E9B1EA8A6235D08D /* Build configuration list for PBXNativeTarget "Pods-ExampleLogin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				00DD243CE939C7E4243CEB0359AC22CA /* Debug */,
-				A5147DE1D29A6641869CDB7BADDB7124 /* Release */,
+				A00E9A67956B8F2BCEC44C63DB73F207 /* Debug */,
+				13E40C9157FB3A798B1F83ADD227E8E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

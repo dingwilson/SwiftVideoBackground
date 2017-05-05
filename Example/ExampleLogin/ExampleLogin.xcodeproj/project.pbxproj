@@ -121,7 +121,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Wilson Ding";
 				TargetAttributes = {
 					C8D063A21D9C0491006A5F00 = {

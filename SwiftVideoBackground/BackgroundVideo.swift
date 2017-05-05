@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+enum BackgroundVideoError: Error {
+    case missingVideo
+}
+
 public class BackgroundVideo: UIView {
 
     private var player: AVPlayer?
@@ -20,7 +24,13 @@ public class BackgroundVideo: UIView {
      */
     
     public func createBackgroundVideo(name: String, type: String) {
-        createBackground(name: name, type: type)
+        do {
+            try createBackground(name: name, type: type)
+        } catch BackgroundVideoError.missingVideo {
+            print("SwiftVideoBackground Error: Invalid Video URL. Please check the video name and type.")
+        } catch {
+            print("SwiftVideoBackground Fatal Error")
+        }
     }
     
     /*
@@ -33,7 +43,13 @@ public class BackgroundVideo: UIView {
     public func createBackgroundVideo(name: String, type: String, alpha: CGFloat) {
         createAlpha(alpha: alpha)
         
-        createBackground(name: name, type: type)
+        do {
+            try createBackground(name: name, type: type)
+        } catch BackgroundVideoError.missingVideo {
+            print("SwiftVideoBackground Error: Invalid Video URL. Please check the video name and type.")
+        } catch {
+            print("SwiftVideoBackground Fatal Error")
+        }
     }
     
     private func createAlpha(alpha: CGFloat) {
@@ -44,8 +60,11 @@ public class BackgroundVideo: UIView {
         self.sendSubview(toBack: overlayView)
     }
     
-    private func createBackground(name: String, type: String) {
-        guard let path = Bundle.main.path(forResource: name, ofType: type) else { return }
+    private func createBackground(name: String, type: String) throws {
+        guard let path = Bundle.main.path(forResource: name, ofType: type) else {
+            throw BackgroundVideoError.missingVideo
+        }
+        
         player = AVPlayer(url: URL(fileURLWithPath: path))
         if let player = player {
             player.actionAtItemEnd = AVPlayerActionAtItemEnd.none;

@@ -12,7 +12,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 
 <p align="center">
-  <img src="Assets/screenshot.gif" width="369" title="Screenshot">
+  <img src="Assets/Spotify.gif" width="369" title="Screenshot">
 </p>
 
 SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.

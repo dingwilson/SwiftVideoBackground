@@ -17,7 +17,7 @@ public class BackgroundVideo: UIView {
 
     private var player: AVPlayer?
     
-    /*
+    /**
      createBackgroundVideo(name: String, type: String) function:
      - name: String - take in the name of the video file
      - type: String - take in the file type of the video file
@@ -33,7 +33,7 @@ public class BackgroundVideo: UIView {
         }
     }
     
-    /*
+    /**
       createBackgroundVideo(name: String, type: String, alpha: CGFloat) function:
       - name: String - take in the name of the video file
       - type: String - take in the file type of the video file

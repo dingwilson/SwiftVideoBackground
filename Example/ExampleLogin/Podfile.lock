@@ -1,12 +1,12 @@
 PODS:
-  - SwiftVideoBackground (0.02)
+  - SwiftVideoBackground (0.06)
 
 DEPENDENCIES:
   - SwiftVideoBackground
 
 SPEC CHECKSUMS:
-  SwiftVideoBackground: 1e3df6a688e9e1b6409bac9a1d7a582431ef9412
+  SwiftVideoBackground: 9099e41be1afad9f726cfc2014accb3330ad7ec1
 
 PODFILE CHECKSUM: 427668194fdb0fb3c7ca3cf321ab71a94983390e
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

@@ -6,9 +6,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/SwiftVideoBackground.svg)](https://cocoapods.org/pods/SwiftVideoBackground)
 [![CocoaPods](https://img.shields.io/cocoapods/dm/SwiftVideoBackground.svg)](https://cocoapods.org/pods/SwiftVideoBackground)
-![Platform](https://img.shields.io/badge/platforms-iOS%2010.0+-333333.svg)
-[![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
-[![Xcode](https://img.shields.io/badge/Xcode-8.0-blue.svg)](https://developer.apple.com/xcode)
+![Platform](https://img.shields.io/badge/platforms-iOS-333333.svg)
+[![Swift](https://img.shields.io/badge/Swift-3.0+-orange.svg)](https://swift.org)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 
 <p align="center">

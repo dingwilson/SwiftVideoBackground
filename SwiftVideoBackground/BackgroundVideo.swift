@@ -70,7 +70,7 @@ public class BackgroundVideo: UIView {
             player.actionAtItemEnd = AVPlayerActionAtItemEnd.none;
             let playerLayer = AVPlayerLayer(player: player)
             playerLayer.frame = self.frame
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.layer.insertSublayer(playerLayer, at: 0)
             
             // Set observer for when video ends and loop video infinitely

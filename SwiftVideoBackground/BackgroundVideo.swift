@@ -14,6 +14,8 @@ enum BackgroundVideoError: Error {
 }
 
 public class BackgroundVideo: UIView {
+    
+    public var isMuted = false
 
     private var player: AVPlayer?
     
@@ -76,6 +78,9 @@ public class BackgroundVideo: UIView {
             // Set observer for when video ends and loop video infinitely
             NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
             player.seek(to: kCMTimeZero)
+            
+            player.isMuted = self.isMuted
+            
             player.play()
         }
     }

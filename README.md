@@ -60,25 +60,30 @@ To use this library in your project manually you may:
 
 ## Usage
 
+Import the framework into the ViewController
 ```swift
 import SwiftVideoBackground
 ```
-Import the framework into the ViewController
 
+Link a UIView within a ViewController within the Storyboard to a BackgroundVideo item, or link it programmatically.
 ```swift
 var backgroundVideo : BackgroundVideo!
 ```
-Link a UIView within a ViewController within the Storyboard to a BackgroundVideo item, or link it programmatically.
 
+Use the `createBackgroundVideo` function, with the name of the video or gif under `name`, and the file type (popular ones include mp4, mov, and gif) under `type`. You can also include an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video.
 ```swift
 backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4")
 ```
 ```swift
 backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4", alpha: 0.5)
 ```
-Use the `createBackgroundVideo` function, with the name of the video or gif under `name`, and the file type (popular ones include mp4, mov, and gif) under `type`. You can also include an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video.
 
 Note: Make sure you have added a video file to the project, and targeted the project. Also, make sure that you have set the module to `SwiftVideoBackground` for the BackgroundVideo UIView.
+
+To mute the video, simply set `isMuted` to true.
+```swift
+backgroundVideo.isMuted = true
+```
 
 ## Example
 

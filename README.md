@@ -26,14 +26,13 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 
 ## Requirements
 
-- Swift 3
-- iOS 10
-- Xcode 8
+- Swift 3+
+- iOS 10+
 
 ## Integration
 
 #### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`by adding it to your `Podfile`:
+You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
 
 For Swift 4:
 ```ruby
@@ -72,7 +71,7 @@ Link a UIView within a ViewController within the Storyboard to a BackgroundVideo
 var backgroundVideo : BackgroundVideo!
 ```
 
-Use the `createBackgroundVideo` function, with the name of the video or gif under `name`, and the file type (popular ones include mp4, mov, and gif) under `type`. You can also include an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video.
+Use the `createBackgroundVideo` function, with the name of the video or gif under `name`, and the file type under `type`. You can also include an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video.
 ```swift
 backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4")
 ```

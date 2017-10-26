@@ -22,8 +22,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
     - [Carthage](#carthage)
     - [Manually](#manually)
 3. [Usage](#usage)
-4. [Example](#example)
-5. [License](#license)
+4. [License](#license)
 
 ## Requirements
 
@@ -87,12 +86,6 @@ To mute the video, simply set `isMuted` to true.
 ```swift
 backgroundVideo.isMuted = true
 ```
-
-## Example
-
-To view the included example `ExampleLogin`, simply run `pod install` to get the latest version of the `SwiftVideoBackground`, and then open the `ExampleLogin.xcworkspace` and run on a compatible iPhone simulator or iOS device.
-
-Note: If you have used SwiftVideoBackground in your own app, please feel free to submit a PR to have a link of your app added to this section!
 
 ## License
 

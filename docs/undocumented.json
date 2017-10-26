@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Volumes/ExtDrive SD/Programming Storage/SwiftVideoBackground/SwiftVideoBackground/BackgroundVideo.swift",
+      "line": 12,
+      "symbol": "BackgroundVideo",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Volumes/ExtDrive SD/Programming Storage/SwiftVideoBackground"
+}

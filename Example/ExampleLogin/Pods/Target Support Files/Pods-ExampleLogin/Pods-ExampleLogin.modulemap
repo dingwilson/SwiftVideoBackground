@@ -1,6 +1,0 @@
-framework module Pods_ExampleLogin {
-  umbrella header "Pods-ExampleLogin-umbrella.h"
-
-  export *
-  module * { export * }
-}

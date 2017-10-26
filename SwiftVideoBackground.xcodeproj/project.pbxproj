@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C82AAF8B1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */; };
 		C82AAF8D1D9C1C4800A13307 /* SwiftVideoBackground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D0633E1D99B62E006A5F00 /* SwiftVideoBackground.framework */; };
+		C87103D91FA2380600F817BC /* BackgroundVideoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87103D81FA2380600F817BC /* BackgroundVideoError.swift */; };
 		C8D063431D99B62E006A5F00 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8D0634A1D99B639006A5F00 /* BackgroundVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D063491D99B639006A5F00 /* BackgroundVideo.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 		C82AAF881D9C1C4800A13307 /* SwiftVideoBackgroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftVideoBackgroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftVideoBackgroundTests.swift; sourceTree = "<group>"; };
 		C82AAF8C1D9C1C4800A13307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C87103D81FA2380600F817BC /* BackgroundVideoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVideoError.swift; sourceTree = "<group>"; };
 		C8D0633E1D99B62E006A5F00 /* SwiftVideoBackground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftVideoBackground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftVideoBackground.h; sourceTree = "<group>"; };
 		C8D063421D99B62E006A5F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				C8D063491D99B639006A5F00 /* BackgroundVideo.swift */,
+				C87103D81FA2380600F817BC /* BackgroundVideoError.swift */,
 				C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */,
 				C8D063421D99B62E006A5F00 /* Info.plist */,
 			);
@@ -129,6 +132,7 @@
 				C8D0633A1D99B62E006A5F00 /* Frameworks */,
 				C8D0633B1D99B62E006A5F00 /* Headers */,
 				C8D0633C1D99B62E006A5F00 /* Resources */,
+				C87103D11FA231AE00F817BC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -198,6 +202,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C87103D11FA231AE00F817BC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C82AAF841D9C1C4800A13307 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -211,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C87103D91FA2380600F817BC /* BackgroundVideoError.swift in Sources */,
 				C8D0634A1D99B639006A5F00 /* BackgroundVideo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

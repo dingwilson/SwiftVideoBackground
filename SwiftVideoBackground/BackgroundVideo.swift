@@ -6,87 +6,77 @@
 //  Copyright © 2016 Wilson Ding. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
-public class BackgroundVideo: UIView {
+/// Class that plays a video on a UIView.
+public class BackgroundVideo {
+    private var player = AVPlayer()
 
-    /// isMuted - provides the ability to set whether background video is muted
-    public var isMuted = false
+    /// Plays a video on a given UIView.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - videoName: String name of video that you have added to your project.
+    ///     - videoType: String type of the video. e.g. "mp4"
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - opacity: The opacity of the layer, as a value between zero and one.
+    ///                Defaults to one. Specifying a value outside the [0,1]
+    ///                range will give undefined results.
+    ///     - loopVideo: Bool indicating whether video should restart when finished.
+    ///                  Defaults to true.
+    public func play(view: UIView,
+                     videoName: String,
+                     videoType: String,
+                     isMuted: Bool = true,
+                     opacity: Float = 1.0,
+                     loopVideo: Bool = true) {
+        guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
+            print("BackgroundVideo: [ERROR] could not find video")
+            return
+        }
 
-    private var player: AVPlayer?
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        player.isMuted = isMuted
+        player.play()
 
-    /**
-     createBackgroundVideo(name: String, type: String) function:
-     - name: String - take in the name of the video file
-     - type: String - take in the file type of the video file
-     */
+        let layer = AVPlayerLayer(player: player)
+        layer.frame = view.frame
+        layer.opacity = opacity
+        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        layer.zPosition = -1
+        view.layer.addSublayer(layer)
 
-    public func createBackgroundVideo(name: String, type: String) {
-        do {
-            try createBackground(name: name, type: type)
-        } catch {
-            print(error.localizedDescription)
+        if loopVideo {
+            addVideoDidPlayToEndObserver()
+        } else {
+            // this triggers a Lint error, but i think it's needed because e.g. this scenario:
+            // user calls play(loopVideo = true), then
+            // user calls play(loopVideo = false)
+            // at this point we need to remove the observer or else the video will still loop
+            removeAllObservers()
         }
     }
 
-    /**
-      createBackgroundVideo(name: String, type: String, alpha: CGFloat) function:
-      - name: String - take in the name of the video file
-      - type: String - take in the file type of the video file
-      - alpha: CGFloat - take in the desired alpha/darkness of the background video
-    */
-
-    public func createBackgroundVideo(name: String, type: String, alpha: CGFloat) {
-        createAlpha(alpha: alpha)
-
-        do {
-            try createBackground(name: name, type: type)
-        } catch {
-            print(error.localizedDescription)
-        }
+    private func addVideoDidPlayToEndObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(restartVideo),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: nil)
     }
 
-    private func createAlpha(alpha: CGFloat) {
-        let overlayView = UIView(frame: self.frame)
-        overlayView.backgroundColor = UIColor.black
-        overlayView.alpha = alpha
-        self.addSubview(overlayView)
-        self.sendSubview(toBack: overlayView)
-    }
-
-    private func createBackground(name: String, type: String) throws {
-        guard let path = Bundle.main.path(forResource: name, ofType: type) else {
-            throw BackgroundVideoError.missingVideo
-        }
-
-        player = AVPlayer(url: URL(fileURLWithPath: path))
-        if let player = player {
-            player.actionAtItemEnd = AVPlayerActionAtItemEnd.none
-            let playerLayer = AVPlayerLayer(player: player)
-            playerLayer.frame = self.frame
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            self.layer.insertSublayer(playerLayer, at: 0)
-
-            // Set observer for when video ends and loop video infinitely
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(playerDidReachEnd),
-                                                   name: .AVPlayerItemDidPlayToEndTime,
-                                                   object: player.currentItem)
-            player.seek(to: kCMTimeZero)
-
-            player.isMuted = self.isMuted
-
-            player.play()
-        }
-    }
-
-    deinit {
+    private func removeAllObservers() {
         NotificationCenter.default.removeObserver(self)
     }
 
-    @objc private func playerDidReachEnd() {
-        player?.seek(to: kCMTimeZero)
-        player?.play()
+    @objc private dynamic func restartVideo() {
+        player.seek(to: kCMTimeZero)
+        player.play()
+    }
+
+    deinit {
+        removeAllObservers()
     }
 }
+

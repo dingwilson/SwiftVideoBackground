@@ -13,6 +13,16 @@ import UIKit
 public class BackgroundVideo {
     private var player = AVPlayer()
 
+    private var willLoopVideo = true
+
+    /// Initializes a BackgroundVideo instance.
+    public init() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(restartVideo),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: nil)
+    }
+
     /// Plays a video on a given UIView.
     ///
     /// - Parameters:
@@ -23,14 +33,14 @@ public class BackgroundVideo {
     ///     - opacity: The opacity of the layer, as a value between zero and one.
     ///                Defaults to one. Specifying a value outside the [0,1]
     ///                range will give undefined results.
-    ///     - loopVideo: Bool indicating whether video should restart when finished.
-    ///                  Defaults to true.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished.
+    ///                      Defaults to true.
     public func play(view: UIView,
                      videoName: String,
                      videoType: String,
                      isMuted: Bool = true,
                      opacity: Float = 1.0,
-                     loopVideo: Bool = true) {
+                     willLoopVideo: Bool = true) {
         guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
             print("BackgroundVideo: [ERROR] could not find video")
             return
@@ -48,35 +58,17 @@ public class BackgroundVideo {
         layer.zPosition = -1
         view.layer.addSublayer(layer)
 
-        if loopVideo {
-            addVideoDidPlayToEndObserver()
-        } else {
-            // this triggers a Lint error, but i think it's needed because e.g. this scenario:
-            // user calls play(loopVideo = true), then
-            // user calls play(loopVideo = false)
-            // at this point we need to remove the observer or else the video will still loop
-            removeAllObservers()
-        }
-    }
-
-    private func addVideoDidPlayToEndObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(restartVideo),
-                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                               object: nil)
-    }
-
-    private func removeAllObservers() {
-        NotificationCenter.default.removeObserver(self)
+        self.willLoopVideo = willLoopVideo
     }
 
     @objc private dynamic func restartVideo() {
-        player.seek(to: kCMTimeZero)
-        player.play()
+        if willLoopVideo {
+            player.seek(to: kCMTimeZero)
+            player.play()
+        }
     }
 
     deinit {
-        removeAllObservers()
+        NotificationCenter.default.removeObserver(self)
     }
 }
-

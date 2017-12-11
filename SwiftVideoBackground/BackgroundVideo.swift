@@ -30,16 +30,15 @@ public class BackgroundVideo {
     ///     - videoName: String name of video that you have added to your project.
     ///     - videoType: String type of the video. e.g. "mp4"
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
-    ///     - opacity: The opacity of the layer, as a value between zero and one.
-    ///                Defaults to one. Specifying a value outside the [0,1]
-    ///                range will give undefined results.
+    ///     - aplha: CGFloat between 0 and 1. The higher the value, the darker
+    ///              the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished.
     ///                      Defaults to true.
     public func play(view: UIView,
                      videoName: String,
                      videoType: String,
                      isMuted: Bool = true,
-                     opacity: Float = 1.0,
+                     alpha: CGFloat = 0,
                      willLoopVideo: Bool = true) {
         guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
             print("BackgroundVideo: [ERROR] could not find video")
@@ -48,20 +47,25 @@ public class BackgroundVideo {
 
         let url = URL(fileURLWithPath: path)
         player = AVPlayer(url: url)
+        player.seek(to: kCMTimeZero)
+        player.actionAtItemEnd = .none
         player.isMuted = isMuted
         player.play()
 
         let layer = AVPlayerLayer(player: player)
         layer.frame = view.frame
-        layer.opacity = opacity
-        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        layer.videoGravity = .resizeAspectFill
         layer.zPosition = -1
-        view.layer.addSublayer(layer)
+        view.layer.insertSublayer(layer, at: 0)
+
+        if alpha > 0 && alpha <= 1 {
+            view.addAlpha(alpha)
+        }
 
         self.willLoopVideo = willLoopVideo
     }
 
-    @objc private dynamic func restartVideo() {
+    @objc private func restartVideo() {
         if willLoopVideo {
             player.seek(to: kCMTimeZero)
             player.play()
@@ -70,5 +74,15 @@ public class BackgroundVideo {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+private extension UIView {
+    func addAlpha(_ alpha: CGFloat) {
+        let overlayView = UIView(frame: frame)
+        overlayView.backgroundColor = .black
+        overlayView.alpha = alpha
+        addSubview(overlayView)
+        sendSubview(toBack: overlayView)
     }
 }

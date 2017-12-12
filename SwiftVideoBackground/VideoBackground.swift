@@ -1,5 +1,5 @@
 //
-//  BackgroundVideo.swft
+//  VideoBackground.swift
 //  SwiftVideoBackground
 //
 //  Created by Wilson Ding on 9/20/16.
@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 
 /// Class that plays a video on a UIView.
-public class BackgroundVideo {
+public class VideoBackground {
     private var player = AVPlayer()
 
     private var willLoopVideo = true

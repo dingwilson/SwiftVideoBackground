@@ -14,15 +14,17 @@
   <img src="Assets/Spotify.gif" width="369" title="Screenshot">
 </p>
 
-SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
+SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
 
-1. [Requirements](#requrements)
+1. [Requirements](#requirements)
 2. [Integration](#integration)
-    - [Cocoapods](#cocoapods)
+    - [CocoaPods](#cocoapods)
     - [Carthage](#carthage)
     - [Manually](#manually)
-3. [Usage](#usage)
-4. [License](#license)
+3. [Migration Guide](#migration-guide)
+4. [Usage](#usage)
+5. [License](#license)
+6. [Contributors](#contributors)
 
 ## Requirements
 
@@ -36,7 +38,7 @@ You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`
 
 For Swift 4:
 ```ruby
-	pod 'SwiftVideoBackground'
+	pod 'SwiftVideoBackground', '~> 2.0'
 ```
 
 For Swift 3:
@@ -57,36 +59,70 @@ To use this library in your project manually you may:
 1. for Projects, just drag BackgroundVideo.swift to the project tree
 2. for Workspaces, include the whole SwiftVideoBackground.xcodeproj
 
+## Migration Guide
+
+Version 2.0 brings improvements and breaking changes. See the quick migration guide [here]().
+
 ## Usage
 
-Import the framework into the ViewController
-```swift
-import SwiftVideoBackground
+#### Example
+
+``` swift
+import UIKit
+import VideoBackground
+
+class MyViewController: UIViewController {
+  private let videoBackground = VideoBackground()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    videoBackground.play(view: view, videoName: "myvideo", videoType: "mp4")
+  }
+}
 ```
 
-Link a UIView within a ViewController within the Storyboard to a BackgroundVideo item, or link it programmatically.
-```swift
-var backgroundVideo : BackgroundVideo!
+> Documentation for Version 0.06 (Swift 3) can be found [here]().
+
+#### Customization Options
+
+`play()` has three additional optional parameters:
+- `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
+- `alpha`: CGFloat - Value between 0 and 1. The higher the value, the darker the video. Defaults to `0`.
+- `willLoopVideo`: Bool - Indicates whether video should restart when finished. Defaults to `true`.
+
+So for example:
+
+``` swift
+videoBackground.play(view: view,
+                     videoName: "myvideo",
+                     videoType: "mp4",
+                     isMuted: false,
+                     alpha: 0.25,
+                     willLoopVideo: true)
 ```
 
-Use the `createBackgroundVideo` function, with the name of the video or gif under `name`, and the file type under `type`. You can also include an alpha value between 0 and 1 under `alpha`, to adjust the brightness of the video.
-```swift
-backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4")
-```
-```swift
-backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4", alpha: 0.5)
-```
+-> will play the video with the sound on, slightly darkened, and will continuously loop.
 
-Note: Make sure you have added a video file to the project, and targeted the project. Also, make sure that you have set the module to `SwiftVideoBackground` for the BackgroundVideo UIView.
+#### Adding Videos To Your Project
 
-To mute the video, simply set `isMuted` to true.
-```swift
-backgroundVideo.isMuted = true
-```
+You must properly add videos to your project in order to play them. To do this:
+1. Open your project navigator
+2. Select your target
+3. Select `Build Phases`
+4. Select `Copy Bundle Resources`
+5. Click `+` to add a video
+
+![add video to project](Assets/add-video-to-project.png "add video to project")
 
 ## License
 
-`SwiftVideoBackground` is released under an [MIT License][mitLink]. See `LICENSE` for details.
+`SwiftVideoBackground` is released under an [MIT License][mitLink]. See [LICENSE](LICENSE) for details.
+
+## Contributors
+
+- Author: [Wilson Ding](https://github.com/dingwilson)
+- Collaborator: [Quan Vo](https://github.com/quanvo87)
 
 **Copyright &copy; 2016-present Wilson Ding.**
 

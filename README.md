@@ -24,7 +24,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 3. [Migration Guide](#migration-guide)
 4. [Usage](#usage)
 5. [License](#license)
-6. [Contributors](#contributors)
+6. [Authors](#authors)
 
 ## Requirements
 
@@ -38,7 +38,7 @@ You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`
 
 For Swift 4:
 ```ruby
-	pod 'SwiftVideoBackground', '~> 2.0'
+	pod 'SwiftVideoBackground', '~> 2.0.0'
 ```
 
 For Swift 3:
@@ -56,12 +56,12 @@ github "dingwilson/SwiftVideoBackground"
 
 To use this library in your project manually you may:  
 
-1. for Projects, just drag BackgroundVideo.swift to the project tree
+1. for Projects, just drag VideoBackground.swift to the project tree
 2. for Workspaces, include the whole SwiftVideoBackground.xcodeproj
 
 ## Migration Guide
 
-Version 2.0 brings improvements and breaking changes. See the quick migration guide [here]().
+Version 2.0.0 brings improvements and breaking changes. See the quick migration guide [here](migration-2.0.0.md).
 
 ## Usage
 
@@ -82,11 +82,11 @@ class MyViewController: UIViewController {
 }
 ```
 
-> Documentation for Version 0.06 (Swift 3) can be found [here]().
+> Documentation for Version 0.06 (Swift 3) can be found [here](README-0.06.md).
 
 #### Customization Options
 
-`play()` has three additional optional parameters:
+`play()` has three additional optional parameters for customization:
 - `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
 - `alpha`: CGFloat - Value between 0 and 1. The higher the value, the darker the video. Defaults to `0`.
 - `willLoopVideo`: Bool - Indicates whether video should restart when finished. Defaults to `true`.
@@ -104,6 +104,8 @@ videoBackground.play(view: view,
 
 -> will play the video with the sound on, slightly darkened, and will continuously loop.
 
+> Any combination of the three can be included or left out.
+
 #### Adding Videos To Your Project
 
 You must properly add videos to your project in order to play them. To do this:
@@ -119,10 +121,9 @@ You must properly add videos to your project in order to play them. To do this:
 
 `SwiftVideoBackground` is released under an [MIT License][mitLink]. See [LICENSE](LICENSE) for details.
 
-## Contributors
+## Authors
 
-- Author: [Wilson Ding](https://github.com/dingwilson)
-- Collaborator: [Quan Vo](https://github.com/quanvo87)
+[Wilson Ding](https://github.com/dingwilson), [Quan Vo](https://github.com/quanvo87)
 
 **Copyright &copy; 2016-present Wilson Ding.**
 

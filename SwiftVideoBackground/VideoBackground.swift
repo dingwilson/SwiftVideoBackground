@@ -15,7 +15,7 @@ public class VideoBackground {
 
     private var willLoopVideo = true
 
-    /// Initializes a BackgroundVideo instance.
+    /// Initializes a VideoBackground instance.
     public init() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(restartVideo),

@@ -16,7 +16,7 @@
 
 SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
 
-1. [Requirements](#requrements)
+1. [Requirements](#requirements)
 2. [Integration](#integration)
     - [Cocoapods](#cocoapods)
     - [Carthage](#carthage)
@@ -33,11 +33,6 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 
 #### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
-
-For Swift 4:
-```ruby
-	pod 'SwiftVideoBackground'
-```
 
 For Swift 3:
 ```ruby
@@ -78,11 +73,6 @@ backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4", alpha: 0.
 ```
 
 Note: Make sure you have added a video file to the project, and targeted the project. Also, make sure that you have set the module to `SwiftVideoBackground` for the BackgroundVideo UIView.
-
-To mute the video, simply set `isMuted` to true.
-```swift
-backgroundVideo.isMuted = true
-```
 
 ## License
 

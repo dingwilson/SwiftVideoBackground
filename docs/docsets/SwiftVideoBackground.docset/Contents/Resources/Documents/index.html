@@ -13,7 +13,7 @@
     <a title="SwiftVideoBackground  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SwiftVideoBackground Docs</a> (75% documented)</p>
+        <p><a href="index.html">SwiftVideoBackground Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/dingwilson/SwiftVideoBackground"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -31,7 +31,7 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/BackgroundVideo.html">BackgroundVideo</a>
+                <a href="Classes/VideoBackground.html">VideoBackground</a>
               </li>
             </ul>
           </li>
@@ -57,41 +57,40 @@
   <img src="Assets/Spotify.gif" width="369" title="Screenshot">
 </p>
 
-<p>SwiftVideoBackground is an easy to use Swift framework that provides the ability to add a UIView of a video playing in the background to any ViewController. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.</p>
+<p>SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.</p>
 
 <ol>
-<li><a href="#requrements">Requirements</a></li>
+<li><a href="#requirements">Requirements</a></li>
 <li><a href="#integration">Integration</a>
 
 <ul>
-<li><a href="#cocoapods">Cocoapods</a></li>
+<li><a href="#cocoapods">CocoaPods</a></li>
 <li><a href="#carthage">Carthage</a></li>
 <li><a href="#manually">Manually</a></li>
 </ul></li>
+<li><a href="#migration-guide">Migration Guide</a></li>
 <li><a href="#usage">Usage</a></li>
 <li><a href="#license">License</a></li>
+<li><a href="#authors">Authors</a></li>
 </ol>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
-<li>Swift 3</li>
-<li>iOS 10</li>
-<li>Xcode 8</li>
+<li>Swift 3+</li>
+<li>iOS 8+</li>
 </ul>
 <h2 id='integration' class='heading'>Integration</h2>
 <h4 id='cocoapods' class='heading'>CocoaPods</h4>
 
-<p>You can use <a href="http://cocoapods.org/">CocoaPods</a> to install <code>SwiftVideoBackground</code>by adding it to your <code>Podfile</code>:</p>
+<p>You can use <a href="http://cocoapods.org/">CocoaPods</a> to install <code>SwiftVideoBackground</code> by adding it to your <code>Podfile</code>:</p>
 
 <p>For Swift 4:</p>
-<pre class="highlight ruby"><code>    <span class="n">pod</span> <span class="s1">'SwiftVideoBackground'</span>
+<pre class="highlight ruby"><code>    <span class="n">pod</span> <span class="s1">'SwiftVideoBackground'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0.0'</span>
 </code></pre>
 
 <p>For Swift 3:</p>
 <pre class="highlight ruby"><code>    <span class="n">pod</span> <span class="s1">'SwiftVideoBackground'</span><span class="p">,</span> <span class="s1">'~&gt; 0.06'</span>
 </code></pre>
-
-<p>Note: your iOS deployment target must be 10.0 or higher</p>
 <h4 id='carthage' class='heading'>Carthage</h4>
 
 <p>You can use <a href="https://github.com/Carthage/Carthage">Carthage</a> to install <code>SwiftVideoBackground</code> by adding it to your <code>Cartfile</code>:</p>
@@ -102,33 +101,74 @@
 <p>To use this library in your project manually you may:  </p>
 
 <ol>
-<li>for Projects, just drag BackgroundVideo.swift to the project tree</li>
+<li>for Projects, just drag VideoBackground.swift to the project tree</li>
 <li>for Workspaces, include the whole SwiftVideoBackground.xcodeproj</li>
 </ol>
+<h2 id='migration-guide' class='heading'>Migration Guide</h2>
+
+<p>Version 2.0.0 brings improvements and breaking changes. See the quick migration guide <a href="migration-2.0.0.md">here</a>.</p>
 <h2 id='usage' class='heading'>Usage</h2>
+<h4 id='example' class='heading'>Example</h4>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+<span class="kd">import</span> <span class="kt">VideoBackground</span>
 
-<p>Import the framework into the ViewController</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">SwiftVideoBackground</span>
+<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="k">let</span> <span class="nv">videoBackground</span> <span class="o">=</span> <span class="kt">VideoBackground</span><span class="p">()</span>
+
+  <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+    <span class="n">videoBackground</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">videoName</span><span class="p">:</span> <span class="s">"myvideo"</span><span class="p">,</span> <span class="nv">videoType</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
-<p>Link a UIView within a ViewController within the Storyboard to a BackgroundVideo item, or link it programmatically.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">backgroundVideo</span> <span class="p">:</span> <span class="kt">BackgroundVideo</span><span class="o">!</span>
+<blockquote>
+<p>Documentation for Version 0.06 (Swift 3) can be found <a href="README-0.06.md">here</a>.</p>
+</blockquote>
+<h4 id='customization-options' class='heading'>Customization Options</h4>
+
+<p><code>play()</code> has three additional optional parameters for customization:</p>
+
+<ul>
+<li><code>isMuted</code>: Bool - Indicates whether video is muted. Defaults to <code>true</code>.</li>
+<li><code>alpha</code>: CGFloat - Value between 0 and 1. The higher the value, the darker the video. Defaults to <code>0</code>.</li>
+<li><code>willLoopVideo</code>: Bool - Indicates whether video should restart when finished. Defaults to <code>true</code>.</li>
+</ul>
+
+<p>So for example:</p>
+<pre class="highlight swift"><code><span class="n">videoBackground</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span>
+                     <span class="nv">videoName</span><span class="p">:</span> <span class="s">"myvideo"</span><span class="p">,</span>
+                     <span class="nv">videoType</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">,</span>
+                     <span class="nv">isMuted</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                     <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                     <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
 </code></pre>
 
-<p>Use the <code>createBackgroundVideo</code> function, with the name of the video or gif under <code>name</code>, and the file type (popular ones include mp4, mov, and gif) under <code>type</code>. You can also include an alpha value between 0 and 1 under <code>alpha</code>, to adjust the brightness of the video.</p>
-<pre class="highlight swift"><code><span class="n">backgroundVideo</span><span class="o">.</span><span class="nf">createBackgroundVideo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Background"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight swift"><code><span class="n">backgroundVideo</span><span class="o">.</span><span class="nf">createBackgroundVideo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Background"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
-</code></pre>
+<p>-&gt; will play the video with the sound on, slightly darkened, and will continuously loop.</p>
 
-<p>Note: Make sure you have added a video file to the project, and targeted the project. Also, make sure that you have set the module to <code>SwiftVideoBackground</code> for the BackgroundVideo UIView.</p>
+<blockquote>
+<p>Any combination of the three can be included or left out.</p>
+</blockquote>
+<h4 id='adding-videos-to-your-project' class='heading'>Adding Videos To Your Project</h4>
 
-<p>To mute the video, simply set <code>isMuted</code> to true.</p>
-<pre class="highlight swift"><code><span class="n">backgroundVideo</span><span class="o">.</span><span class="n">isMuted</span> <span class="o">=</span> <span class="kc">true</span>
-</code></pre>
+<p>You must properly add videos to your project in order to play them. To do this:</p>
+
+<ol>
+<li>Open your project navigator</li>
+<li>Select your target</li>
+<li>Select <code>Build Phases</code></li>
+<li>Select <code>Copy Bundle Resources</code></li>
+<li>Click <code>+</code> to add a video</li>
+</ol>
+
+<p><img src="Assets/add-video-to-project.png" alt="add video to project" title="add video to project"></p>
 <h2 id='license' class='heading'>License</h2>
 
-<p><code>SwiftVideoBackground</code> is released under an <a href="http://opensource.org/licenses/MIT">MIT License</a>. See <code>LICENSE</code> for details.</p>
+<p><code>SwiftVideoBackground</code> is released under an <a href="http://opensource.org/licenses/MIT">MIT License</a>. See <a href="LICENSE">LICENSE</a> for details.</p>
+<h2 id='authors' class='heading'>Authors</h2>
+
+<p><a href="https://github.com/dingwilson">Wilson Ding</a>, <a href="https://github.com/quanvo87">Quan Vo</a></p>
 
 <p><strong>Copyright &copy; 2016-present Wilson Ding.</strong></p>
 
@@ -137,8 +177,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://wilsonding.com" target="_blank" rel="external">com.wilsonding</a>. All rights reserved. (Last updated: 2017-10-26)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="http://wilsonding.com" target="_blank" rel="external">com.wilsonding</a>. All rights reserved. (Last updated: 2017-12-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -69,7 +69,7 @@ Version 2.0.0 brings improvements and breaking changes. See the quick migration 
 
 ``` swift
 import UIKit
-import VideoBackground
+import SwiftVideoBackground
 
 class MyViewController: UIViewController {
   private let videoBackground = VideoBackground()

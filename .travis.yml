@@ -1,0 +1,17 @@
+osx_image: xcode9.2
+language: objective-c
+xcode_project: SwiftVideoBackground.xcodeproj
+
+install:
+  - wget --output-document /tmp/SwiftLint.pkg https://github.com/realm/SwiftLint/releases/download/0.24.2/SwiftLint.pkg && sudo installer -pkg /tmp/SwiftLint.pkg -target /
+
+env:
+  - UDID="7A5E86EB-E32C-475F-8FF5-10AA330C1D34", IOS_DEVICE="iPhone 7 Plus (11.1)"
+  - UDID="15E2107D-EAD2-4E1F-8BC3-59E58E750FB1", IOS_DEVICE="iPhone 7 (10.0)"
+  - UDID="9AB3D590-C748-4E17-8E35-67B298E973F7", IOS_DEVICE="iPhone 6 Plus (9.0)"
+  - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"
+
+script:
+  - swiftlint
+  - open -a "simulator" --args -CurrentDeviceUDID $UDID
+  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet

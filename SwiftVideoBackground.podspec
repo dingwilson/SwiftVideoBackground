@@ -8,7 +8,8 @@ Pod::Spec.new do |s|
   s.author       = { "Wilson Ding" => "hello@wilsonding.com",
                      "Quan Vo" => "qvo1987@gmail.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/dingwilson/SwiftVideoBackground.git", :tag => "2.0.0" }
+  s.source       = { :git => "https://github.com/dingwilson/SwiftVideoBackground.git", :tag => s.version }
   s.source_files  = "SwiftVideoBackground", "SwiftVideoBackground/**/*.{h,m,swift}"
   s.exclude_files = "Classes/Exclude"
+  s.documentation_url = "http://wilsonding.com/SwiftVideoBackground/"
 end

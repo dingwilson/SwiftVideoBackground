@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.0.1](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.1)
+(2018-01-30)
+- Added a basic test and travis-ci integration
+- Fixed podspec documentation generation
+
 ## [2.0.0](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.0) (2017-12-14)
 **Major Release: BREAKING CHANGES**
 - renamed class from `BackgroundVideo` to `VideoBackground` for consistency with package name

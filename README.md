@@ -44,7 +44,7 @@ For Swift 4:
 
 For Swift 3:
 ```ruby
-	pod 'SwiftVideoBackground', '~> 0.06'
+	pod 'SwiftVideoBackground', '0.06'
 ```
 
 #### Carthage

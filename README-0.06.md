@@ -36,7 +36,7 @@ You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`
 
 For Swift 3:
 ```ruby
-	pod 'SwiftVideoBackground', '~> 0.06'
+	pod 'SwiftVideoBackground', '0.06'
 ```
 
 #### Carthage

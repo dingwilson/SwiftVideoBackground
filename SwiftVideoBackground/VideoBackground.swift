@@ -17,9 +17,16 @@ public class VideoBackground {
 
     /// Initializes a VideoBackground instance.
     public init() {
+        // adds observer to restart video when video plays to end
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(restartVideo),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: nil)
+
+        // adds observer to restart video when application enters foreground
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(restartVideo),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
                                                object: nil)
     }
 

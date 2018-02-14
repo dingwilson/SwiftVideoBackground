@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.2](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.2)
+(2018-02-14)
+- Added observer to handle application state transition back to foreground
+
 ## [2.0.1](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.1)
 (2018-01-30)
 - Added a basic test and travis-ci integration

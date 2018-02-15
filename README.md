@@ -124,23 +124,16 @@ By default, audio played on your app will mute all other audio playing on the de
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      // Access the shared, singleton audio session instance
-      let session = AVAudioSession.sharedInstance()
-      do {
-          // Configure the audio session for movie playback
-          if #available(iOS 10.0, *) {
-              try session.setCategory(AVAudioSessionCategoryAmbient,
-                                      mode: AVAudioSessionModeDefault,
-                                      options: [])
-              try session.setActive(true)
-          } else {
-              // Fallback on earlier versions
-          }
-      } catch let error as NSError {
-          print("Failed to set the audio session category and mode: \(error.localizedDescription)")
-      }
-      return true
-  }
+    if #available(iOS 10.0, *) {
+        try? AVAudioSession.sharedInstance().setCategory(
+           AVAudioSessionCategoryAmbient,
+           mode: AVAudioSessionModeDefault
+        )
+        try? AVAudioSession.sharedInstance().setActive(true)
+    }
+
+    return true
+}
 ```
 
 For more information, see the AVPlayer [docs](https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html#//apple_ref/doc/uid/TP40007875-CH3-SW1).

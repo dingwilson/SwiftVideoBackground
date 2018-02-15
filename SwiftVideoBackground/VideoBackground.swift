@@ -19,34 +19,29 @@ public class VideoBackground {
 
     private var boundsObserver: NSKeyValueObservation?
 
+    // Resume video when application re-enters foreground
+    private lazy var applicationWillEnterForegroundObserver = NotificationCenter.default.addObserver(
+        forName: .UIApplicationWillEnterForeground,
+        object: nil,
+        queue: .main) { [weak self] _ in
+            self?.player.play()
+    }
+
+    // Restart video when it ends
+    private lazy var videoEndedObserver = NotificationCenter.default.addObserver(
+        forName: .AVPlayerItemDidPlayToEndTime,
+        object: player.currentItem,
+        queue: .main) { [weak self] _ in
+            if let willLoopVideo = self?.willLoopVideo, willLoopVideo {
+                self?.player.seek(to: kCMTimeZero)
+                self?.player.play()
+            }
+    }
+
     /// Initializes a VideoBackground instance.
     public init() {
-        // Resume video when application re-enters foreground
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(resumeVideo),
-            name: .UIApplicationWillEnterForeground,
-            object: nil
-        )
-
-        // Restart video when it ends
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(restartVideo),
-            name: .AVPlayerItemDidPlayToEndTime,
-            object: player.currentItem
-        )
-    }
-
-    @objc private func resumeVideo() {
-        player.play()
-    }
-
-    @objc private func restartVideo() {
-        if willLoopVideo {
-            player.seek(to: kCMTimeZero)
-            player.play()
-        }
+        _ = applicationWillEnterForegroundObserver
+        _ = videoEndedObserver
     }
 
     /// Plays a video on a given UIView.
@@ -98,8 +93,10 @@ public class VideoBackground {
         }
     }
 
+    // Apparently in more recent iOS versions this is not needed
     deinit {
-        NotificationCenter.default.removeObserver(self)
         boundsObserver?.invalidate()
+        NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
+        NotificationCenter.default.removeObserver(videoEndedObserver)
     }
 }

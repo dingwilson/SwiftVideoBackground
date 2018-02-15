@@ -15,9 +15,9 @@ public class VideoBackground {
 
     private lazy var layer = AVPlayerLayer()
 
-    private var applicationWillEnterForegroundObserver: NSObjectProtocol!
+    private var applicationWillEnterForegroundObserver: NSObjectProtocol?
 
-    private var videoEndedObserver: NSObjectProtocol!
+    private var videoEndedObserver: NSObjectProtocol?
 
     private var viewBoundsObserver: NSKeyValueObservation?
 
@@ -98,8 +98,12 @@ public class VideoBackground {
 
     // Apparently in more recent iOS versions this is not needed
     deinit {
-        NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
-        NotificationCenter.default.removeObserver(videoEndedObserver)
+        if let applicationWillEnterForegroundObserver = applicationWillEnterForegroundObserver {
+            NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
+        }
+        if let videoEndedObserver = videoEndedObserver {
+            NotificationCenter.default.removeObserver(videoEndedObserver)
+        }
         viewBoundsObserver?.invalidate()
     }
 }

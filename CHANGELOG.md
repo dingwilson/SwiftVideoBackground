@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.0.3](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.3)
+(2018-02-14)
+- Fixed layout issues when device orientation changed
+- Fixed issues with images in README not showing up in Cocoapods/Jazzy docs
+
 ## [2.0.2](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.2)
 (2018-02-14)
 - Added observer to handle application state transition back to foreground

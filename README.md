@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Assets/banner.png" width="780" title="SwiftVideoBackground">
+  <img src="https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/banner.png" width="780" title="SwiftVideoBackground">
 </p>
 
 [![Build Status](https://travis-ci.org/dingwilson/SwiftVideoBackground.svg?branch=master)](https://travis-ci.org/dingwilson/SwiftVideoBackground)
@@ -12,7 +12,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 
 <p align="center">
-  <img src="Assets/Spotify.gif" width="369" title="Screenshot">
+  <img src="https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/Spotify.gif" width="369" title="Screenshot">
 </p>
 
 SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
@@ -116,7 +116,7 @@ You must properly add videos to your project in order to play them. To do this:
 4. Select `Copy Bundle Resources`
 5. Click `+` to add a video
 
-![add video to project](Assets/add-video-to-project.png "add video to project")
+![add video to project](https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/add-video-to-project.png "add video to project")
 
 #### Preventing Video From Muting Other Audio On Device
 

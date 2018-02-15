@@ -11,23 +11,38 @@ import UIKit
 
 /// Class that plays a video on a UIView.
 public class VideoBackground {
-    private var player = AVPlayer()
+    private lazy var player = AVPlayer()
+
+    private lazy var layer = AVPlayerLayer()
+
+    private var applicationWillEnterForegroundObserver: NSObjectProtocol?
+
+    private var videoEndedObserver: NSObjectProtocol?
+
+    private var viewBoundsObserver: NSKeyValueObservation?
 
     private var willLoopVideo = true
 
     /// Initializes a VideoBackground instance.
     public init() {
-        // adds observer to restart video when video plays to end
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(restartVideo),
-                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                               object: nil)
+        // Resume video when application re-enters foreground
+        applicationWillEnterForegroundObserver = NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillEnterForeground,
+            object: nil,
+            queue: .main) { [weak self] _ in
+                self?.player.play()
+        }
 
-        // adds observer to restart video when application enters foreground
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(restartVideo),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
-                                               object: nil)
+        // Restart video when it ends
+        videoEndedObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main) { [weak self] _ in
+                if let willLoopVideo = self?.willLoopVideo, willLoopVideo {
+                    self?.player.seek(to: kCMTimeZero)
+                    self?.player.play()
+                }
+        }
     }
 
     /// Plays a video on a given UIView.
@@ -54,42 +69,41 @@ public class VideoBackground {
 
         let url = URL(fileURLWithPath: path)
         player = AVPlayer(url: url)
-        player.seek(to: kCMTimeZero)
         player.actionAtItemEnd = .none
         player.isMuted = isMuted
         player.play()
 
-        let layer = AVPlayerLayer(player: player)
+        layer = AVPlayerLayer(player: player)
         layer.frame = view.frame
         layer.videoGravity = .resizeAspectFill
         layer.zPosition = -1
         view.layer.insertSublayer(layer, at: 0)
 
         if alpha > 0 && alpha <= 1 {
-            view.addAlpha(alpha)
+            let overlayView = UIView(frame: view.frame)
+            overlayView.backgroundColor = .black
+            overlayView.alpha = alpha
+            view.addSubview(overlayView)
+            view.sendSubview(toBack: overlayView)
+        }
+
+        viewBoundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
+            DispatchQueue.main.async {
+                self?.layer.frame = view.frame
+            }
         }
 
         self.willLoopVideo = willLoopVideo
     }
 
-    @objc private func restartVideo() {
-        if willLoopVideo {
-            player.seek(to: kCMTimeZero)
-            player.play()
-        }
-    }
-
+    // Apparently in more recent iOS versions this is not needed
     deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-}
-
-private extension UIView {
-    func addAlpha(_ alpha: CGFloat) {
-        let overlayView = UIView(frame: frame)
-        overlayView.backgroundColor = .black
-        overlayView.alpha = alpha
-        addSubview(overlayView)
-        sendSubview(toBack: overlayView)
+        if let applicationWillEnterForegroundObserver = applicationWillEnterForegroundObserver {
+            NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
+        }
+        if let videoEndedObserver = videoEndedObserver {
+            NotificationCenter.default.removeObserver(videoEndedObserver)
+        }
+        viewBoundsObserver?.invalidate()
     }
 }

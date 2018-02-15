@@ -15,33 +15,34 @@ public class VideoBackground {
 
     private lazy var layer = AVPlayerLayer()
 
+    private var applicationWillEnterForegroundObserver: NSObjectProtocol!
+
+    private var videoEndedObserver: NSObjectProtocol!
+
+    private var viewBoundsObserver: NSKeyValueObservation?
+
     private var willLoopVideo = true
-
-    private var boundsObserver: NSKeyValueObservation?
-
-    // Resume video when application re-enters foreground
-    private lazy var applicationWillEnterForegroundObserver = NotificationCenter.default.addObserver(
-        forName: .UIApplicationWillEnterForeground,
-        object: nil,
-        queue: .main) { [weak self] _ in
-            self?.player.play()
-    }
-
-    // Restart video when it ends
-    private lazy var videoEndedObserver = NotificationCenter.default.addObserver(
-        forName: .AVPlayerItemDidPlayToEndTime,
-        object: player.currentItem,
-        queue: .main) { [weak self] _ in
-            if let willLoopVideo = self?.willLoopVideo, willLoopVideo {
-                self?.player.seek(to: kCMTimeZero)
-                self?.player.play()
-            }
-    }
 
     /// Initializes a VideoBackground instance.
     public init() {
-        _ = applicationWillEnterForegroundObserver
-        _ = videoEndedObserver
+        // Resume video when application re-enters foreground
+        applicationWillEnterForegroundObserver = NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillEnterForeground,
+            object: nil,
+            queue: .main) { [weak self] _ in
+                self?.player.play()
+        }
+
+        // Restart video when it ends
+        videoEndedObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main) { [weak self] _ in
+                if let willLoopVideo = self?.willLoopVideo, willLoopVideo {
+                    self?.player.seek(to: kCMTimeZero)
+                    self?.player.play()
+                }
+        }
     }
 
     /// Plays a video on a given UIView.
@@ -86,17 +87,19 @@ public class VideoBackground {
             view.sendSubview(toBack: overlayView)
         }
 
-        self.willLoopVideo = willLoopVideo
-
-        boundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
-            self?.layer.frame = view.frame
+        viewBoundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
+            DispatchQueue.main.async {
+                self?.layer.frame = view.frame
+            }
         }
+
+        self.willLoopVideo = willLoopVideo
     }
 
     // Apparently in more recent iOS versions this is not needed
     deinit {
-        boundsObserver?.invalidate()
         NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
         NotificationCenter.default.removeObserver(videoEndedObserver)
+        viewBoundsObserver?.invalidate()
     }
 }

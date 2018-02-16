@@ -15,6 +15,8 @@ public class VideoBackground {
 
     private lazy var layer = AVPlayerLayer()
 
+    private lazy var overlayView = UIView()
+
     private var applicationWillEnterForegroundObserver: NSObjectProtocol?
 
     private var videoEndedObserver: NSObjectProtocol?
@@ -80,16 +82,18 @@ public class VideoBackground {
         view.layer.insertSublayer(layer, at: 0)
 
         if alpha > 0 && alpha <= 1 {
-            let overlayView = UIView(frame: view.frame)
+            overlayView = UIView(frame: view.frame)
             overlayView.backgroundColor = .black
             overlayView.alpha = alpha
             view.addSubview(overlayView)
             view.sendSubview(toBack: overlayView)
         }
 
+        // adjust frames upon device rotation
         viewBoundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
             DispatchQueue.main.async {
                 self?.layer.frame = view.frame
+                self?.overlayView.frame = view.frame
             }
         }
 

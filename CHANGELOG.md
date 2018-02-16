@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.4](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.4)
+(2018-02-16)
+- Fixed layout issues for alpha overlay when device orientation changed
+
 ## [2.0.3](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.3)
 (2018-02-14)
 - Fixed layout issues when device orientation changed

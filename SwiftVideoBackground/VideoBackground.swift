@@ -11,6 +11,7 @@ import UIKit
 
 /// Class that plays a video on a UIView.
 public class VideoBackground {
+    /// Singleton instance that can be used to play a video.
     public static let shared = VideoBackground()
 
     private lazy var player = AVQueuePlayer()

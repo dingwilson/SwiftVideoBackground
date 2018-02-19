@@ -1,5 +1,15 @@
 # Change Log
 
+## [2.1.0](https://github.com/dingwilson/SwiftVideoBackground/tree/2.1.0)
+(2018-02-19)
+- Added a singleton called `shared`. Now users don't need to retain an instance of `VideoBackground` to play a video.
+  - Users can still create new instances if needed, i.e. if they needed to play multiple videos simultaneously.
+- Added throwing APIs that throw a `videoNotFound` error that returns the video name and type in question.
+- Added deprecation warning for old API.
+- Added new public struct `VideoInfo` that contains a video's name and type.
+- Added new API that takes in an array of `VideoInfo`, and plays them in sequence.
+- Added some clean up code that gets called on each play(), in an attempt to reset state in the event of multiple calls to `play()`.
+
 ## [2.0.4](https://github.com/dingwilson/SwiftVideoBackground/tree/2.0.4)
 (2018-02-16)
 - Fixed layout issues for alpha overlay when device orientation changed

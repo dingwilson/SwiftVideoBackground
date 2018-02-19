@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59CFBBCE203B4E5900E412F1 /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CFBBCD203B4E5900E412F1 /* VideoInfo.swift */; };
+		59CFBBD0203B4E7200E412F1 /* VideoBackgroundError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CFBBCF203B4E7200E412F1 /* VideoBackgroundError.swift */; };
 		C82AAF8B1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */; };
 		C82AAF8D1D9C1C4800A13307 /* SwiftVideoBackground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D0633E1D99B62E006A5F00 /* SwiftVideoBackground.framework */; };
 		C8D063431D99B62E006A5F00 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59CFBBCD203B4E5900E412F1 /* VideoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
+		59CFBBCF203B4E7200E412F1 /* VideoBackgroundError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoBackgroundError.swift; sourceTree = "<group>"; };
 		C82AAF881D9C1C4800A13307 /* SwiftVideoBackgroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftVideoBackgroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82AAF8A1D9C1C4800A13307 /* SwiftVideoBackgroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftVideoBackgroundTests.swift; sourceTree = "<group>"; };
 		C82AAF8C1D9C1C4800A13307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				C8D063491D99B639006A5F00 /* VideoBackground.swift */,
+				59CFBBCF203B4E7200E412F1 /* VideoBackgroundError.swift */,
+				59CFBBCD203B4E5900E412F1 /* VideoInfo.swift */,
 				C8D063411D99B62E006A5F00 /* SwiftVideoBackground.h */,
 				C8D063421D99B62E006A5F00 /* Info.plist */,
 			);
@@ -229,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8D0634A1D99B639006A5F00 /* VideoBackground.swift in Sources */,
+				59CFBBD0203B4E7200E412F1 /* VideoBackgroundError.swift in Sources */,
+				59CFBBCE203B4E5900E412F1 /* VideoInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

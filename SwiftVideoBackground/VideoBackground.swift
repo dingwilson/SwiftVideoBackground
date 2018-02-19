@@ -9,15 +9,6 @@
 import AVFoundation
 import UIKit
 
-public struct VideoInfo {
-    public let name: String
-    public let type: String
-}
-
-public enum VideoBackgroundError: Error {
-    case videoNotFound(VideoInfo)
-}
-
 /// Class that plays a video on a UIView.
 public class VideoBackground {
     public static let shared = VideoBackground()
@@ -91,7 +82,7 @@ public class VideoBackground {
                 willLoopVideo: willLoopVideo
             )
         } catch {
-            print("Could not find \(videoName).\(videoType).")
+            print(error.localizedDescription)
         }
     }
 

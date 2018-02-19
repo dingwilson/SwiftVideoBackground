@@ -12,10 +12,9 @@ import SwiftVideoBackground
 class SwiftVideoBackgroundTests: XCTestCase {
     func testDidCatchNonexistantVideo() {
         let view = UIView()
-        let videoBackground = VideoBackground()
 
-        videoBackground.play(view: view, videoName: "NonexistantVideo", videoType: "mp4", alpha: 0.1)
+        XCTAssertThrowsError(try VideoBackground.shared.play(view: view, name: "NonExistantVideo", type: "mp4"))
 
-        assert(view.subviews.isEmpty)
+        XCTAssert(view.subviews.isEmpty)
     }
 }

@@ -3,13 +3,8 @@ language: objective-c
 rvm: 2.2.2
 xcode_project: SwiftVideoBackground.xcodeproj
 
-env:
-  global:
-    - PROJECT=SwiftVideoBackground.xcodeproj
-    - SCHEME=SwiftVideoBackground
-
-install:
-  - wget --output-document /tmp/SwiftLint.pkg https://github.com/realm/SwiftLint/releases/download/0.24.2/SwiftLint.pkg && sudo installer -pkg /tmp/SwiftLint.pkg -target /
+before_install:
+  - brew install swiftlint
   - gem install xcpretty
   - gem install xcpretty-json-formatter
 
@@ -19,13 +14,14 @@ env:
   - UDID="9AB3D590-C748-4E17-8E35-67B298E973F7", IOS_DEVICE="iPhone 6 Plus (9.0)"
   - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"
 
+before_script:
+  - swiftlint
+
+
 script:
   - set -o pipefail
 
-  - swiftlint
-
   - open -a "simulator" --args -CurrentDeviceUDID $UDID
-  - xcodebuild clean test -project "$PROJECT" -scheme "$SCHEME" -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
+  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
 
-  - pod lib lint
   - bundle exec danger --fail-on-errors=true

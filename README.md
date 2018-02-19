@@ -26,6 +26,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 - Loop videos *(optional)*
 - Mute sound *(optional)*
 - Darken videos so overlying UI stands out more *(optional)*
+- [Documentation](http://wilsonding.com/SwiftVideoBackground/)
 
 ## Contents
 
@@ -51,7 +52,7 @@ You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`
 
 For Swift 4:
 ```ruby
-	pod 'SwiftVideoBackground', '~> 2.0'
+	pod 'SwiftVideoBackground', '~> 2.1'
 ```
 
 For Swift 3:

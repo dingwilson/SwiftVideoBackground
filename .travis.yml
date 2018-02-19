@@ -1,9 +1,11 @@
 osx_image: xcode9.2
 language: objective-c
+rvm: 2.5.0
 xcode_project: SwiftVideoBackground.xcodeproj
 
-install:
-  - wget --output-document /tmp/SwiftLint.pkg https://github.com/realm/SwiftLint/releases/download/0.24.2/SwiftLint.pkg && sudo installer -pkg /tmp/SwiftLint.pkg -target /
+before_install:
+  - gem install xcpretty
+  - gem install xcpretty-json-formatter
 
 env:
   - UDID="7A5E86EB-E32C-475F-8FF5-10AA330C1D34", IOS_DEVICE="iPhone 7 Plus (11.1)"
@@ -12,6 +14,9 @@ env:
   - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"
 
 script:
-  - swiftlint
+  - set -o pipefail
+
   - open -a "simulator" --args -CurrentDeviceUDID $UDID
-  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
+
+  - bundle exec danger --fail-on-errors=true

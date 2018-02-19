@@ -11,19 +11,25 @@ import UIKit
 
 /// Class that plays a video on a UIView.
 public class VideoBackground {
-    private lazy var player = AVPlayer()
+    public static let shared = VideoBackground()
+
+    private lazy var player = AVQueuePlayer()
 
     private lazy var layer = AVPlayerLayer()
 
     private lazy var overlayView = UIView()
 
-    private var applicationWillEnterForegroundObserver: NSObjectProtocol?
+    private lazy var playerItems = [AVPlayerItem]()
 
-    private var videoEndedObserver: NSObjectProtocol?
+    private lazy var willLoopVideo = true
+
+    private lazy var playerItemDidPlayToEndObservers = [NSObjectProtocol]()
 
     private var viewBoundsObserver: NSKeyValueObservation?
 
-    private var willLoopVideo = true
+    private var applicationWillEnterForegroundObserver: NSObjectProtocol?
+
+    private var playerItemDidPlayToEndObserver: NSObjectProtocol?
 
     /// Initializes a VideoBackground instance.
     public init() {
@@ -35,8 +41,12 @@ public class VideoBackground {
                 self?.player.play()
         }
 
-        // Restart video when it ends
-        videoEndedObserver = NotificationCenter.default.addObserver(
+        // Restart a single video when it ends
+        setPlayerItemDidPlayToEndObserver()
+    }
+
+    private func setPlayerItemDidPlayToEndObserver() {
+        playerItemDidPlayToEndObserver = NotificationCenter.default.addObserver(
             forName: .AVPlayerItemDidPlayToEndTime,
             object: player.currentItem,
             queue: .main) { [weak self] _ in
@@ -47,31 +57,105 @@ public class VideoBackground {
         }
     }
 
-    /// Plays a video on a given UIView.
+    /// Plays a video on a UIView.
     ///
     /// - Parameters:
     ///     - view: UIView that the video will be played on.
     ///     - videoName: String name of video that you have added to your project.
     ///     - videoType: String type of the video. e.g. "mp4"
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
-    ///     - aplha: CGFloat between 0 and 1. The higher the value, the darker
-    ///              the video. Defaults to 0.
-    ///     - willLoopVideo: Bool indicating whether video should restart when finished.
-    ///                      Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    @available(*, deprecated, message: "Please use the new throwing APIs.")
     public func play(view: UIView,
                      videoName: String,
                      videoType: String,
                      isMuted: Bool = true,
                      alpha: CGFloat = 0,
                      willLoopVideo: Bool = true) {
-        guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
-            print("BackgroundVideo: [ERROR] could not find video")
+        do {
+            try play(
+                view: view,
+                videoInfos: [VideoInfo(name: videoName, type: videoType)],
+                isMuted: isMuted,
+                alpha: alpha,
+                willLoopVideo: willLoopVideo
+            )
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    /// Plays a video on a UIView.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - name: String name of video that you have added to your project.
+    ///     - type: String type of the video. e.g. "mp4"
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    /// - Throws: `VideoBackgroundError.videoNotFound` if the video cannot be found.
+    public func play(view: UIView,
+                     name: String,
+                     type: String,
+                     isMuted: Bool = true,
+                     alpha: CGFloat = 0,
+                     willLoopVideo: Bool = true) throws {
+        try play(
+            view: view,
+            videoInfos: [VideoInfo(name: name, type: type)],
+            isMuted: isMuted,
+            alpha: alpha,
+            willLoopVideo: willLoopVideo
+        )
+    }
+
+    /// Plays videos one after another on a UIView.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - videoInfos: Array of `VideoInfo` for the videos to be played.
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    /// - Throws: `VideoBackgroundError.videoNotFound` if a video cannot be found.
+    public func play(view: UIView,
+                     videoInfos: [VideoInfo],
+                     isMuted: Bool = true,
+                     alpha: CGFloat = 0,
+                     willLoopVideo: Bool = true) throws {
+        cleanUp()
+
+        guard !videoInfos.isEmpty else {
             return
         }
 
-        let url = URL(fileURLWithPath: path)
-        player = AVPlayer(url: url)
-        player.actionAtItemEnd = .none
+        playerItems = try makeAVPlayerItems(videoInfos)
+
+        if playerItems.count > 1 {
+            if willLoopVideo {
+                playerItems.forEach { [weak self] in
+                    let observer = NotificationCenter.default.addObserver(
+                        forName: .AVPlayerItemDidPlayToEndTime,
+                        object: $0,
+                        queue: .main) { notification in
+                            if let currentItem = notification.object as? AVPlayerItem {
+                                currentItem.seek(to: kCMTimeZero, completionHandler: nil)
+                                self?.player.advanceToNextItem()
+                                self?.player.insert(currentItem, after: nil)
+                            }
+                    }
+                    self?.playerItemDidPlayToEndObservers.append(observer)
+                }
+            }
+        } else {
+            self.willLoopVideo = willLoopVideo
+            setPlayerItemDidPlayToEndObserver()
+        }
+
+        player = AVQueuePlayer(items: playerItems)
+        player.actionAtItemEnd = playerItems.count == 1 ? .none : .advance
         player.isMuted = isMuted
         player.play()
 
@@ -83,31 +167,59 @@ public class VideoBackground {
 
         if alpha > 0 && alpha <= 1 {
             overlayView = UIView(frame: view.frame)
-            overlayView.backgroundColor = .black
             overlayView.alpha = alpha
+            overlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            overlayView.backgroundColor = .black
             view.addSubview(overlayView)
             view.sendSubview(toBack: overlayView)
         }
 
-        // adjust frames upon device rotation
+        // Adjust frames upon device rotation
         viewBoundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
             DispatchQueue.main.async {
                 self?.layer.frame = view.frame
-                self?.overlayView.frame = view.frame
             }
         }
-
-        self.willLoopVideo = willLoopVideo
     }
 
-    // Apparently in more recent iOS versions this is not needed
+    private func cleanUp() {
+        overlayView.removeFromSuperview()
+
+        player.removeAllItems()
+
+        removePlayerItemDidPlayToEndObservers()
+
+        playerItemDidPlayToEndObservers.removeAll()
+    }
+
+    private func removePlayerItemDidPlayToEndObservers() {
+        playerItemDidPlayToEndObservers.forEach {
+            NotificationCenter.default.removeObserver($0)
+        }
+    }
+
+    private func makeAVPlayerItems(_ videos: [VideoInfo]) throws -> [AVPlayerItem] {
+        return try videos.map {
+            return try makeAVPlayerItem($0)
+        }
+    }
+
+    private func makeAVPlayerItem(_ videoInfo: VideoInfo) throws -> AVPlayerItem {
+        guard let path = Bundle.main.path(forResource: videoInfo.name, ofType: videoInfo.type) else {
+            throw VideoBackgroundError.videoNotFound(videoInfo)
+        }
+        let url = URL(fileURLWithPath: path)
+        return AVPlayerItem(url: url)
+    }
+
     deinit {
         if let applicationWillEnterForegroundObserver = applicationWillEnterForegroundObserver {
             NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
         }
-        if let videoEndedObserver = videoEndedObserver {
-            NotificationCenter.default.removeObserver(videoEndedObserver)
+        if let playerItemDidPlayToEndObserver = playerItemDidPlayToEndObserver {
+            NotificationCenter.default.removeObserver(playerItemDidPlayToEndObserver)
         }
+        removePlayerItemDidPlayToEndObservers()
         viewBoundsObserver?.invalidate()
     }
 }

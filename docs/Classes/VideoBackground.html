@@ -14,7 +14,7 @@
     <a title="VideoBackground Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftVideoBackground Docs</a> (100% documented)</p>
+        <p><a href="../index.html">SwiftVideoBackground Docs</a> (92% documented)</p>
         <p class="header-right"><a href="https://github.com/dingwilson/SwiftVideoBackground"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -36,6 +36,22 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/VideoBackgroundError.html">VideoBackgroundError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/VideoInfo.html">VideoInfo</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -54,6 +70,33 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:20SwiftVideoBackground0bC0C6sharedACvZ"></a>
+                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:20SwiftVideoBackground0bC0C6sharedACvZ">shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span> <span class="o">=</span> <span class="nf">VideoBackground</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -94,7 +137,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Plays a video on a given UIView.</p>
+                        <p>Plays a video on a UIView.</p>
 
                       </div>
                       <div class="declaration">
@@ -165,13 +208,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>aplha</em>
+                                <em>alpha</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>CGFloat between 0 and 1. The higher the value, the darker
-     the video. Defaults to 0.</p>
+                                  <p>CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.</p>
                                 </div>
                               </td>
                             </tr>
@@ -183,8 +225,226 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Bool indicating whether video should restart when finished.
-             Defaults to true.</p>
+                                  <p>Bool indicating whether video should restart when finished. Defaults to true.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:20SwiftVideoBackground0bC0C4playySo6UIViewC4view_SS4nameSS4typeSb7isMuted12CoreGraphics7CGFloatV5alphaSb08willLoopB0tKF"></a>
+                    <a name="//apple_ref/swift/Method/play(view:name:type:isMuted:alpha:willLoopVideo:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:20SwiftVideoBackground0bC0C4playySo6UIViewC4view_SS4nameSS4typeSb7isMuted12CoreGraphics7CGFloatV5alphaSb08willLoopB0tKF">play(view:name:type:isMuted:alpha:willLoopVideo:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Plays a video on a UIView.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/VideoBackgroundError.html#/s:20SwiftVideoBackground0bC5ErrorO13videoNotFoundAcA0B4InfoVcACmF">VideoBackgroundError.videoNotFound</a></code> if the video cannot be found.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span>
+                 <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                 <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                 <span class="nv">isMuted</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                 <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>UIView that the video will be played on.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String name of video that you have added to your project.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String type of the video. e.g. <q>mp4</q></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isMuted</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Bool indicating whether video is muted. Defaults to true.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>alpha</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>willLoopVideo</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Bool indicating whether video should restart when finished. Defaults to true.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:20SwiftVideoBackground0bC0C4playySo6UIViewC4view_SayAA0B4InfoVG10videoInfosSb7isMuted12CoreGraphics7CGFloatV5alphaSb08willLoopB0tKF"></a>
+                    <a name="//apple_ref/swift/Method/play(view:videoInfos:isMuted:alpha:willLoopVideo:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:20SwiftVideoBackground0bC0C4playySo6UIViewC4view_SayAA0B4InfoVG10videoInfosSb7isMuted12CoreGraphics7CGFloatV5alphaSb08willLoopB0tKF">play(view:videoInfos:isMuted:alpha:willLoopVideo:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Plays videos one after another on a UIView.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/VideoBackgroundError.html#/s:20SwiftVideoBackground0bC5ErrorO13videoNotFoundAcA0B4InfoVcACmF">VideoBackgroundError.videoNotFound</a></code> if a video cannot be found.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span>
+                 <span class="nv">videoInfos</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/VideoInfo.html">VideoInfo</a></span><span class="p">],</span>
+                 <span class="nv">isMuted</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                 <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>UIView that the video will be played on.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>videoInfos</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Array of <code><a href="../Structs/VideoInfo.html">VideoInfo</a></code> for the videos to be played.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isMuted</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Bool indicating whether video is muted. Defaults to true.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>alpha</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>willLoopVideo</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Bool indicating whether video should restart when finished. Defaults to true.</p>
                                 </div>
                               </td>
                             </tr>
@@ -199,7 +459,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2018-02-16)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2018-02-19)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

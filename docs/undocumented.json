@@ -1,6 +1,12 @@
 {
   "warnings": [
-
+    {
+      "file": "/Volumes/ExtDrive/programming_storage/SwiftVideoBackground/SwiftVideoBackground/VideoBackground.swift",
+      "line": 14,
+      "symbol": "VideoBackground.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Volumes/ExtDrive/programming_storage/SwiftVideoBackground"
 }

@@ -26,6 +26,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 - Loop videos *(optional)*
 - Mute sound *(optional)*
 - Darken videos so overlying UI stands out more *(optional)*
+- [Documentation](http://wilsonding.com/SwiftVideoBackground/)
 
 ## Contents
 

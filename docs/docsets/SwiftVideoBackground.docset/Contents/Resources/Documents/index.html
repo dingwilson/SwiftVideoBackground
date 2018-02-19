@@ -13,7 +13,7 @@
     <a title="SwiftVideoBackground  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SwiftVideoBackground Docs</a> (100% documented)</p>
+        <p><a href="index.html">SwiftVideoBackground Docs</a> (92% documented)</p>
         <p class="header-right"><a href="https://github.com/dingwilson/SwiftVideoBackground"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -32,6 +32,22 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/VideoBackground.html">VideoBackground</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/VideoBackgroundError.html">VideoBackgroundError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/VideoInfo.html">VideoInfo</a>
               </li>
             </ul>
           </li>
@@ -59,6 +75,18 @@
 </p>
 
 <p>SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.</p>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>Play a video with one line of code</li>
+<li>Play an array of videos sequentially</li>
+<li>Automatically adjusts when device orientation changes</li>
+<li>Automatically resumes video when app re-enters foreground</li>
+<li>Loop videos <em>(optional)</em></li>
+<li>Mute sound <em>(optional)</em></li>
+<li>Darken videos so overlying UI stands out more <em>(optional)</em></li>
+</ul>
+<h2 id='contents' class='heading'>Contents</h2>
 
 <ol>
 <li><a href="#requirements">Requirements</a></li>
@@ -114,12 +142,10 @@
 <span class="kd">import</span> <span class="kt">SwiftVideoBackground</span>
 
 <span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="nf">UIViewController</span> <span class="p">{</span>
-  <span class="kd">private</span> <span class="k">let</span> <span class="nv">videoBackground</span> <span class="o">=</span> <span class="nf">VideoBackground</span><span class="p">()</span>
-
   <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
 
-    <span class="n">videoBackground</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">videoName</span><span class="p">:</span> <span class="s">"myvideo"</span><span class="p">,</span> <span class="nv">videoType</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">?</span> <span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"myvideo"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
@@ -127,7 +153,13 @@
 <blockquote>
 <p>Documentation for Version 0.06 (Swift 3) can be found <a href="README-0.06.md">here</a>.</p>
 </blockquote>
-<h4 id='customization-options' class='heading'>Customization Options</h4>
+<h4 id='play-multiple-videos' class='heading'>Play Multiple Videos</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">pokemon</span> <span class="o">=</span> <span class="nf">VideoInfo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"pokemonIntro"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">digimon</span> <span class="o">=</span> <span class="nf">VideoInfo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"digimonIntro"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">?</span> <span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">videoInfos</span><span class="p">:</span> <span class="p">[</span><span class="n">pokemon</span><span class="p">,</span> <span class="n">digimon</span><span class="p">])</span>
+</code></pre>
+<h4 id='customization' class='heading'>Customization</h4>
 
 <p><code>play()</code> has three additional optional parameters for customization:</p>
 
@@ -138,12 +170,14 @@
 </ul>
 
 <p>So for example:</p>
-<pre class="highlight swift"><code><span class="n">videoBackground</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span>
-                     <span class="nv">videoName</span><span class="p">:</span> <span class="s">"myvideo"</span><span class="p">,</span>
-                     <span class="nv">videoType</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">,</span>
-                     <span class="nv">isMuted</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-                     <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
-                     <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span>
+    <span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="s">"myvideo"</span><span class="p">,</span>
+    <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">,</span>
+    <span class="nv">isMuted</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+    <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">)</span>
 </code></pre>
 
 <p>-&gt; will play the video with the sound on, slightly darkened, and will continuously loop.</p>
@@ -151,6 +185,11 @@
 <blockquote>
 <p>Any combination of the three can be included or left out.</p>
 </blockquote>
+<h4 id='singleton' class='heading'>Singleton</h4>
+
+<p><code>SwiftVideoBackground</code> includes a singleton instance that can be conveniently accessed with <code><a href="Classes/VideoBackground.html#/s:20SwiftVideoBackground0bC0C6sharedACvZ">VideoBackground.shared</a></code>. An instance of <code><a href="Classes/VideoBackground.html">VideoBackground</a></code> can only play one video on one <code>UIView</code> at a time. So if you need to play on multiple <code>UIView</code>s, you can instantiate more instances of <code><a href="Classes/VideoBackground.html">VideoBackground</a></code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">myVideoBackground</span> <span class="o">=</span> <span class="nf">VideoBackground</span><span class="p">()</span>
+</code></pre>
 <h4 id='adding-videos-to-your-project' class='heading'>Adding Videos To Your Project</h4>
 
 <p>You must properly add videos to your project in order to play them. To do this:</p>
@@ -195,7 +234,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2018-02-16)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2018-02-19)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

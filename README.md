@@ -130,7 +130,7 @@ VideoBackground.shared.play(
 
 #### Singleton
 
-`SwiftVideoBackground` includes a singleton instance that can be conveniently accessed with `VideoBackground.shared`. An instance of `VideoBackground` can only play one video on one `UIView` at a time. So if you needed to play on multiple `UIView`s, you can instantiate more instances of `VideoBackground`:
+`SwiftVideoBackground` includes a singleton instance that can be conveniently accessed with `VideoBackground.shared`. An instance of `VideoBackground` can only play one video on one `UIView` at a time. So if you need to play on multiple `UIView`s, you can instantiate more instances of `VideoBackground`:
 
 ```swift
 let myVideoBackground = VideoBackground()

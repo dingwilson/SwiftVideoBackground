@@ -3,4 +3,4 @@
 source "https://rubygems.org"
 
 gem "danger"
-gem "denger-xcode_summary"
+gem "danger-xcode_summary"

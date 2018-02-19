@@ -57,14 +57,14 @@ public class VideoBackground {
         }
     }
 
-    /// Plays a video on a given UIView.
+    /// Plays a video on a UIView.
     ///
     /// - Parameters:
     ///     - view: UIView that the video will be played on.
     ///     - videoName: String name of video that you have added to your project.
     ///     - videoType: String type of the video. e.g. "mp4"
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
-    ///     - aplha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
     @available(*, deprecated, message: "Please use the new throwing APIs.")
     public func play(view: UIView,
@@ -76,7 +76,7 @@ public class VideoBackground {
         do {
             try play(
                 view: view,
-                videos: [VideoInfo(name: videoName, type: videoType)],
+                videoInfos: [VideoInfo(name: videoName, type: videoType)],
                 isMuted: isMuted,
                 alpha: alpha,
                 willLoopVideo: willLoopVideo
@@ -86,6 +86,16 @@ public class VideoBackground {
         }
     }
 
+    /// Plays a video on a UIView.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - name: String name of video that you have added to your project.
+    ///     - type: String type of the video. e.g. "mp4"
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    /// - Throws: `VideoBackgroundError.videoNotFound` if the video cannot be found.
     public func play(view: UIView,
                      name: String,
                      type: String,
@@ -94,25 +104,34 @@ public class VideoBackground {
                      willLoopVideo: Bool = true) throws {
         try play(
             view: view,
-            videos: [VideoInfo(name: name, type: type)],
+            videoInfos: [VideoInfo(name: name, type: type)],
             isMuted: isMuted,
             alpha: alpha,
             willLoopVideo: willLoopVideo
         )
     }
 
+    /// Plays videos one after another on a UIView.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - videoInfos: Array of `VideoInfo` for the videos to be played.
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    /// - Throws: `VideoBackgroundError.videoNotFound` if a video cannot be found.
     public func play(view: UIView,
-                     videos: [VideoInfo],
+                     videoInfos: [VideoInfo],
                      isMuted: Bool = true,
                      alpha: CGFloat = 0,
                      willLoopVideo: Bool = true) throws {
         cleanUp()
 
-        guard !videos.isEmpty else {
+        guard !videoInfos.isEmpty else {
             return
         }
 
-        playerItems = try makeAVPlayerItems(videos)
+        playerItems = try makeAVPlayerItems(videoInfos)
 
         if playerItems.count > 1 {
             if willLoopVideo {

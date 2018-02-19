@@ -17,6 +17,18 @@
 
 SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.
 
+## Features
+
+- Play a video with one line of code
+- Play an array of videos sequentially
+- Automatically adjusts when device orientation changes
+- Automatically resumes video when app re-enters foreground
+- Loop videos *(optional)*
+- Mute sound *(optional)*
+- Darken videos so overlying UI stands out more *(optional)*
+
+## Contents
+
 1. [Requirements](#requirements)
 2. [Integration](#integration)
     - [CocoaPods](#cocoapods)
@@ -73,19 +85,26 @@ import UIKit
 import SwiftVideoBackground
 
 class MyViewController: UIViewController {
-  private let videoBackground = VideoBackground()
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    videoBackground.play(view: view, videoName: "myvideo", videoType: "mp4")
+    try? VideoBackground.shared.play(view: view, name: "myvideo", type: "mp4")
   }
 }
 ```
 
 > Documentation for Version 0.06 (Swift 3) can be found [here](README-0.06.md).
 
-#### Customization Options
+#### Play Multiple Videos
+
+```swift
+let pokemon = VideoInfo(name: "pokemonIntro", type: "mp4")
+let digimon = VideoInfo(name: "digimonIntro", type: "mp4")
+
+try? VideoBackground.shared.play(view: view, videoInfos: [pokemon, digimon])
+```
+
+#### Customization
 
 `play()` has three additional optional parameters for customization:
 - `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
@@ -95,17 +114,27 @@ class MyViewController: UIViewController {
 So for example:
 
 ``` swift
-videoBackground.play(view: view,
-                     videoName: "myvideo",
-                     videoType: "mp4",
-                     isMuted: false,
-                     alpha: 0.25,
-                     willLoopVideo: true)
+VideoBackground.shared.play(
+    view: view,
+    name: "myvideo",
+    type: "mp4",
+    isMuted: false,
+    alpha: 0.25,
+    willLoopVideo: true
+)
 ```
 
 -> will play the video with the sound on, slightly darkened, and will continuously loop.
 
 > Any combination of the three can be included or left out.
+
+#### Singleton
+
+`SwiftVideoBackground` includes a singleton instance that can be conveniently accessed with `VideoBackground.shared`. An instance of `VideoBackground` can only play one video on one `UIView` at a time. So if you needed to play on multiple `UIView`s, you can instantiate more instances of `VideoBackground`:
+
+```swift
+let myVideoBackground = VideoBackground()
+```
 
 #### Adding Videos To Your Project
 

@@ -15,7 +15,7 @@ class SwiftVideoBackgroundTests: XCTestCase {
         let videoInfo = VideoInfo(name: "NonExistantVideo", type: "mp4")
 
         do {
-            try VideoBackground.shared.play(view: view, videos: [videoInfo])
+            try VideoBackground.shared.play(view: view, videoInfos: [videoInfo])
         } catch {
             XCTAssertEqual(
                 error.localizedDescription,

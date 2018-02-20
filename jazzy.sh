@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master" ]]; then
+if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master" ]]; then
 
 	echo -e "Generating docs... \n"
 
@@ -9,7 +9,7 @@
 	git config --global user.name "Travis-CI"
 
 	# ensure we are on master
-	git checkout -b test
+	git checkout -b master
 
 	# install jazzy
 	gem install jazzy
@@ -24,8 +24,8 @@
 	git add docs/
 	git commit -m "Regen jazzy docs [ci skip]"
 	git remote add origin-jazzy https://${GH_Token}@github.com/dingwilson/SwiftVideoBackground.git > /dev/null 2>&1
-	git push origin-jazzy test > /dev/null 2>&1
+	git push origin-jazzy master > /dev/null 2>&1
 
 	echo -e "Successfully published latest docs.\n"
 
-# fi
+fi

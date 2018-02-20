@@ -20,12 +20,13 @@ script:
   - set -o pipefail
 
   - open -a "simulator" --args -CurrentDeviceUDID $UDID
-  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
+  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -enableCodeCoverage yes | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
 
   - bundle exec danger --fail-on-errors=true
 
 jobs:
   include:
-    - stage: deploy
-    - script: bash <(curl -s https://codecov.io/bash)
-    - script: ./jazzy.sh
+    - stage: codecov
+      script: bash <(curl -s https://codecov.io/bash)
+    - stage: jazzy
+      script: ./jazzy.sh

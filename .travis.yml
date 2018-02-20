@@ -27,4 +27,5 @@ script:
 jobs:
   include:
     - stage: deploy
+      script: bash <(curl -s https://codecov.io/bash)
       script: ./jazzy.sh

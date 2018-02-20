@@ -142,7 +142,7 @@
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
 <span class="kd">import</span> <span class="kt">SwiftVideoBackground</span>
 
-<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="nf">UIViewController</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
   <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
 
@@ -155,8 +155,8 @@
 <p>Documentation for Version 0.06 (Swift 3) can be found <a href="README-0.06.md">here</a>.</p>
 </blockquote>
 <h4 id='play-multiple-videos' class='heading'>Play Multiple Videos</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">pokemon</span> <span class="o">=</span> <span class="nf">VideoInfo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"pokemonIntro"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">digimon</span> <span class="o">=</span> <span class="nf">VideoInfo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"digimonIntro"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">pokemon</span> <span class="o">=</span> <span class="kt">VideoInfo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"pokemonIntro"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">digimon</span> <span class="o">=</span> <span class="kt">VideoInfo</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"digimonIntro"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">?</span> <span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">videoInfos</span><span class="p">:</span> <span class="p">[</span><span class="n">pokemon</span><span class="p">,</span> <span class="n">digimon</span><span class="p">])</span>
 </code></pre>
@@ -189,7 +189,7 @@
 <h4 id='singleton' class='heading'>Singleton</h4>
 
 <p><code>SwiftVideoBackground</code> includes a singleton instance that can be conveniently accessed with <code><a href="Classes/VideoBackground.html#/s:20SwiftVideoBackground0bC0C6sharedACvZ">VideoBackground.shared</a></code>. An instance of <code><a href="Classes/VideoBackground.html">VideoBackground</a></code> can only play one video on one <code>UIView</code> at a time. So if you need to play on multiple <code>UIView</code>s, you can instantiate more instances of <code><a href="Classes/VideoBackground.html">VideoBackground</a></code>:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">myVideoBackground</span> <span class="o">=</span> <span class="nf">VideoBackground</span><span class="p">()</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">myVideoBackground</span> <span class="o">=</span> <span class="kt">VideoBackground</span><span class="p">()</span>
 </code></pre>
 <h4 id='adding-videos-to-your-project' class='heading'>Adding Videos To Your Project</h4>
 
@@ -207,7 +207,7 @@
 <h4 id='preventing-video-from-muting-other-audio-on-device' class='heading'>Preventing Video From Muting Other Audio On Device</h4>
 
 <p>By default, audio played on your app will mute all other audio playing on the device. To prevent this, configure the <code>AVAudioSession</code> by adding the following code to your app&rsquo;s <code>application(_:didFinishLaunchingWithOptions)</code> function in the <code>AppDelegate</code> class:</p>
-<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="nf">Bool</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
     <span class="k">if</span> <span class="kd">#available(iOS 10.0, *)</span> <span class="p">{</span>
         <span class="k">try</span><span class="p">?</span> <span class="kt">AVAudioSession</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">setCategory</span><span class="p">(</span>
            <span class="kt">AVAudioSessionCategoryAmbient</span><span class="p">,</span>
@@ -235,7 +235,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2018-02-19)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2018-02-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

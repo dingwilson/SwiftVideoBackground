@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master" ]]; then
+# if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master" ]]; then
 
 	echo -e "Generating docs... \n"
 
@@ -8,8 +8,9 @@ if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master
 	git config --global user.email "travis@travis-ci.org"
 	git config --global user.name "Travis-CI"
 
-	# ensure we are on master
-	git checkout -b master
+	# ensure we are on master/latest version
+	git checkout master
+	git pull origin master
 
 	# install jazzy
 	gem install jazzy
@@ -28,4 +29,4 @@ if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master
 
 	echo -e "Successfully published latest docs.\n"
 
-fi
+# fi

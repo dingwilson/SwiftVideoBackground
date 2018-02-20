@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C8D0633D1D99B62E006A5F00"
-               BuildableName = "SwiftVideoBackground.framework"
+               BlueprintIdentifier = "C8C3106B203C758D0075EA9E"
+               BuildableName = "SwiftVideoBackground.app"
                BlueprintName = "SwiftVideoBackground"
                ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C82AAF871D9C1C4800A13307"
+               BlueprintIdentifier = "C8C3107F203C758D0075EA9E"
                BuildableName = "SwiftVideoBackgroundTests.xctest"
                BlueprintName = "SwiftVideoBackgroundTests"
                ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
@@ -44,8 +44,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C8D0633D1D99B62E006A5F00"
-            BuildableName = "SwiftVideoBackground.framework"
+            BlueprintIdentifier = "C8C3106B203C758D0075EA9E"
+            BuildableName = "SwiftVideoBackground.app"
             BlueprintName = "SwiftVideoBackground"
             ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
          </BuildableReference>
@@ -64,15 +64,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C8D0633D1D99B62E006A5F00"
-            BuildableName = "SwiftVideoBackground.framework"
+            BlueprintIdentifier = "C8C3106B203C758D0075EA9E"
+            BuildableName = "SwiftVideoBackground.app"
             BlueprintName = "SwiftVideoBackground"
             ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -82,15 +83,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C8D0633D1D99B62E006A5F00"
-            BuildableName = "SwiftVideoBackground.framework"
+            BlueprintIdentifier = "C8C3106B203C758D0075EA9E"
+            BuildableName = "SwiftVideoBackground.app"
             BlueprintName = "SwiftVideoBackground"
             ReferencedContainer = "container:SwiftVideoBackground.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -8,8 +8,9 @@ if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] && [[ "${TRAVIS_BRANCH}" == "master
 	git config --global user.email "travis@travis-ci.org"
 	git config --global user.name "Travis-CI"
 
-	# ensure we are on master
-	git checkout -b master
+	# ensure we are on master/latest version
+	git checkout master
+	git pull origin master
 
 	# install jazzy
 	gem install jazzy

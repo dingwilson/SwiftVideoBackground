@@ -1,0 +1,23 @@
+<!--- Thank you for helping contribute to SwiftVideoBackground! 🎉 --->
+
+<!--- Please take a second to fill in the below information, to help the maintainers ensure that this PR is merged as soon as possible. --->
+
+<!--- Also, if you are currently still working on the PR, and not ready for a maintainer to review, please add [WIP] to your PR title. --->
+
+## What does this PR do?
+
+<!--- Answer below --->
+
+
+## What issues (if any) are related to this PR? Or why was this change introduced?
+
+<!--- Answer below --->
+
+
+## Checklist
+
+ - [ ] Does this contain code changes?
+ - [ ] Does this have tests?
+ - [ ] Does this have documentation?
+ - [ ] Does this break the public API (Requires major version bump)?
+ - [ ] Is this a new feature (Requires minor version bump)?

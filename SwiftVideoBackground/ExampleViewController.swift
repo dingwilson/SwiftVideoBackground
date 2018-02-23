@@ -7,14 +7,18 @@
 //
 
 import UIKit
-// import SwiftVideoBackground
 
 class ExampleViewController: UIViewController {
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
 
     override var prefersStatusBarHidden: Bool { return true }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        try? view.playVideo(videoName: "Background", videoType: "mp4", alpha: 0.9)
+        try? view.playVideo(videoName: "Background", videoType: "mp4")
 
         do {
             try VideoBackground.shared.play(view: self.view, name: "Background", type: "mp4")
@@ -23,4 +27,11 @@ class ExampleViewController: UIViewController {
         }
     }
 
+    @IBAction func a(_ sender: Any) {
+        try? view1.playVideo(videoName: "Background", videoType: "mp4", alpha: 0.3)
+    }
+
+    @IBAction func b(_ sender: Any) {
+        try? view2.playVideo(videoName: "Background", videoType: "mp4", alpha: 0.6)
+    }
 }

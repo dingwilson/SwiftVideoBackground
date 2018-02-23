@@ -2,11 +2,9 @@ import AVKit
 import UIKit
 
 class VideoManager {
-    private lazy var player = AVPlayer()
+    private let playerLayer: AVPlayerLayer
 
-    private lazy var layer = AVPlayerLayer()
-
-    private lazy var alphaOverlayView = UIView()
+    private let alphaOverlayView: UIView
 
     private var willLoopVideo: Bool
 
@@ -17,33 +15,26 @@ class VideoManager {
     private var viewBoundsObserver: NSKeyValueObservation?
 
     init(view: UIView,
-         videoName: String,
-         videoType: String,
+         url: URL,
          alpha: CGFloat,
          isMuted: Bool,
-         willLoopVideo: Bool) throws {
+         willLoopVideo: Bool) {
         self.willLoopVideo = willLoopVideo
 
-        guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
-            throw VideoBackgroundError.videoNotFound(VideoInfo(name: videoName, type: videoType))
-        }
-
-        let url = URL(fileURLWithPath: path)
-
-        player = AVPlayer(url: url)
+        let player = AVPlayer(url: url)
         player.actionAtItemEnd = .none
         player.isMuted = isMuted
         player.play()
 
-        layer = AVPlayerLayer(player: player)
-        layer.frame = view.bounds
-        layer.videoGravity = .resizeAspectFill
-        layer.zPosition = -1
-        view.layer.insertSublayer(layer, at: 0)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.zPosition = -1
+        view.layer.insertSublayer(playerLayer, at: 0)
 
         alphaOverlayView = UIView(frame: view.bounds)
-        alphaOverlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         alphaOverlayView.alpha = 0
+        alphaOverlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         alphaOverlayView.backgroundColor = .black
         setAlpha(alpha)
         view.addSubview(alphaOverlayView)
@@ -54,7 +45,7 @@ class VideoManager {
             forName: .UIApplicationWillEnterForeground,
             object: nil,
             queue: .main) { [weak self] _ in
-                self?.player.play()
+                self?.playerLayer.player?.play()
         }
 
         // Restart video when it ends
@@ -63,25 +54,25 @@ class VideoManager {
             object: player.currentItem,
             queue: .main) { [weak self] _ in
                 if let willLoopVideo = self?.willLoopVideo, willLoopVideo {
-                    self?.player.seek(to: kCMTimeZero)
-                    self?.player.play()
+                    self?.playerLayer.player?.seek(to: kCMTimeZero)
+                    self?.playerLayer.player?.play()
                 }
         }
 
         // Adjust frames upon device rotation
         viewBoundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
             DispatchQueue.main.async {
-                self?.layer.frame = view.frame
+                self?.playerLayer.frame = view.frame
             }
         }
     }
 
     func pause() {
-        player.pause()
+        playerLayer.player?.pause()
     }
 
     func resume() {
-        player.play()
+        playerLayer.player?.play()
     }
 
     func setAlpha(_ alpha: CGFloat) {
@@ -90,16 +81,17 @@ class VideoManager {
         }
     }
 
-    func setPlayerIsMuted(_ isMuted: Bool) {
-        player.isMuted = isMuted
+    func setIsMuted(_ isMuted: Bool) {
+        playerLayer.player?.isMuted = isMuted
     }
 
-    func setPlayerWillLoopVideo(_ willLoopVideo: Bool) {
+    func setWillLoopVideo(_ willLoopVideo: Bool) {
         self.willLoopVideo = willLoopVideo
     }
 
     deinit {
-        layer.removeFromSuperlayer()
+        print("🐸")
+        playerLayer.removeFromSuperlayer()
         alphaOverlayView.removeFromSuperview()
         if let applicationWillEnterForegroundObserver = applicationWillEnterForegroundObserver {
             NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)

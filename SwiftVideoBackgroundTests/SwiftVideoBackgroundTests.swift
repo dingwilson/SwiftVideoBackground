@@ -21,12 +21,13 @@ class SwiftVideoBackgroundTests: XCTestCase {
         let view = UIView()
 
         do {
-            try VideoBackground.shared.play(view: view,
-                                            name: "Background",
-                                            type: "mp4",
-                                            isMuted: true,
-                                            alpha: 0.2,
-                                            willLoopVideo: true)
+            try view.playVideo(
+                videoName: "Background",
+                videoType: "mp4",
+                alpha: 0.2,
+                isMuted: true,
+                willLoopVideo: true
+            )
         } catch {
             XCTAssertNil(error)
         }
@@ -37,7 +38,7 @@ class SwiftVideoBackgroundTests: XCTestCase {
         let videoInfo = VideoInfo(name: "NonExistantVideo", type: "mp4")
 
         do {
-            try VideoBackground.shared.play(view: view, videoInfos: [videoInfo])
+            try view.playVideo(videoName: videoInfo.name, videoType: videoInfo.type)
         } catch {
             XCTAssertEqual(
                 error.localizedDescription,

@@ -112,7 +112,7 @@ class MyViewController: UIViewController {
 - `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
 - `alpha`: CGFloat - Value between `0` and `1`. The higher the value, the darker the video. Defaults to `0`.
 - `willLoopVideo`: Bool - Indicates whether video should restart when finished. Defaults to `true`.
-- `setAudioSessionAmbient`: Bool - Indicates whether to set the shared `AVAudioSession` to ambient. If this is not done, audio played from your app will pause other audio playing on the device. Defaults to true.
+- `setAudioSessionAmbient`: Bool - Indicates whether to set the shared `AVAudioSession` to ambient. If this is not done, audio played from your app will pause other audio playing on the device. Defaults to `true`.
 
 So for example:
 
@@ -152,8 +152,8 @@ let videoBackground1 = VideoBackground()
 
 #### Adding Videos To Your Project
 
-You must properly add videos to your project in order to play them. To do this:
-1. Open your project navigator
+In order to play local videos, you must add them to your project:
+1. Open project navigator
 2. Select your target
 3. Select `Build Phases`
 4. Select `Copy Bundle Resources`

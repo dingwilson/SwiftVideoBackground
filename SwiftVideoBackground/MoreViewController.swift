@@ -17,10 +17,6 @@ class MoreViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
 
-    deinit {
-        print("🦁")
-    }
-
     // Video 1 - loads from web so takes a moment to start
     @IBAction func play1(_ sender: Any) {
         let url = URL(string: "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4")!

@@ -37,7 +37,7 @@ public class VideoBackground {
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
     ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
-    @available(*, deprecated, message: "Use 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'")
+    @available(*, deprecated, message: "Please use the new throwing APIs.")
     public func play(view: UIView,
                      videoName: String,
                      videoType: String,

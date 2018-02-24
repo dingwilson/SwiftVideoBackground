@@ -77,6 +77,10 @@ public extension UIView {
         videoManager?.setWillLoopVideo(willLoopVideo)
     }
 
+    public func cleanUpVideo() {
+        videoManager?.cleanUp()
+    }
+
     private var videoManager: VideoManager? {
         return VideoManagers.shared.videoManagers.object(forKey: self)
     }

@@ -96,16 +96,16 @@
 		C8C3106E203C758D0075EA9E /* SwiftVideoBackground */ = {
 			isa = PBXGroup;
 			children = (
-				C8C31099203C75F60075EA9E /* Sources */,
-				C8C3106F203C758D0075EA9E /* AppDelegate.swift */,
-				592E1C742040112C00AB576C /* ViewController.swift */,
-				C8C3108F203C75A90075EA9E /* MoreViewController.swift */,
-				C8C31076203C758D0075EA9E /* Assets.xcassets */,
 				C8C3109B203C78C40075EA9E /* Background.mp4 */,
 				592E1C7620407F7600AB576C /* pokemon.mp4 */,
-				C8C31073203C758D0075EA9E /* Main.storyboard */,
-				C8C31078203C758D0075EA9E /* LaunchScreen.storyboard */,
 				C8C3107B203C758D0075EA9E /* Info.plist */,
+				C8C3106F203C758D0075EA9E /* AppDelegate.swift */,
+				C8C3108F203C75A90075EA9E /* MoreViewController.swift */,
+				592E1C742040112C00AB576C /* ViewController.swift */,
+				C8C31076203C758D0075EA9E /* Assets.xcassets */,
+				C8C31078203C758D0075EA9E /* LaunchScreen.storyboard */,
+				C8C31073203C758D0075EA9E /* Main.storyboard */,
+				C8C31099203C75F60075EA9E /* Sources */,
 			);
 			path = SwiftVideoBackground;
 			sourceTree = "<group>";
@@ -122,13 +122,13 @@
 		C8C31099203C75F60075EA9E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C8C31093203C75CD0075EA9E /* SwiftVideoBackground.h */,
 				59CC4A4E203F8C5500AA1B09 /* UIView+VideoBackground.swift */,
 				C8C31092203C75CD0075EA9E /* VideoBackground.swift */,
 				C8C31091203C75CD0075EA9E /* VideoBackgroundError.swift */,
 				C8C31094203C75CE0075EA9E /* VideoInfo.swift */,
 				59CC4A4C203F8AD300AA1B09 /* VideoManager.swift */,
 				59B1625A203FD1350020A91F /* VideoManagers.swift */,
-				C8C31093203C75CD0075EA9E /* SwiftVideoBackground.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -418,11 +418,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8UMN526X69;
 				INFOPLIST_FILE = SwiftVideoBackground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wilsonding.SwiftVideoBackground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quan.SwiftVideoBackground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -436,11 +436,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8UMN526X69;
 				INFOPLIST_FILE = SwiftVideoBackground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wilsonding.SwiftVideoBackground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quan.SwiftVideoBackground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

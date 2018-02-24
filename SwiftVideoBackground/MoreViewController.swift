@@ -24,20 +24,23 @@ class MoreViewController: UIViewController {
 
     deinit {
         print("🦁")
-        print(CFGetRetainCount(view1))
+
+        view1.cleanUpVideo()
+        view2.cleanUpVideo()
     }
 
     @IBAction func a(_ sender: Any) {
         print(CFGetRetainCount(view1))
-//        let url = URL(
-//            string: "https://ia800409.us.archive.org/16/items/PokemonOriginalIntro/Pokemon%20Original%20Intro.mp4"
-//            )!
         let url = URL(string: "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4")!
-        view1.playVideo(url: url, isMuted: false)
+        view1.playVideo(url: url, alpha: 0.1)
         print(CFGetRetainCount(view1))
     }
 
     @IBAction func b(_ sender: Any) {
-        try? view2.playVideo(videoName: "pokemon", videoType: "mp4", alpha: 0.2)
+        try? view2.playVideo(videoName: "pokemon", videoType: "mp4", isMuted: false)
+    }
+
+    @IBAction func pause2(_ sender: Any) {
+        view2.pauseVideo()
     }
 }

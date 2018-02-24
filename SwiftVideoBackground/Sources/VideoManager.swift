@@ -89,8 +89,8 @@ class VideoManager {
         self.willLoopVideo = willLoopVideo
     }
 
-    deinit {
-        print("🐸")
+    func cleanUp() {
+        playerLayer.player = nil
         playerLayer.removeFromSuperlayer()
         alphaOverlayView.removeFromSuperview()
         if let applicationWillEnterForegroundObserver = applicationWillEnterForegroundObserver {
@@ -100,5 +100,10 @@ class VideoManager {
             NotificationCenter.default.removeObserver(playerItemDidPlayToEndObserver)
         }
         viewBoundsObserver?.invalidate()
+    }
+
+    deinit {
+        print("🐸")
+        cleanUp()
     }
 }

@@ -9,25 +9,53 @@
 import AVFoundation
 import UIKit
 
-/// Class that plays a video on a UIView.
+/// Class that plays and manages control of a video on a `UIView`.
 public class VideoBackground {
-    /// DEPRECATED: Accessing VideoBackground is no longer needed. Play your video directly from your view with
-    /// 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'.
-    ///
-    /// Singleton instance that can be used to play a video.
-    @available(*, deprecated, message: "Use 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'")
+    /// Singleton that can play one video on one `UIView` at a time.
     public static let shared = VideoBackground()
 
-    /// DEPRECATED: Accessing VideoBackground is no longer needed. Play your video directly from your view with
-    /// 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'.
-    ///
-    /// Initializes a VideoBackground instance.
-    @available(*, deprecated, message: "Use 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'")
-    public init() {}
+    /// Indicates the darkness of the video. The higher the value, the darker the video.
+    /// Setting to an invalid value does nothing.
+    public var alpha: CGFloat = 0 {
+        didSet {
+            if alpha > 0 && alpha <= 1 {
+                alphaOverlayView.alpha = alpha
+            }
+        }
+    }
 
-    /// DEPRECATED: Accessing VideoBackground is no longer needed. Play your video directly from your view with
-    /// 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'.
-    ///
+    /// Indicates whether video is muted.
+    public var isMuted = true {
+        didSet {
+            playerLayer.player?.isMuted = isMuted
+        }
+    }
+
+    /// Indicates whether video will restart when finished.
+    public var willLoopVideo = true
+
+    private lazy var playerLayer = AVPlayerLayer()
+
+    private lazy var alphaOverlayView = UIView()
+
+    private var applicationWillEnterForegroundObserver: NSObjectProtocol?
+
+    private var playerItemDidPlayToEndObserver: NSObjectProtocol?
+
+    private var viewBoundsObserver: NSKeyValueObservation?
+
+    /// You only need to initialize your own instance of `VideoBackground` if you are playing multiple videos on
+    /// multiple `UIViews`. Otherwise just use the `shared` singleton.
+    public init() {
+        // Resume video when application re-enters foreground
+        applicationWillEnterForegroundObserver = NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillEnterForeground,
+            object: nil,
+            queue: .main) { [weak self] _ in
+                self?.playerLayer.player?.play()
+        }
+    }
+
     /// Plays a video on a UIView.
     ///
     /// - Parameters:
@@ -45,11 +73,12 @@ public class VideoBackground {
                      alpha: CGFloat = 0,
                      willLoopVideo: Bool = true) {
         do {
-            try view.playVideo(
-                videoName: videoName,
-                videoType: videoType,
-                alpha: alpha,
+            try play(
+                view: view,
+                name: videoName,
+                type: videoType,
                 isMuted: isMuted,
+                alpha: alpha,
                 willLoopVideo: willLoopVideo
             )
         } catch {
@@ -57,10 +86,7 @@ public class VideoBackground {
         }
     }
 
-    /// DEPRECATED: Accessing VideoBackground is no longer needed. Play your video directly from your view with
-    /// 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'.
-    ///
-    /// Plays a video on a UIView.
+    /// Plays a video.
     ///
     /// - Parameters:
     ///     - view: UIView that the video will be played on.
@@ -70,19 +96,121 @@ public class VideoBackground {
     ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
     /// - Throws: `VideoBackgroundError.videoNotFound` if the video cannot be found.
-    @available(*, deprecated, message: "Use 'yourView.playVideo(videoName:videoType:alpha:isMuted:willLoopVideo:)'")
     public func play(view: UIView,
                      name: String,
                      type: String,
                      isMuted: Bool = true,
                      alpha: CGFloat = 0,
                      willLoopVideo: Bool = true) throws {
-        try view.playVideo(
-            videoName: name,
-            videoType: type,
-            alpha: alpha,
-            isMuted: isMuted,
-            willLoopVideo: willLoopVideo
-        )
+        guard let path = Bundle.main.path(forResource: name, ofType: type) else {
+            throw VideoBackgroundError.videoNotFound(VideoInfo(name: name, type: type))
+        }
+        let url = URL(fileURLWithPath: path)
+        play(view: view, url: url, isMuted: isMuted, alpha: alpha, willLoopVideo: willLoopVideo)
+    }
+
+    /// Plays a video.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - url: URL of the video. Can be from your local file system or from the web.
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    public func play(view: UIView,
+                     url: URL,
+                     isMuted: Bool = true,
+                     alpha: CGFloat = 0,
+                     willLoopVideo: Bool = true) {
+        cleanUp()
+
+        self.willLoopVideo = willLoopVideo
+
+        let player = AVPlayer(url: url)
+        player.actionAtItemEnd = .none
+        player.isMuted = isMuted
+        player.play()
+
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.zPosition = -1
+        view.layer.insertSublayer(playerLayer, at: 0)
+
+        alphaOverlayView = UIView(frame: view.bounds)
+        alphaOverlayView.alpha = 0
+        alphaOverlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        alphaOverlayView.backgroundColor = .black
+        self.alpha = alpha
+        view.addSubview(alphaOverlayView)
+        view.sendSubview(toBack: alphaOverlayView)
+
+        // Restart video when it ends
+        playerItemDidPlayToEndObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main) { [weak self] _ in
+                if let willLoopVideo = self?.willLoopVideo, willLoopVideo {
+                    self?.restart()
+                }
+        }
+
+        // Adjust frames upon device rotation
+        viewBoundsObserver = view.layer.observe(\.bounds) { [weak self] view, _ in
+            DispatchQueue.main.async {
+                self?.playerLayer.frame = view.bounds
+            }
+        }
+    }
+
+    /// Merges the given videos asynchronously and plays the result.
+    /// Processing time proportional to video size.
+    ///
+    /// - Parameters:
+    ///     - view: UIView that the video will be played on.
+    ///     - videoInfos: Array of `VideoInfo` for the videos to be played.
+    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
+    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
+    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
+    /// - Throws: `VideoBackgroundError.videoNotFound` if a video cannot be found.
+    public func play(view: UIView,
+                     videoInfos: [VideoInfo],
+                     isMuted: Bool = true,
+                     alpha: CGFloat = 0,
+                     willLoopVideo: Bool = true) throws {
+        let url = URL(fileURLWithPath: "") // todo: merge vids and get url of output
+        play(view: view, url: url, isMuted: isMuted, alpha: alpha, willLoopVideo: willLoopVideo)
+    }
+
+    /// Pauses the video.
+    public func pause() {
+        playerLayer.player?.pause()
+    }
+
+    /// Resumes the video.
+    public func resume() {
+        playerLayer.player?.play()
+    }
+
+    /// Restarts the video from the beginning.
+    public func restart() {
+        playerLayer.player?.seek(to: kCMTimeZero)
+        playerLayer.player?.play()
+    }
+
+    private func cleanUp() {
+        playerLayer.player = nil
+        alphaOverlayView.removeFromSuperview()
+        if let playerItemDidPlayToEndObserver = playerItemDidPlayToEndObserver {
+            NotificationCenter.default.removeObserver(playerItemDidPlayToEndObserver)
+        }
+        viewBoundsObserver?.invalidate()
+    }
+
+    deinit {
+        cleanUp()
+        if let applicationWillEnterForegroundObserver = applicationWillEnterForegroundObserver {
+            NotificationCenter.default.removeObserver(applicationWillEnterForegroundObserver)
+        }
     }
 }

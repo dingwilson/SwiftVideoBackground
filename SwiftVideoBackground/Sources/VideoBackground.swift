@@ -112,7 +112,7 @@ public class VideoBackground {
                      willLoopVideo: Bool = true,
                      setAudioSessionAmbient: Bool = true) throws {
         guard let path = Bundle.main.path(forResource: name, ofType: type) else {
-            throw VideoBackgroundError.videoNotFound(VideoInfo(name: name, type: type))
+            throw VideoBackgroundError.videoNotFound((name: name, type: type))
         }
         let url = URL(fileURLWithPath: path)
         play(

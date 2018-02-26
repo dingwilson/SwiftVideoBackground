@@ -17,7 +17,6 @@
 		C8C31090203C75A90075EA9E /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3108F203C75A90075EA9E /* MoreViewController.swift */; };
 		C8C31095203C75CE0075EA9E /* VideoBackgroundError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C31091203C75CD0075EA9E /* VideoBackgroundError.swift */; };
 		C8C31096203C75CE0075EA9E /* VideoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C31092203C75CD0075EA9E /* VideoBackground.swift */; };
-		C8C31097203C75CE0075EA9E /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C31094203C75CE0075EA9E /* VideoInfo.swift */; };
 		C8C3109C203C78C40075EA9E /* Background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C8C3109B203C78C40075EA9E /* Background.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +46,6 @@
 		C8C31091203C75CD0075EA9E /* VideoBackgroundError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBackgroundError.swift; sourceTree = "<group>"; };
 		C8C31092203C75CD0075EA9E /* VideoBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBackground.swift; sourceTree = "<group>"; };
 		C8C31093203C75CD0075EA9E /* SwiftVideoBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftVideoBackground.h; sourceTree = "<group>"; };
-		C8C31094203C75CE0075EA9E /* VideoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
 		C8C3109B203C78C40075EA9E /* Background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Background.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 				C8C31093203C75CD0075EA9E /* SwiftVideoBackground.h */,
 				C8C31092203C75CD0075EA9E /* VideoBackground.swift */,
 				C8C31091203C75CD0075EA9E /* VideoBackgroundError.swift */,
-				C8C31094203C75CE0075EA9E /* VideoInfo.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -248,7 +245,6 @@
 			files = (
 				C8C31070203C758D0075EA9E /* AppDelegate.swift in Sources */,
 				C8C31095203C75CE0075EA9E /* VideoBackgroundError.swift in Sources */,
-				C8C31097203C75CE0075EA9E /* VideoInfo.swift in Sources */,
 				592E1C752040112C00AB576C /* ViewController.swift in Sources */,
 				C8C31090203C75A90075EA9E /* MoreViewController.swift in Sources */,
 				C8C31096203C75CE0075EA9E /* VideoBackground.swift in Sources */,

@@ -10,14 +10,7 @@ import XCTest
 import SwiftVideoBackground
 
 class SwiftVideoBackgroundTests: XCTestCase {
-    func testDidCreateVideoInfo() {
-        let videoInfo = VideoInfo(name: "Background", type: "mp4")
-
-        XCTAssertEqual(videoInfo.name, "Background")
-        XCTAssertEqual(videoInfo.type, "mp4")
-    }
-
-    func testDidSuccessfullyCreateBackgroundVideo() {
+       func testDidSuccessfullyCreateBackgroundVideo() {
         let view = UIView()
 
         do {
@@ -36,7 +29,7 @@ class SwiftVideoBackgroundTests: XCTestCase {
 
     func testDidCatchNonexistantVideo() {
         let view = UIView()
-        let videoInfo = VideoInfo(name: "NonExistantVideo", type: "mp4")
+        let videoInfo = (name: "NonExistantVideo", type: "mp4")
 
         do {
             try VideoBackground.shared.play(view: view, name: videoInfo.name, type: videoInfo.type)

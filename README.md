@@ -40,8 +40,14 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
     - [Manually](#manually)
 3. [Migration Guide](#migration-guide)
 4. [Usage](#usage)
-5. [License](#license)
-6. [Authors](#authors)
+    - [Example](#example)
+    - [Customization](#customization)
+    - [Controls](#controls)
+    - [Singleton](#singleton)
+    - [Adding Videos To Your Project](#adding-videos-to-your-project)
+5. [Issues](#issues)
+6. [License](#license)
+7. [Authors](#authors)
 
 ## Requirements
 
@@ -131,16 +137,16 @@ VideoBackground.shared.play(
 
 > Any combination of the parameters can be included or left out.
 
-> For more information about `AVAudioSession`, see the [docs](https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html#//apple_ref/doc/uid/TP40007875-CH3-SW1).
+> `setAudioSessionAmbient` only has an effect in iOS 10.0+. For more information, see the [docs](https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html).
 
 #### Controls
 
-- `pause()`
-- `resume()`
-- `restart()`
-- `alpha`
-- `isMuted`
-- `willLoopVideo`
+- `pause()` - Pauses the video.
+- `resume()` - Resumes the video.
+- `restart()` - Restarts the video.
+- `alpha` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Invalid values are ignored.
+- `isMuted` - Change this `Bool` to mute/unmute the video.
+- `willLoopVideo` - Change this `Bool` to set whether the video restarts when it ends.
 
 #### Singleton
 
@@ -163,9 +169,9 @@ In order to play local videos, you must add them to your project:
 
 ## Issues
 
-There is a bug in Apple's [AudioToolbox](https://developer.apple.com/documentation/audiotoolbox) that will show a false positive memory leak when playing a video with sound on a simulator. On a device, it's fine.
+There is a bug in Apple's [AudioToolbox](https://developer.apple.com/documentation/audiotoolbox) that will show a false positive memory leak in Instruments when playing a video with sound on a simulator*. On a device, it's fine.
 
-> [One](http://crosbymichael.com/avaudioplayer-memory-leak.html) of many sources.
+> *[One](http://crosbymichael.com/avaudioplayer-memory-leak.html) of many sources.
 
 ## License
 

@@ -37,7 +37,7 @@ class MoreViewController: UIViewController {
 
     // Video 2
     @IBAction func play2(_ sender: Any) {
-        try? videoBackground2.play(view: view2, name: "pokemon", type: "mp4", isMuted: false)
+        try? videoBackground2.play(view: view2, name: "water", type: "mp4", isMuted: false)
     }
 
     @IBAction func pause(_ sender: Any) {

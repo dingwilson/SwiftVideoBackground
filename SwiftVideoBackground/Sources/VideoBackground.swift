@@ -14,8 +14,8 @@ public class VideoBackground {
     /// Singleton that can play one video on one `UIView` at a time.
     public static let shared = VideoBackground()
 
-    /// Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Invalid
-    /// values are ignored.
+    /// Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting
+    /// to an invalid value does nothing.
     public var alpha: CGFloat = 0 {
         didSet {
             if alpha > 0 && alpha <= 1 {
@@ -34,7 +34,8 @@ public class VideoBackground {
     /// Change this `Bool` to set whether the video restarts when it ends.
     public var willLoopVideo = true
 
-    private lazy var playerLayer = AVPlayerLayer()
+    /// The `AVPlayerLayer` that can be accessed for advanced customization.
+    public lazy var playerLayer = AVPlayerLayer()
 
     private lazy var alphaOverlayView = UIView()
 
@@ -129,7 +130,8 @@ public class VideoBackground {
     ///
     /// - Parameters:
     ///     - view: UIView that the video will be played on.
-    ///     - url: URL of the video. Can be from your local file system or the web. Invalid URLs are ignored.
+    ///     - url: URL of the video. Can be from your local file system or the web. Invalid URLs will not be played but
+    ///         do not return any error.
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
     ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.

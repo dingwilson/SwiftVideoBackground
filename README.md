@@ -144,9 +144,10 @@ VideoBackground.shared.play(
 - `pause()` - Pauses the video.
 - `resume()` - Resumes the video.
 - `restart()` - Restarts the video.
-- `alpha` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Invalid values are ignored.
+- `alpha` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting to an invalid value does nothing.
 - `isMuted` - Change this `Bool` to mute/unmute the video.
 - `willLoopVideo` - Change this `Bool` to set whether the video restarts when it ends.
+- `playerLayer` - The `AVPlayerLayer` that can be accessed for advanced customization. 
 
 #### Singleton
 

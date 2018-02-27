@@ -1,0 +1,5 @@
+ignore:
+  - "SwiftVideoBackground/AppDelegate.swift"
+  - "SwiftVideoBackground/MoreViewController.swift"
+  - "SwiftVideoBackground/ViewController.swift"
+  

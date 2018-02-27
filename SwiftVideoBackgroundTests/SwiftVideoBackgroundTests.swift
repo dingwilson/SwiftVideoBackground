@@ -6,38 +6,36 @@
 //  Copyright © 2016 Wilson Ding. All rights reserved.
 //
 
-import XCTest
+import AVKit
 import SwiftVideoBackground
+import XCTest
 
 class SwiftVideoBackgroundTests: XCTestCase {
-    func testDidCreateVideoInfo() {
-        let videoInfo = VideoInfo(name: "Background", type: "mp4")
-
-        XCTAssertEqual(videoInfo.name, "Background")
-        XCTAssertEqual(videoInfo.type, "mp4")
+    let videoName = "Background"
+    let videoType = "mp4"
+    var view = UIView()
+    var player: AVPlayer? {
+        return VideoBackground.shared.playerLayer.player
     }
 
-    func testDidSuccessfullyCreateBackgroundVideo() {
-        let view = UIView()
+    override func setUp() {
+        super.setUp()
+        view = UIView()
+    }
 
+    func testPlayLocalVideo() {
         do {
-            try VideoBackground.shared.play(view: view,
-                                            name: "Background",
-                                            type: "mp4",
-                                            isMuted: true,
-                                            alpha: 0.2,
-                                            willLoopVideo: true)
+            try VideoBackground.shared.play(view: view, videoName: videoName, videoType: videoType)
         } catch {
             XCTAssertNil(error)
         }
     }
 
-    func testDidCatchNonexistantVideo() {
-        let view = UIView()
-        let videoInfo = VideoInfo(name: "NonExistantVideo", type: "mp4")
+    func testPlayLocalVideoNotFound() {
+        let videoInfo = (name: "NonExistantVideo", type: "mp4")
 
         do {
-            try VideoBackground.shared.play(view: view, videoInfos: [videoInfo])
+            try VideoBackground.shared.play(view: view, videoName: videoInfo.name, videoType: videoInfo.type)
         } catch {
             XCTAssertEqual(
                 error.localizedDescription,
@@ -46,5 +44,49 @@ class SwiftVideoBackgroundTests: XCTestCase {
         }
 
         XCTAssert(view.subviews.isEmpty)
+    }
+
+    func testPlayFromURL() {
+        let url = URL(string: "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4")!
+        VideoBackground.shared.play(view: view, url: url)
+    }
+
+    func testPause() {
+        if #available(iOS 10.0, *) {
+            play()
+            VideoBackground.shared.pause()
+            XCTAssertEqual(player?.timeControlStatus, AVPlayerTimeControlStatus.paused)
+        }
+    }
+
+    func testResume() {
+        if #available(iOS 10.0, *) {
+            play()
+            VideoBackground.shared.pause()
+            VideoBackground.shared.resume()
+            XCTAssertEqual(player?.rate, 1)
+        }
+    }
+
+    func testRestart() {
+        if #available(iOS 10.0, *) {
+            play()
+            VideoBackground.shared.pause()
+            VideoBackground.shared.restart()
+            XCTAssertEqual(player?.rate, 1)
+        }
+    }
+
+    func testSetIsMuted() {
+        play()
+        XCTAssertEqual(player?.isMuted, true)
+        VideoBackground.shared.isMuted = false
+        XCTAssertEqual(player?.isMuted, false)
+    }
+}
+
+extension SwiftVideoBackgroundTests {
+    func play() {
+        try? VideoBackground.shared.play(view: view, videoName: videoName, videoType: videoType)
     }
 }

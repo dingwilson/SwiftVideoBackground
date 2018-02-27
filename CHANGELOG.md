@@ -1,5 +1,23 @@
 # Change Log
 
+## [3.0.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.0.0)
+(2018-02-26)
+#### BREAKING CHANGES:
+- Removed support for passing in multiple videos to play one after another
+- Renamed `alpha` to `darkness`
+- Removed non-throwing `play()`. Use the throwing `play()` instead.
+
+#### Features:
+- Added a singleton called `shared`. Now users don't need to retain an instance of `VideoBackground` to play a video.
+  - Users can still create new instances if needed, i.e. if needed to play multiple videos simultaneously.
+- Add support for playing video from a local or remote URL
+- Add APIs for pause, restart, resume, darkness, isMuted, & willLoopVideo
+- Make `playerLayer` public to allow advanced control and customization
+- Add `setAudioSessionAmbient` to `play`. Set to `true` by default.
+
+#### Fixes:
+- Add clean up code to `play()`, so multiple calls to it should work smoothly
+
 ## [2.1.0](https://github.com/dingwilson/SwiftVideoBackground/tree/2.1.0)
 (2018-02-19)
 - Added a singleton called `shared`. Now users don't need to retain an instance of `VideoBackground` to play a video.

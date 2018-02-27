@@ -21,14 +21,15 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 
 ## Features
 
-- Play a video with one line of code
-- Play an array of videos sequentially
-- Automatically adjusts when device orientation changes
-- Automatically resumes video when app re-enters foreground
-- Loop videos *(optional)*
-- Mute sound *(optional)*
-- Darken videos so overlying UI stands out more *(optional)*
-- [Documentation](http://wilsonding.com/SwiftVideoBackground/)
+- [x] Play a video with one line of code
+- [x] Supports local videos `&&` videos from a web URL
+- [x] Automatically adjusts when device orientation changes
+- [x] Automatically resumes video when app re-enters foreground
+- [x] Pause, resume, restart, and other controls
+- [x] Loop videos *(optional)*
+- [x] Mute sound *(optional)*
+- [x] Darken videos so overlying UI stands out more *(optional)*
+- [x] [Documentation](http://wilsonding.com/SwiftVideoBackground/)
 
 ## Contents
 
@@ -39,8 +40,14 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
     - [Manually](#manually)
 3. [Migration Guide](#migration-guide)
 4. [Usage](#usage)
-5. [License](#license)
-6. [Authors](#authors)
+    - [Example](#example)
+    - [Customization](#customization)
+    - [Controls](#controls)
+    - [Singleton](#singleton)
+    - [Adding Videos To Your Project](#adding-videos-to-your-project)
+5. [Issues](#issues)
+6. [License](#license)
+7. [Authors](#authors)
 
 ## Requirements
 
@@ -54,12 +61,12 @@ You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground`
 
 For Swift 4:
 ```ruby
-	pod 'SwiftVideoBackground', '~> 2.1'
+pod 'SwiftVideoBackground', '~> 3.0'
 ```
 
 For Swift 3:
 ```ruby
-	pod 'SwiftVideoBackground', '0.06'
+pod 'SwiftVideoBackground', '0.06'
 ```
 
 #### Carthage
@@ -77,7 +84,12 @@ To use this library in your project manually you may:
 
 ## Migration Guide
 
-Version 2.0.0 brings improvements and breaking changes. See the quick migration guide [here](migration-2.0.0.md).
+#### Version 3.0.0
+- Passing in an array of videos support removed. You should merge videos in advance instead. One way to merge videos is with [ffmpeg](https://www.ffmpeg.org/).
+- `alpha` renamed to `darkness`
+
+#### Version 2.0.0
+See the quick [migration guide](migration-2.0.0.md).
 
 ## Usage
 
@@ -91,58 +103,67 @@ class MyViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    try? VideoBackground.shared.play(view: view, name: "myvideo", type: "mp4")
+    try? VideoBackground.shared.play(view: view, name: "myVideo", type: "mp4")
+
+    /* or from URL */
+
+    let url = URL(string: "https://coolVids.com/coolVid.mp4")!
+    VideoBackground.shared.play(view: view, url: url)
   }
 }
 ```
 
 > Documentation for Version 0.06 (Swift 3) can be found [here](README-0.06.md).
 
-#### Play Multiple Videos
-
-```swift
-let pokemon = VideoInfo(name: "pokemonIntro", type: "mp4")
-let digimon = VideoInfo(name: "digimonIntro", type: "mp4")
-
-try? VideoBackground.shared.play(view: view, videoInfos: [pokemon, digimon])
-```
-
 #### Customization
 
 `play()` has three additional optional parameters for customization:
+- `darkness`: CGFloat - Value between `0` and `1`. The higher the value, the darker the video. Defaults to `0`.
 - `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
-- `alpha`: CGFloat - Value between 0 and 1. The higher the value, the darker the video. Defaults to `0`.
 - `willLoopVideo`: Bool - Indicates whether video should restart when finished. Defaults to `true`.
+- `setAudioSessionAmbient`: Bool - Indicates whether to set the shared `AVAudioSession` to ambient. If this is not done, audio played from your app will pause other audio playing on the device. Defaults to `true`.
 
 So for example:
 
 ``` swift
 VideoBackground.shared.play(
     view: view,
-    name: "myvideo",
+    name: "myVideo",
     type: "mp4",
+    darkness: 0.25,
     isMuted: false,
-    alpha: 0.25,
     willLoopVideo: true
 )
 ```
 
 -> will play the video with the sound on, slightly darkened, and will continuously loop.
 
-> Any combination of the three can be included or left out.
+> Any combination of the parameters can be included or left out.
+
+> `setAudioSessionAmbient` only has an effect in iOS 10.0+. For more information, see the [docs](https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html).
+
+#### Controls
+
+- `pause()` - Pauses the video.
+- `resume()` - Resumes the video.
+- `restart()` - Restarts the video.
+- `darkness` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting to an invalid value does nothing.
+- `isMuted` - Change this `Bool` to mute/unmute the video.
+- `willLoopVideo` - Change this `Bool` to set whether the video restarts when it ends.
+- `playerLayer` - The `AVPlayerLayer` that can be accessed for advanced control and customization of the video.
 
 #### Singleton
 
-`SwiftVideoBackground` includes a singleton instance that can be conveniently accessed with `VideoBackground.shared`. An instance of `VideoBackground` can only play one video on one `UIView` at a time. So if you need to play on multiple `UIView`s, you can instantiate more instances of `VideoBackground`:
+`SwiftVideoBackground` includes a singleton instance that can be conveniently accessed with `VideoBackground.shared`. An instance of `VideoBackground` can only play one video on one `UIView` at a time. So if you need to play on multiple `UIView`s, you need to retain an instance of `VideoBackground` for each `UIView`:
 
 ```swift
-let myVideoBackground = VideoBackground()
+let videoBackground1 = VideoBackground()
 ```
 
 #### Adding Videos To Your Project
 
-You must properly add videos to your project in order to play them. To do this:
-1. Open your project navigator
+In order to play local videos, you must add them to your project:
+1. Open project navigator
 2. Select your target
 3. Select `Build Phases`
 4. Select `Copy Bundle Resources`
@@ -150,25 +171,11 @@ You must properly add videos to your project in order to play them. To do this:
 
 ![add video to project](https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/add-video-to-project.png "add video to project")
 
-#### Preventing Video From Muting Other Audio On Device
+## Issues
 
-By default, audio played on your app will mute all other audio playing on the device. To prevent this, configure the `AVAudioSession` by adding the following code to your app's `application(_:didFinishLaunchingWithOptions)` function in the `AppDelegate` class:
+There is a bug in Apple's [AudioToolbox](https://developer.apple.com/documentation/audiotoolbox) that will show a false positive memory leak in Instruments when playing a video with sound on a simulator*. On a device, it's fine.
 
-```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    if #available(iOS 10.0, *) {
-        try? AVAudioSession.sharedInstance().setCategory(
-           AVAudioSessionCategoryAmbient,
-           mode: AVAudioSessionModeDefault
-        )
-        try? AVAudioSession.sharedInstance().setActive(true)
-    }
-
-    return true
-}
-```
-
-For more information, see the AVPlayer [docs](https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html#//apple_ref/doc/uid/TP40007875-CH3-SW1).
+> *[One](http://crosbymichael.com/avaudioplayer-memory-leak.html) of many sources.
 
 ## License
 

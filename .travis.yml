@@ -7,13 +7,12 @@ branches:
     master
 
 before_install:
+  - gem install cocoapods
   - gem install xcpretty
   - gem install xcpretty-json-formatter
 
 env:
   - UDID="7A5E86EB-E32C-475F-8FF5-10AA330C1D34", IOS_DEVICE="iPhone 7 Plus (11.1)"
-  - UDID="15E2107D-EAD2-4E1F-8BC3-59E58E750FB1", IOS_DEVICE="iPhone 7 (10.0)"
-  - UDID="9AB3D590-C748-4E17-8E35-67B298E973F7", IOS_DEVICE="iPhone 6 Plus (9.0)"
   - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"
 
 script:
@@ -30,3 +29,5 @@ jobs:
   include:
     - stage: jazzy
       script: ./jazzy.sh
+    - stage: cocoapods
+      script: pod spec lint

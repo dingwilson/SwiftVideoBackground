@@ -3,6 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "3.0.0"
   s.summary      = "An easy to use Swift framework to play a video in the background of any UIView."
   s.description  = "SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others"
+  s.screenshots  = "https://i.imgur.com/PzRw2Ku.gif"
   s.homepage     = "https://github.com/dingwilson/SwiftVideoBackground"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Wilson Ding" => "hello@wilsonding.com",

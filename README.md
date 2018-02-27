@@ -117,7 +117,7 @@ class MyViewController: UIViewController {
 
 #### Customization
 
-`play()` has three additional optional parameters for customization:
+`play()` has four additional optional parameters for customization:
 - `darkness`: CGFloat - Value between `0` and `1`. The higher the value, the darker the video. Defaults to `0`.
 - `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
 - `willLoopVideo`: Bool - Indicates whether video should restart when finished. Defaults to `true`.
@@ -132,11 +132,12 @@ VideoBackground.shared.play(
     type: "mp4",
     darkness: 0.25,
     isMuted: false,
-    willLoopVideo: true
+    willLoopVideo: true,
+    setAudioSessionAmbient: true
 )
 ```
 
--> will play the video with the sound on, slightly darkened, and will continuously loop.
+-> will play the video with the sound on, slightly darkened, continuously looping, and without affecting other sources of audio on the device.
 
 > Any combination of the parameters can be included or left out.
 

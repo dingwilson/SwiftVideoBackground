@@ -1,6 +1,6 @@
 # Change Log
 
-## [3.0.0](https://github.com/dingwilson/SwiftVideoBackground/tree/2.1.0)
+## [3.0.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.0.0)
 (2018-02-26)
 #### BREAKING CHANGES:
 - Removed support for passing in multiple videos to play one after another

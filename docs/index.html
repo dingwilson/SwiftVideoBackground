@@ -172,7 +172,7 @@
 </blockquote>
 <h4 id='customization' class='heading'>Customization</h4>
 
-<p><code>play()</code> has three additional optional parameters for customization:</p>
+<p><code>play()</code> has four additional optional parameters for customization:</p>
 
 <ul>
 <li><code>darkness</code>: CGFloat - Value between <code>0</code> and <code>1</code>. The higher the value, the darker the video. Defaults to <code>0</code>.</li>
@@ -188,11 +188,12 @@
     <span class="nv">type</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">,</span>
     <span class="nv">darkness</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
     <span class="nv">isMuted</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nv">setAudioSessionAmbient</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">)</span>
 </code></pre>
 
-<p>-&gt; will play the video with the sound on, slightly darkened, and will continuously loop.</p>
+<p>-&gt; will play the video with the sound on, slightly darkened, continuously looping, and without affecting other sources of audio on the device.</p>
 
 <blockquote>
 <p>Any combination of the parameters can be included or left out.</p>

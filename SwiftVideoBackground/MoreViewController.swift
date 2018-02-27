@@ -20,15 +20,15 @@ class MoreViewController: UIViewController {
     // Video 1 - loads from web so takes a moment to start
     @IBAction func play1(_ sender: Any) {
         let url = URL(string: "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4")!
-        videoBackground1.play(view: view1, url: url, alpha: 0.1)
+        videoBackground1.play(view: view1, url: url, darkness: 0.1)
     }
 
-    @IBAction func increaseAlpha(_ sender: Any) {
-        videoBackground1.alpha += 0.1
+    @IBAction func darker(_ sender: Any) {
+        videoBackground1.darkness += 0.1
     }
 
-    @IBAction func decreaseAlpha(_ sender: Any) {
-        videoBackground1.alpha -= 0.1
+    @IBAction func lighter(_ sender: Any) {
+        videoBackground1.darkness -= 0.1
     }
 
     @IBAction func toggleRestart(_ sender: Any) {
@@ -37,7 +37,7 @@ class MoreViewController: UIViewController {
 
     // Video 2
     @IBAction func play2(_ sender: Any) {
-        try? videoBackground2.play(view: view2, name: "water", type: "mp4", isMuted: false)
+        try? videoBackground2.play(view: view2, videoName: "water", videoType: "mp4", isMuted: false)
     }
 
     @IBAction func pause(_ sender: Any) {

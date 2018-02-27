@@ -16,10 +16,10 @@ public class VideoBackground {
 
     /// Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting
     /// to an invalid value does nothing.
-    public var alpha: CGFloat = 0 {
+    public var darkness: CGFloat = 0 {
         didSet {
-            if alpha > 0 && alpha <= 1 {
-                alphaOverlayView.alpha = alpha
+            if darkness > 0 && darkness <= 1 {
+                darknessOverlayView.alpha = darkness
             }
         }
     }
@@ -37,7 +37,7 @@ public class VideoBackground {
     /// The `AVPlayerLayer` that can be accessed for advanced customization.
     public lazy var playerLayer = AVPlayerLayer()
 
-    private lazy var alphaOverlayView = UIView()
+    private lazy var darknessOverlayView = UIView()
 
     private var applicationWillEnterForegroundObserver: NSObjectProtocol?
 
@@ -57,91 +57,56 @@ public class VideoBackground {
         }
     }
 
-    /// **DEPRECATED** Plays a video on a UIView.
+    /// Plays a local video.
     ///
     /// - Parameters:
     ///     - view: UIView that the video will be played on.
     ///     - videoName: String name of video that you have added to your project.
     ///     - videoType: String type of the video. e.g. "mp4"
+    ///     - darkness: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
-    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
-    ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
-    ///     - setAudioSessionAmbient: Bool indicating whether to set the shared `AVAudioSession` to ambient. If this is
-    ///         not done, audio played from your app will pause other audio playing on the device. Defaults to true.
-    ///         Only has an effect in iOS 10.0+.
-    @available(*, deprecated, message: "Please use the new throwing APIs.")
-    public func play(view: UIView,
-                     videoName: String,
-                     videoType: String,
-                     isMuted: Bool = true,
-                     alpha: CGFloat = 0,
-                     willLoopVideo: Bool = true,
-                     setAudioSessionAmbient: Bool = true) {
-        do {
-            try play(
-                view: view,
-                name: videoName,
-                type: videoType,
-                isMuted: isMuted,
-                alpha: alpha,
-                willLoopVideo: willLoopVideo,
-                setAudioSessionAmbient: setAudioSessionAmbient
-            )
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-
-    /// Plays a video.
-    ///
-    /// - Parameters:
-    ///     - view: UIView that the video will be played on.
-    ///     - name: String name of video that you have added to your project.
-    ///     - type: String type of the video. e.g. "mp4"
-    ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
-    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
     ///     - setAudioSessionAmbient: Bool indicating whether to set the shared `AVAudioSession` to ambient. If this is
     ///         not done, audio played from your app will pause other audio playing on the device. Defaults to true.
     ///         Only has an effect in iOS 10.0+.
     /// - Throws: `VideoBackgroundError.videoNotFound` if the video cannot be found.
     public func play(view: UIView,
-                     name: String,
-                     type: String,
+                     videoName: String,
+                     videoType: String,
                      isMuted: Bool = true,
-                     alpha: CGFloat = 0,
+                     darkness: CGFloat = 0,
                      willLoopVideo: Bool = true,
                      setAudioSessionAmbient: Bool = true) throws {
-        guard let path = Bundle.main.path(forResource: name, ofType: type) else {
-            throw VideoBackgroundError.videoNotFound((name: name, type: type))
+        guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
+            throw VideoBackgroundError.videoNotFound((name: videoName, type: videoType))
         }
         let url = URL(fileURLWithPath: path)
         play(
             view: view,
             url: url,
+            darkness: darkness,
             isMuted: isMuted,
-            alpha: alpha,
             willLoopVideo: willLoopVideo,
             setAudioSessionAmbient: setAudioSessionAmbient
         )
     }
 
-    /// Plays a video.
+    /// Plays a video from a local or remote URL.
     ///
     /// - Parameters:
     ///     - view: UIView that the video will be played on.
     ///     - url: URL of the video. Can be from your local file system or the web. Invalid URLs will not be played but
     ///         do not return any error.
+    ///     - darkness: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - isMuted: Bool indicating whether video is muted. Defaults to true.
-    ///     - alpha: CGFloat between 0 and 1. The higher the value, the darker the video. Defaults to 0.
     ///     - willLoopVideo: Bool indicating whether video should restart when finished. Defaults to true.
     ///     - setAudioSessionAmbient: Bool indicating whether to set the shared `AVAudioSession` to ambient. If this is
     ///         not done, audio played from your app will pause other audio playing on the device. Defaults to true.
     ///         Only has an effect in iOS 10.0+.
     public func play(view: UIView,
                      url: URL,
+                     darkness: CGFloat = 0,
                      isMuted: Bool = true,
-                     alpha: CGFloat = 0,
                      willLoopVideo: Bool = true,
                      setAudioSessionAmbient: Bool = true) {
         cleanUp()
@@ -169,13 +134,13 @@ public class VideoBackground {
         playerLayer.zPosition = -1
         view.layer.insertSublayer(playerLayer, at: 0)
 
-        alphaOverlayView = UIView(frame: view.bounds)
-        alphaOverlayView.alpha = 0
-        alphaOverlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        alphaOverlayView.backgroundColor = .black
-        self.alpha = alpha
-        view.addSubview(alphaOverlayView)
-        view.sendSubview(toBack: alphaOverlayView)
+        darknessOverlayView = UIView(frame: view.bounds)
+        darknessOverlayView.alpha = 0
+        darknessOverlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        darknessOverlayView.backgroundColor = .black
+        self.darkness = darkness
+        view.addSubview(darknessOverlayView)
+        view.sendSubview(toBack: darknessOverlayView)
 
         // Restart video when it ends
         playerItemDidPlayToEndObserver = NotificationCenter.default.addObserver(
@@ -213,7 +178,7 @@ public class VideoBackground {
 
     private func cleanUp() {
         playerLayer.player = nil
-        alphaOverlayView.removeFromSuperview()
+        darknessOverlayView.removeFromSuperview()
         if let playerItemDidPlayToEndObserver = playerItemDidPlayToEndObserver {
             NotificationCenter.default.removeObserver(playerItemDidPlayToEndObserver)
         }

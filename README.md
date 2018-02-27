@@ -84,9 +84,12 @@ To use this library in your project manually you may:
 
 ## Migration Guide
 
-Version 3.0.0 - Passing in an array of videos support removed. You should merge videos in advance instead. One way to merge videos is with [ffmpeg](https://www.ffmpeg.org/).
+#### Version 3.0.0
+- Passing in an array of videos support removed. You should merge videos in advance instead. One way to merge videos is with [ffmpeg](https://www.ffmpeg.org/).
+- `alpha` renamed to `darkness`
 
-Version 2.0.0 brings improvements and breaking changes. See the quick migration guide [here](migration-2.0.0.md).
+#### Version 2.0.0
+See the quick [migration guide](migration-2.0.0.md).
 
 ## Usage
 
@@ -115,8 +118,8 @@ class MyViewController: UIViewController {
 #### Customization
 
 `play()` has three additional optional parameters for customization:
+- `darkness`: CGFloat - Value between `0` and `1`. The higher the value, the darker the video. Defaults to `0`.
 - `isMuted`: Bool - Indicates whether video is muted. Defaults to `true`.
-- `alpha`: CGFloat - Value between `0` and `1`. The higher the value, the darker the video. Defaults to `0`.
 - `willLoopVideo`: Bool - Indicates whether video should restart when finished. Defaults to `true`.
 - `setAudioSessionAmbient`: Bool - Indicates whether to set the shared `AVAudioSession` to ambient. If this is not done, audio played from your app will pause other audio playing on the device. Defaults to `true`.
 
@@ -127,8 +130,8 @@ VideoBackground.shared.play(
     view: view,
     name: "myVideo",
     type: "mp4",
+    darkness: 0.25,
     isMuted: false,
-    alpha: 0.25,
     willLoopVideo: true
 )
 ```
@@ -144,10 +147,10 @@ VideoBackground.shared.play(
 - `pause()` - Pauses the video.
 - `resume()` - Resumes the video.
 - `restart()` - Restarts the video.
-- `alpha` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting to an invalid value does nothing.
+- `darkness` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting to an invalid value does nothing.
 - `isMuted` - Change this `Bool` to mute/unmute the video.
 - `willLoopVideo` - Change this `Bool` to set whether the video restarts when it ends.
-- `playerLayer` - The `AVPlayerLayer` that can be accessed for advanced customization. 
+- `playerLayer` - The `AVPlayerLayer` that can be accessed for advanced control and customization of the video.
 
 #### Singleton
 

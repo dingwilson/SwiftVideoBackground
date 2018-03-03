@@ -103,7 +103,7 @@ class MyViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    try? VideoBackground.shared.play(view: view, name: "myVideo", type: "mp4")
+    try? VideoBackground.shared.play(view: view, videoName: "myVideo", videoType: "mp4")
 
     /* or from URL */
 

@@ -128,8 +128,8 @@ So for example:
 ``` swift
 VideoBackground.shared.play(
     view: view,
-    name: "myVideo",
-    type: "mp4",
+    videoName: "myVideo",
+    videoType: "mp4",
     darkness: 0.25,
     isMuted: false,
     willLoopVideo: true,

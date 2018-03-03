@@ -85,7 +85,7 @@ To use this library in your project manually you may:
 ## Migration Guide
 
 #### Version 3.0.0
-- Passing in an array of videos support removed. You should merge videos in advance instead. One way to merge videos is with [ffmpeg](https://www.ffmpeg.org/).
+- Passing in an array of videos support removed. You should merge videos in advance instead. Here is [a walk through on concatenating media files with FFmpeg](http://wilsonding.com/2018/03/02/concatenate-multimedia-files-with-ffmpeg/).
 - `alpha` renamed to `darkness`
 
 #### Version 2.0.0
@@ -128,8 +128,8 @@ So for example:
 ``` swift
 VideoBackground.shared.play(
     view: view,
-    name: "myVideo",
-    type: "mp4",
+    videoName: "myVideo",
+    videoType: "mp4",
     darkness: 0.25,
     isMuted: false,
     willLoopVideo: true,

@@ -10,10 +10,14 @@ before_install:
   - gem install cocoapods
   - gem install xcpretty
   - gem install xcpretty-json-formatter
+  - git clone https://github.com/dingwilson/devops-ci.git
 
 env:
-  - UDID="7A5E86EB-E32C-475F-8FF5-10AA330C1D34", IOS_DEVICE="iPhone 7 Plus (11.1)"
-  - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"
+  global:
+    - repo=dingwilson/SwiftVideoBackground
+  matrix:
+    - UDID="7A5E86EB-E32C-475F-8FF5-10AA330C1D34", IOS_DEVICE="iPhone 7 Plus (11.1)"
+    - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"
 
 script:
   - set -o pipefail
@@ -28,6 +32,6 @@ script:
 jobs:
   include:
     - stage: jazzy
-      script: ./jazzy.sh
+      script: source ./devops-ci/gen_jazzy_docs.sh
     - stage: cocoapods
       script: pod spec lint

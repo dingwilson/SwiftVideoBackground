@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		592E1C742040112C00AB576C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		593C3A8A2043357100EAE458 /* water.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = water.mp4; sourceTree = "<group>"; };
-		C8622DF820E098BF00DCCE52 /* SwiftVideoBackground_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftVideoBackground_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8622DF820E098BF00DCCE52 /* SwiftVideoBackground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftVideoBackground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8622DFB20E098BF00DCCE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8C3106C203C758D0075EA9E /* SwiftVideoBackground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftVideoBackground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C3106F203C758D0075EA9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			children = (
 				C8C3106C203C758D0075EA9E /* SwiftVideoBackground.app */,
 				C8C31080203C758D0075EA9E /* SwiftVideoBackgroundTests.xctest */,
-				C8622DF820E098BF00DCCE52 /* SwiftVideoBackground_iOS.framework */,
+				C8622DF820E098BF00DCCE52 /* SwiftVideoBackground.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 			);
 			name = "SwiftVideoBackground-iOS";
 			productName = "SwiftVideoBackground-iOS";
-			productReference = C8622DF820E098BF00DCCE52 /* SwiftVideoBackground_iOS.framework */;
+			productReference = C8622DF820E098BF00DCCE52 /* SwiftVideoBackground.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C8C3106B203C758D0075EA9E /* SwiftVideoBackground */ = {
@@ -371,7 +371,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wilsonding.SwiftVideoBackground;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = SwiftVideoBackground;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -398,7 +398,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wilsonding.SwiftVideoBackground;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = SwiftVideoBackground;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

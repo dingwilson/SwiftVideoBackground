@@ -11,7 +11,7 @@
 		593C3A8B2043357100EAE458 /* water.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 593C3A8A2043357100EAE458 /* water.mp4 */; };
 		C8622E0020E098ED00DCCE52 /* VideoBackgroundError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C31091203C75CD0075EA9E /* VideoBackgroundError.swift */; };
 		C8622E0120E098EF00DCCE52 /* VideoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C31092203C75CD0075EA9E /* VideoBackground.swift */; };
-		C8622E0220E098F300DCCE52 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C31093203C75CD0075EA9E /* SwiftVideoBackground.h */; };
+		C8622E2520E09C2100DCCE52 /* SwiftVideoBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C31093203C75CD0075EA9E /* SwiftVideoBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8C31070203C758D0075EA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3106F203C758D0075EA9E /* AppDelegate.swift */; };
 		C8C31075203C758D0075EA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C31073203C758D0075EA9E /* Main.storyboard */; };
 		C8C31077203C758D0075EA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8C31076203C758D0075EA9E /* Assets.xcassets */; };
@@ -142,7 +142,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8622E0220E098F300DCCE52 /* SwiftVideoBackground.h in Headers */,
+				C8622E2520E09C2100DCCE52 /* SwiftVideoBackground.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/dingwilson/SwiftVideoBackground.svg?branch=master)](https://travis-ci.org/dingwilson/SwiftVideoBackground)
 [![codecov](https://codecov.io/gh/dingwilson/SwiftVideoBackground/branch/master/graph/badge.svg)](https://codecov.io/gh/dingwilson/SwiftVideoBackground)
-[![doccov](http://wilsonding.com/SwiftVideoBackground/badge.svg)](http://wilsonding.com/SwiftVideoBackground)
+[![doccov](https://wilsonding.com/SwiftVideoBackground/badge.svg)](https://wilsonding.com/SwiftVideoBackground)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/SwiftVideoBackground.svg)](https://cocoapods.org/pods/SwiftVideoBackground)
 [![CocoaPods](https://img.shields.io/cocoapods/dm/SwiftVideoBackground.svg)](https://cocoapods.org/pods/SwiftVideoBackground)
 ![Platform](https://img.shields.io/badge/platforms-iOS-333333.svg)
@@ -29,7 +29,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 - [x] Loop videos *(optional)*
 - [x] Mute sound *(optional)*
 - [x] Darken videos so overlying UI stands out more *(optional)*
-- [x] [Documentation](http://wilsonding.com/SwiftVideoBackground/)
+- [x] [Documentation](https://wilsonding.com/SwiftVideoBackground/)
 
 ## Contents
 
@@ -57,7 +57,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 ## Integration
 
 #### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
+You can use [CocoaPods](https://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
 
 For Swift 4:
 ```ruby
@@ -85,7 +85,7 @@ To use this library in your project manually you may:
 ## Migration Guide
 
 #### Version 3.0.0
-- Passing in an array of videos support removed. You should merge videos in advance instead. Here is [a walk through on concatenating media files with FFmpeg](http://wilsonding.com/2018/03/02/concatenate-multimedia-files-with-ffmpeg/).
+- Passing in an array of videos support removed. You should merge videos in advance instead. Here is [a walk through on concatenating media files with FFmpeg](https://wilsonding.com/2018/03/02/concatenate-multimedia-files-with-ffmpeg/).
 - `alpha` renamed to `darkness`
 
 #### Version 2.0.0
@@ -176,7 +176,7 @@ In order to play local videos, you must add them to your project:
 
 There is a bug in Apple's [AudioToolbox](https://developer.apple.com/documentation/audiotoolbox) that will show a false positive memory leak in Instruments when playing a video with sound on a simulator*. On a device, it's fine.
 
-> *[One](http://crosbymichael.com/avaudioplayer-memory-leak.html) of many sources.
+> *[One](https://crosbymichael.com/avaudioplayer-memory-leak.html) of many sources.
 
 ## License
 
@@ -191,4 +191,4 @@ There is a bug in Apple's [AudioToolbox](https://developer.apple.com/documentati
 *Please provide attribution, it is greatly appreciated.*
 
 [podLink]:https://cocoapods.org/pods/SwiftVideoBackground
-[mitLink]:http://opensource.org/licenses/MIT
+[mitLink]:https://opensource.org/licenses/MIT

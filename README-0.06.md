@@ -32,7 +32,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 ## Integration
 
 #### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
+You can use [CocoaPods](https://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
 
 For Swift 3:
 ```ruby
@@ -83,4 +83,4 @@ Note: Make sure you have added a video file to the project, and targeted the pro
 *Please provide attribution, it is greatly appreciated.*
 
 [podLink]:https://cocoapods.org/pods/SwiftVideoBackground
-[mitLink]:http://opensource.org/licenses/MIT
+[mitLink]:https://opensource.org/licenses/MIT

@@ -13,8 +13,6 @@ before_install:
   - git clone https://github.com/dingwilson/devops-ci.git
 
 env:
-  global:
-    - repo=dingwilson/SwiftVideoBackground
   matrix:
     - UDID="7A5E86EB-E32C-475F-8FF5-10AA330C1D34", IOS_DEVICE="iPhone 7 Plus (11.1)"
     - UDID="80BE80F4-C243-43F0-BD95-5CB085DAD04F", IOS_DEVICE="iPhone 6 (8.1)"

@@ -114,8 +114,8 @@ public class VideoBackground {
         if setAudioSessionAmbient {
             if #available(iOS 10.0, *) {
                 try? AVAudioSession.sharedInstance().setCategory(
-                    AVAudioSession.Category(rawValue: AVAudioSession.Category.ambient.rawValue),
-                    mode: AVAudioSession.Mode(rawValue: AVAudioSession.Mode.default.rawValue)
+                    AVAudioSession.Category.ambient,
+                    mode: AVAudioSession.Mode.default
                 )
                 try? AVAudioSession.sharedInstance().setActive(true)
             }

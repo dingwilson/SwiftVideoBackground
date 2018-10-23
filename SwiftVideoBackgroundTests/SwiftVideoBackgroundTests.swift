@@ -55,7 +55,7 @@ class SwiftVideoBackgroundTests: XCTestCase {
         if #available(iOS 10.0, *) {
             play()
             VideoBackground.shared.pause()
-            XCTAssertEqual(player?.timeControlStatus, AVPlayerTimeControlStatus.paused)
+            XCTAssertEqual(player?.timeControlStatus, AVPlayer.TimeControlStatus.paused)
         }
     }
 

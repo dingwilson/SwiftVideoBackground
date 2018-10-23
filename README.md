@@ -5,8 +5,6 @@
 [![Build Status](https://travis-ci.org/dingwilson/SwiftVideoBackground.svg?branch=master)](https://travis-ci.org/dingwilson/SwiftVideoBackground)
 [![codecov](https://codecov.io/gh/dingwilson/SwiftVideoBackground/branch/master/graph/badge.svg)](https://codecov.io/gh/dingwilson/SwiftVideoBackground)
 [![doccov](https://wilsonding.com/SwiftVideoBackground/badge.svg)](https://wilsonding.com/SwiftVideoBackground)
-[![CocoaPods](https://img.shields.io/cocoapods/dt/SwiftVideoBackground.svg)](https://cocoapods.org/pods/SwiftVideoBackground)
-[![CocoaPods](https://img.shields.io/cocoapods/dm/SwiftVideoBackground.svg)](https://cocoapods.org/pods/SwiftVideoBackground)
 ![Platform](https://img.shields.io/badge/platforms-iOS-333333.svg)
 [![Swift](https://img.shields.io/badge/Swift-3.0+-orange.svg)](https://swift.org)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]

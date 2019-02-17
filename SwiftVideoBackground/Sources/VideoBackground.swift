@@ -39,7 +39,11 @@ public class VideoBackground {
     public var videoGravity: AVLayerVideoGravity = .resizeAspectFill
 
     /// The `AVPlayerLayer` that can be accessed for advanced customization.
-    public lazy var playerLayer = AVPlayerLayer()
+    public lazy var playerLayer = AVPlayerLayer(player: player)
+
+    private var player = AVPlayer(playerItem: nil)
+
+    private var cache = [URL: AVPlayerItem]()
 
     private lazy var darknessOverlayView = UIView()
 
@@ -127,12 +131,15 @@ public class VideoBackground {
 
         self.willLoopVideo = willLoopVideo
 
-        let player = AVPlayer(url: url)
+        if cache[url] == nil {
+            cache[url] = AVPlayerItem(url: url)
+        }
+
+        player.replaceCurrentItem(with: cache[url])
         player.actionAtItemEnd = .none
         player.isMuted = isMuted
         player.play()
 
-        playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = view.bounds
         playerLayer.needsDisplayOnBoundsChange = true
         playerLayer.videoGravity = videoGravity
@@ -182,7 +189,8 @@ public class VideoBackground {
     }
 
     private func cleanUp() {
-        playerLayer.player = nil
+        playerLayer.player?.pause()
+        playerLayer.removeFromSuperlayer()
         darknessOverlayView.removeFromSuperview()
         if let playerItemDidPlayToEndObserver = playerItemDidPlayToEndObserver {
             NotificationCenter.default.removeObserver(playerItemDidPlayToEndObserver)

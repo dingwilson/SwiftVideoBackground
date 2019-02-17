@@ -1,13 +1,13 @@
 # Change Log
 
-## [Unreleased]
+## [3.2.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.2.0)
 
 #### Features:
 - make `videoGravity` configurable.
 - add caching for remote URLs (by danibachar).
 - add thumbnail image (by danibachar).
 
-## [3.1.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.0.0)
+## [3.1.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.1.0)
 (2018-10)
 - Updated to Swift 4.2
 
@@ -66,7 +66,7 @@
 
 For more information, please see the [documentation](http://wilsonding.com/SwiftVideoBackground/)
 
-For an example and help with migrating from previous verisons, please see the [migration guide](migration-2.0.0.md)
+For an example and help with migrating from previous versions, please see the [migration guide](migration-2.0.0.md)
 
 ## [1.0.1](https://github.com/dingwilson/SwiftVideoBackground/tree/1.0.1) (2017-10-31)
 - Modified minimum deployment target to iOS 8.0

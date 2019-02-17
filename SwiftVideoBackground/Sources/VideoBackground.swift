@@ -34,6 +34,10 @@ public class VideoBackground {
     /// Change this `Bool` to set whether the video restarts when it ends.
     public var willLoopVideo = true
 
+    /// Default is `.resizeAspectFill`. Change to `.resizeAspect` (doesn't fill view)
+    /// or `.resize` (doesn't conserve aspect ratio)
+    public var videoGravity: AVLayerVideoGravity = .resizeAspectFill
+
     /// The `AVPlayerLayer` that can be accessed for advanced customization.
     public lazy var playerLayer = AVPlayerLayer()
 
@@ -130,7 +134,8 @@ public class VideoBackground {
 
         playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = view.bounds
-        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.needsDisplayOnBoundsChange = true
+        playerLayer.videoGravity = videoGravity
         playerLayer.zPosition = -1
         view.layer.insertSublayer(playerLayer, at: 0)
 

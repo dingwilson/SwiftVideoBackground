@@ -1,5 +1,10 @@
 # Change Log
 
+## [Unreleased]
+
+#### Features:
+- make `videoGravity` configurable.
+
 ## [3.1.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.0.0)
 (2018-10)
 - Updated to Swift 4.2

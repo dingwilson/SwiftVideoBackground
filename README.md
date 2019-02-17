@@ -149,6 +149,7 @@ VideoBackground.shared.play(
 - `darkness` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting to an invalid value does nothing.
 - `isMuted` - Change this `Bool` to mute/unmute the video.
 - `willLoopVideo` - Change this `Bool` to set whether the video restarts when it ends.
+- `videoGravity` - Default is `.resizeAspectFill`. Change to `.resizeAspect` (doesn't fill view) or `.resize` (doesn't conserve aspect ratio).
 - `playerLayer` - The `AVPlayerLayer` that can be accessed for advanced control and customization of the video.
 
 #### Singleton

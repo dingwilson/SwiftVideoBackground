@@ -5,6 +5,7 @@
 #### Features:
 - make `videoGravity` configurable.
 - add caching for remote URLs (by danibachar).
+- add thumbnail image (by danibachar).
 
 ## [3.1.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.0.0)
 (2018-10)

@@ -188,6 +188,21 @@ public class VideoBackground {
         playerLayer.player?.play()
     }
 
+    /// Generate an image from the video to show as thumbnail
+    public func getThumbnailImage(from url: URL, at time: CMTime) -> UIImage? {
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+
+        do {
+            let thumbnailImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+            return UIImage(cgImage: thumbnailImage)
+        } catch {
+            print(error)
+        }
+
+        return nil
+    }
+
     private func cleanUp() {
         playerLayer.player?.pause()
         playerLayer.removeFromSuperlayer()

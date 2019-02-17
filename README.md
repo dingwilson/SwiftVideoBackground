@@ -146,6 +146,7 @@ VideoBackground.shared.play(
 - `pause()` - Pauses the video.
 - `resume()` - Resumes the video.
 - `restart()` - Restarts the video.
+- `getThumbnailImage(from: URL, at: CMTime)` - Generate an image from the video to show as thumbnail.
 - `darkness` - Change this `CGFloat` to adjust the darkness of the video. Value `0` to `1`. Higher numbers are darker. Setting to an invalid value does nothing.
 - `isMuted` - Change this `Bool` to mute/unmute the video.
 - `willLoopVideo` - Change this `Bool` to set whether the video restarts when it ends.

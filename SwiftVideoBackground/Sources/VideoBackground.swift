@@ -189,18 +189,15 @@ public class VideoBackground {
     }
 
     /// Generate an image from the video to show as thumbnail
-    public func getThumbnailImage(from url: URL, at time: CMTime) -> UIImage? {
+    ///
+    /// - Parameters:
+    ///   - url: video file URL
+    ///   - time: time of video frame to make into thumbnail image
+    public func getThumbnailImage(from url: URL, at time: CMTime) throws -> UIImage {
         let asset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
-
-        do {
-            let thumbnailImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
-            return UIImage(cgImage: thumbnailImage)
-        } catch {
-            print(error)
-        }
-
-        return nil
+        let thumbnailImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+        return UIImage(cgImage: thumbnailImage)
     }
 
     private func cleanUp() {

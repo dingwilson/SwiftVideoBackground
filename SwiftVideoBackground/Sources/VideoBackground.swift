@@ -34,8 +34,16 @@ public class VideoBackground {
     /// Change this `Bool` to set whether the video restarts when it ends.
     public var willLoopVideo = true
 
+    /// Default is `.resizeAspectFill`. Change to `.resizeAspect` (doesn't fill view)
+    /// or `.resize` (doesn't conserve aspect ratio)
+    public var videoGravity: AVLayerVideoGravity = .resizeAspectFill
+
     /// The `AVPlayerLayer` that can be accessed for advanced customization.
-    public lazy var playerLayer = AVPlayerLayer()
+    public lazy var playerLayer = AVPlayerLayer(player: player)
+
+    private var player = AVPlayer(playerItem: nil)
+
+    private var cache = [URL: AVPlayerItem]()
 
     private lazy var darknessOverlayView = UIView()
 
@@ -123,14 +131,18 @@ public class VideoBackground {
 
         self.willLoopVideo = willLoopVideo
 
-        let player = AVPlayer(url: url)
+        if cache[url] == nil {
+            cache[url] = AVPlayerItem(url: url)
+        }
+
+        player.replaceCurrentItem(with: cache[url])
         player.actionAtItemEnd = .none
         player.isMuted = isMuted
         player.play()
 
-        playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = view.bounds
-        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.needsDisplayOnBoundsChange = true
+        playerLayer.videoGravity = videoGravity
         playerLayer.zPosition = -1
         view.layer.insertSublayer(playerLayer, at: 0)
 
@@ -176,8 +188,21 @@ public class VideoBackground {
         playerLayer.player?.play()
     }
 
+    /// Generate an image from the video to show as thumbnail
+    ///
+    /// - Parameters:
+    ///   - url: video file URL
+    ///   - time: time of video frame to make into thumbnail image
+    public func getThumbnailImage(from url: URL, at time: CMTime) throws -> UIImage {
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        let thumbnailImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+        return UIImage(cgImage: thumbnailImage)
+    }
+
     private func cleanUp() {
-        playerLayer.player = nil
+        playerLayer.player?.pause()
+        playerLayer.removeFromSuperlayer()
         darknessOverlayView.removeFromSuperview()
         if let playerItemDidPlayToEndObserver = playerItemDidPlayToEndObserver {
             NotificationCenter.default.removeObserver(playerItemDidPlayToEndObserver)

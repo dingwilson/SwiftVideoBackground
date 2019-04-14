@@ -1,4 +1,4 @@
-osx_image: xcode10
+osx_image: xcode10.2
 language: objective-c
 xcode_project: SwiftVideoBackground.xcodeproj
 
@@ -12,20 +12,9 @@ before_install:
   - gem install xcpretty-json-formatter
   - git clone https://github.com/dingwilson/devops-ci.git
 
-env:  
-  matrix: 
-    - UDID="E5486005-1831-4DBE-B151-B54F00F798C9", IOS_DEVICE="iPhone XS Max (12.0)"  
-
 script:
   - set -o pipefail
-
-  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES -enableCodeCoverage yes | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
-  
+  - xcodebuild clean test -project SwiftVideoBackground.xcodeproj -scheme SwiftVideoBackground -configuration Debug -destination 'platform=iOS Simulator,name=iPhone XS,OS=latest' CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -enableCodeCoverage yes | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild.json" xcpretty -f `xcpretty-json-formatter`
   - bash <(curl -s https://codecov.io/bash)
-
   - bundle exec danger --fail-on-errors=true
-
-jobs:
-  include:
-    - stage: jazzy
-      script: source ./devops-ci/gen_jazzy_docs.sh
+  - source ./devops-ci/gen_jazzy_docs.sh

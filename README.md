@@ -81,7 +81,7 @@ To use this library in your project manually you may:
 ## Migration Guide
 
 #### Version 3.0.0
-- Passing in an array of videos support removed. You should merge videos in advance instead. Here is [a walk through on concatenating media files with FFmpeg](https://wilsonding.com/2018/03/02/concatenate-multimedia-files-with-ffmpeg/).
+- Passing in an array of videos support removed. You should merge videos in advance instead. Here is [a walk through on concatenating media files with FFmpeg](https://www.wilsonding.com/2018/03/02/concatenate_multimedia_files_with_ffmpeg/).
 - `alpha` renamed to `darkness`
 
 #### Version 2.0.0

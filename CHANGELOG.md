@@ -1,5 +1,10 @@
 # Change Log
 
+## [3.3.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.3.0)
+
+#### Features:
+- Swift 5 support
+
 ## [3.2.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.2.0)
 
 #### Features:

@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/dingwilson/SwiftVideoBackground/branch/master/graph/badge.svg)](https://codecov.io/gh/dingwilson/SwiftVideoBackground)
 [![doccov](https://wilsonding.com/SwiftVideoBackground/badge.svg)](https://wilsonding.com/SwiftVideoBackground)
 ![Platform](https://img.shields.io/badge/platforms-iOS-333333.svg)
-[![Swift](https://img.shields.io/badge/Swift-3.0+-orange.svg)](https://swift.org)
+[![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 [![CocoaPods Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
 [![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -31,31 +31,29 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 
 ## Contents
 
-1. [Requirements](#requirements)
-2. [Integration](#integration)
+1. [Integration](#integration)
     - [CocoaPods](#cocoapods)
     - [Carthage](#carthage)
     - [Manually](#manually)
-3. [Migration Guide](#migration-guide)
-4. [Usage](#usage)
+2. [Migration Guide](#migration-guide)
+3. [Usage](#usage)
     - [Example](#example)
     - [Customization](#customization)
     - [Controls](#controls)
     - [Singleton](#singleton)
     - [Adding Videos To Your Project](#adding-videos-to-your-project)
-5. [Issues](#issues)
-6. [License](#license)
-7. [Authors](#authors)
-
-## Requirements
-
-- Swift 3+
-- iOS 8+
+4. [License](#license)
+5. [Authors](#authors)
 
 ## Integration
 
 #### CocoaPods
 You can use [CocoaPods](https://cocoapods.org/) to install `SwiftVideoBackground` by adding it to your `Podfile`:
+
+For Swift 5:
+```ruby
+pod 'SwiftVideoBackground'
+```
 
 For Swift 4:
 ```ruby
@@ -171,12 +169,6 @@ In order to play local videos, you must add them to your project:
 5. Click `+` to add a video
 
 ![add video to project](https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/add-video-to-project.png "add video to project")
-
-## Issues
-
-There is a bug in Apple's [AudioToolbox](https://developer.apple.com/documentation/audiotoolbox) that will show a false positive memory leak in Instruments when playing a video with sound on a simulator*. On a device, it's fine.
-
-> *[One](https://crosbymichael.com/avaudioplayer-memory-leak.html) of many sources.
 
 ## License
 

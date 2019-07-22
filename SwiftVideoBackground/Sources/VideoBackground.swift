@@ -139,7 +139,6 @@ public class VideoBackground {
                 try? AVAudioSession.sharedInstance().setActive(true)
             }
         }
-        
         if #available(iOS 12.0, *) {
             player.preventsDisplaySleepDuringVideoPlayback = preventsDisplaySleepDuringVideoPlayback
         }

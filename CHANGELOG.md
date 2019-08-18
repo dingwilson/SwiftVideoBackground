@@ -1,5 +1,10 @@
 # Change Log
 
+## [3.4.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.4.0)
+
+#### Features:
+- Add support for `preventsDisplaySleepDuringVideoPlayback` configurability to not override device auto-lock settings
+
 ## [3.3.0](https://github.com/dingwilson/SwiftVideoBackground/tree/3.3.0)
 
 #### Features:

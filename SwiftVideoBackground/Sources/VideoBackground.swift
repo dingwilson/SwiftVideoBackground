@@ -78,13 +78,18 @@ public class VideoBackground {
     ///         not done, audio played from your app will pause other audio playing on the device. Defaults to true.
     ///         Only has an effect in iOS 10.0+.
     /// - Throws: `VideoBackgroundError.videoNotFound` if the video cannot be found.
+    ///     - preventsDisplaySleepDuringVideoPlayback: If automatic lock is being used on the device
+    ///         setting this property to false will not hold the device awake.
+    ///         default value for iOS is true.
+    ///         Only has an effect in iOS 12.0+
     public func play(view: UIView,
                      videoName: String,
                      videoType: String,
                      isMuted: Bool = true,
                      darkness: CGFloat = 0,
                      willLoopVideo: Bool = true,
-                     setAudioSessionAmbient: Bool = true) throws {
+                     setAudioSessionAmbient: Bool = true,
+                     preventsDisplaySleepDuringVideoPlayback: Bool = true) throws {
         guard let path = Bundle.main.path(forResource: videoName, ofType: videoType) else {
             throw VideoBackgroundError.videoNotFound((name: videoName, type: videoType))
         }
@@ -95,7 +100,8 @@ public class VideoBackground {
             darkness: darkness,
             isMuted: isMuted,
             willLoopVideo: willLoopVideo,
-            setAudioSessionAmbient: setAudioSessionAmbient
+            setAudioSessionAmbient: setAudioSessionAmbient,
+            preventsDisplaySleepDuringVideoPlayback: preventsDisplaySleepDuringVideoPlayback
         )
     }
 
@@ -111,12 +117,17 @@ public class VideoBackground {
     ///     - setAudioSessionAmbient: Bool indicating whether to set the shared `AVAudioSession` to ambient. If this is
     ///         not done, audio played from your app will pause other audio playing on the device. Defaults to true.
     ///         Only has an effect in iOS 10.0+.
+    ///     - preventsDisplaySleepDuringVideoPlayback: If automatic lock is being used on the device
+    ///         setting this property to false will not hold the device awake.
+    ///         default value for iOS is true.
+    ///         Only has an effect in iOS 12.0+
     public func play(view: UIView,
                      url: URL,
                      darkness: CGFloat = 0,
                      isMuted: Bool = true,
                      willLoopVideo: Bool = true,
-                     setAudioSessionAmbient: Bool = true) {
+                     setAudioSessionAmbient: Bool = true,
+                     preventsDisplaySleepDuringVideoPlayback: Bool = true) {
         cleanUp()
 
         if setAudioSessionAmbient {
@@ -127,6 +138,9 @@ public class VideoBackground {
                 )
                 try? AVAudioSession.sharedInstance().setActive(true)
             }
+        }
+        if #available(iOS 12.0, *) {
+            player.preventsDisplaySleepDuringVideoPlayback = preventsDisplaySleepDuringVideoPlayback
         }
 
         self.willLoopVideo = willLoopVideo

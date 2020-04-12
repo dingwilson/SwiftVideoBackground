@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SwiftVideoBackground  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SwiftVideoBackground  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SwiftVideoBackground Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/dingwilson/SwiftVideoBackground"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SwiftVideoBackground Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SwiftVideoBackground  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/VideoBackground.html">VideoBackground</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/VideoBackgroundError.html">VideoBackgroundError</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p align="center">
+  <img src="https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/banner.png" width="780" title="SwiftVideoBackground">
+</p>
+
+<p><a href="https://travis-ci.org/dingwilson/SwiftVideoBackground"><img src="https://travis-ci.org/dingwilson/SwiftVideoBackground.svg?branch=master" alt="Build Status"></a>
+<a href="https://codecov.io/gh/dingwilson/SwiftVideoBackground"><img src="https://codecov.io/gh/dingwilson/SwiftVideoBackground/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://wilsonding.com/SwiftVideoBackground"><img src="https://wilsonding.com/SwiftVideoBackground/badge.svg" alt="doccov"></a>
+<img src="https://img.shields.io/badge/platforms-iOS-333333.svg" alt="Platform">
+<a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.0-orange.svg" alt="Swift"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+<a href="https://cocoapods.org/pods/SwiftVideoBackground"><img src="https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg" alt="CocoaPods Version Status"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat" alt="Carthage compatible"></a></p>
+
+<p align="center">
+  <img src="https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/Spotify.gif" width="369" title="Screenshot">
+</p>
+
+<p>SwiftVideoBackground is an easy to use Swift framework that provides the ability to play a video on any UIView. This provides a beautiful UI for login screens, or splash pages, as implemented by Spotify and many others.</p>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>[x] Play a video with one line of code</li>
+<li>[x] Supports local videos <code>&amp;&amp;</code> videos from a web URL</li>
+<li>[x] Automatically adjusts when device orientation changes</li>
+<li>[x] Automatically resumes video when app re-enters foreground</li>
+<li>[x] Pause, resume, restart, and other controls</li>
+<li>[x] Loop videos <em>(optional)</em></li>
+<li>[x] Mute sound <em>(optional)</em></li>
+<li>[x] Darken videos so overlying UI stands out more <em>(optional)</em></li>
+<li>[x] <a href="https://wilsonding.com/SwiftVideoBackground/">Documentation</a></li>
+</ul>
+<h2 id='contents' class='heading'>Contents</h2>
+
+<ol>
+<li><a href="#integration">Integration</a>
+
+<ul>
+<li><a href="#cocoapods">CocoaPods</a></li>
+<li><a href="#carthage">Carthage</a></li>
+<li><a href="#manually">Manually</a></li>
+</ul></li>
+<li><a href="#migration-guide">Migration Guide</a></li>
+<li><a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#customization">Customization</a></li>
+<li><a href="#controls">Controls</a></li>
+<li><a href="#singleton">Singleton</a></li>
+<li><a href="#adding-videos-to-your-project">Adding Videos To Your Project</a></li>
+</ul></li>
+<li><a href="#license">License</a></li>
+<li><a href="#authors">Authors</a></li>
+</ol>
+<h2 id='integration' class='heading'>Integration</h2>
+<h4 id='cocoapods' class='heading'>CocoaPods</h4>
+
+<p>You can use <a href="https://cocoapods.org/">CocoaPods</a> to install <code>SwiftVideoBackground</code> by adding it to your <code>Podfile</code>:</p>
+
+<p>For Swift 5:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'SwiftVideoBackground'</span>
+</code></pre>
+
+<p>For Swift 4:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'SwiftVideoBackground'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0'</span>
+</code></pre>
+
+<p>For Swift 3:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'SwiftVideoBackground'</span><span class="p">,</span> <span class="s1">'0.06'</span>
+</code></pre>
+<h4 id='carthage' class='heading'>Carthage</h4>
+
+<p>You can use <a href="https://github.com/Carthage/Carthage">Carthage</a> to install <code>SwiftVideoBackground</code> by adding it to your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "dingwilson/SwiftVideoBackground"
+</code></pre>
+<h4 id='manually' class='heading'>Manually</h4>
+
+<p>To use this library in your project manually you may:  </p>
+
+<ol>
+<li>for Projects, just drag VideoBackground.swift to the project tree</li>
+<li>for Workspaces, include the whole SwiftVideoBackground.xcodeproj</li>
+</ol>
+<h2 id='migration-guide' class='heading'>Migration Guide</h2>
+<h4 id='version-3-0-0' class='heading'>Version 3.0.0</h4>
+
+<ul>
+<li>Passing in an array of videos support removed. You should merge videos in advance instead. Here is <a href="https://www.wilsonding.com/2018/03/02/concatenate_multimedia_files_with_ffmpeg/">a walk through on concatenating media files with FFmpeg</a>.</li>
+<li><code>alpha</code> renamed to <code>darkness</code></li>
+</ul>
+<h4 id='version-2-0-0' class='heading'>Version 2.0.0</h4>
+
+<p>See the quick <a href="migration-2.0.0.md">migration guide</a>.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h4 id='example' class='heading'>Example</h4>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+<span class="kd">import</span> <span class="kt">SwiftVideoBackground</span>
+
+<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+  <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">?</span> <span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">videoName</span><span class="p">:</span> <span class="s">"myVideo"</span><span class="p">,</span> <span class="nv">videoType</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">)</span>
+
+    <span class="cm">/* or from URL */</span>
+
+    <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://coolVids.com/coolVid.mp4"</span><span class="p">)</span><span class="o">!</span>
+    <span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span> <span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>Documentation for Version 0.06 (Swift 3) can be found <a href="README-0.06.md">here</a>.</p>
+</blockquote>
+<h4 id='customization' class='heading'>Customization</h4>
+
+<p><code>play()</code> has four additional optional parameters for customization:</p>
+
+<ul>
+<li><code>darkness</code>: CGFloat - Value between <code>0</code> and <code>1</code>. The higher the value, the darker the video. Defaults to <code>0</code>.</li>
+<li><code>isMuted</code>: Bool - Indicates whether video is muted. Defaults to <code>true</code>.</li>
+<li><code>willLoopVideo</code>: Bool - Indicates whether video should restart when finished. Defaults to <code>true</code>.</li>
+<li><code>setAudioSessionAmbient</code>: Bool - Indicates whether to set the shared <code>AVAudioSession</code> to ambient. If this is not done, audio played from your app will pause other audio playing on the device. Defaults to <code>true</code>.</li>
+</ul>
+
+<p>So for example:</p>
+<pre class="highlight swift"><code><span class="kt">VideoBackground</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span>
+    <span class="nv">view</span><span class="p">:</span> <span class="n">view</span><span class="p">,</span>
+    <span class="nv">videoName</span><span class="p">:</span> <span class="s">"myVideo"</span><span class="p">,</span>
+    <span class="nv">videoType</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">,</span>
+    <span class="nv">darkness</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+    <span class="nv">isMuted</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nv">willLoopVideo</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nv">setAudioSessionAmbient</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>-&gt; will play the video with the sound on, slightly darkened, continuously looping, and without affecting other sources of audio on the device.</p>
+
+<blockquote>
+<p>Any combination of the parameters can be included or left out.</p>
+
+<p><code>setAudioSessionAmbient</code> only has an effect in iOS 10.0+. For more information, see the <a href="https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html">docs</a>.</p>
+</blockquote>
+<h4 id='controls' class='heading'>Controls</h4>
+
+<ul>
+<li><code>pause()</code> - Pauses the video.</li>
+<li><code>resume()</code> - Resumes the video.</li>
+<li><code>restart()</code> - Restarts the video.</li>
+<li><code>getThumbnailImage(from: URL, at: CMTime)</code> - Generate an image from the video to show as thumbnail.</li>
+<li><code>darkness</code> - Change this <code>CGFloat</code> to adjust the darkness of the video. Value <code>0</code> to <code>1</code>. Higher numbers are darker. Setting to an invalid value does nothing.</li>
+<li><code>isMuted</code> - Change this <code>Bool</code> to mute/unmute the video.</li>
+<li><code>willLoopVideo</code> - Change this <code>Bool</code> to set whether the video restarts when it ends.</li>
+<li><code>videoGravity</code> - Default is <code>.resizeAspectFill</code>. Change to <code>.resizeAspect</code> (doesn&rsquo;t fill view) or <code>.resize</code> (doesn&rsquo;t conserve aspect ratio).</li>
+<li><code>playerLayer</code> - The <code>AVPlayerLayer</code> that can be accessed for advanced control and customization of the video.</li>
+</ul>
+<h4 id='singleton' class='heading'>Singleton</h4>
+
+<p><code>SwiftVideoBackground</code> includes a singleton instance that can be conveniently accessed with <code><a href="Classes/VideoBackground.html#/s:20SwiftVideoBackground0bC0C6sharedACvpZ">VideoBackground.shared</a></code>. An instance of <code><a href="Classes/VideoBackground.html">VideoBackground</a></code> can only play one video on one <code>UIView</code> at a time. So if you need to play on multiple <code>UIView</code>s, you need to retain an instance of <code><a href="Classes/VideoBackground.html">VideoBackground</a></code> for each <code>UIView</code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">videoBackground1</span> <span class="o">=</span> <span class="kt">VideoBackground</span><span class="p">()</span>
+</code></pre>
+<h4 id='adding-videos-to-your-project' class='heading'>Adding Videos To Your Project</h4>
+
+<p>In order to play local videos, you must add them to your project:</p>
+
+<ol>
+<li>Open project navigator</li>
+<li>Select your target</li>
+<li>Select <code>Build Phases</code></li>
+<li>Select <code>Copy Bundle Resources</code></li>
+<li>Click <code>+</code> to add a video</li>
+</ol>
+
+<p><img src="https://github.com/dingwilson/SwiftVideoBackground/raw/master/Assets/add-video-to-project.png" alt="add video to project" title="add video to project"></p>
+<h2 id='license' class='heading'>License</h2>
+
+<p><code>SwiftVideoBackground</code> is released under an <a href="https://opensource.org/licenses/MIT">MIT License</a>. See <a href="LICENSE">LICENSE</a> for details.</p>
+<h2 id='authors' class='heading'>Authors</h2>
+
+<p><a href="https://github.com/dingwilson">Wilson Ding</a>, <a href="https://github.com/quanvo87">Quan Vo</a></p>
+
+<p><strong>Copyright &copy; 2016-present Wilson Ding.</strong></p>
+
+<p><em>Please provide attribution, it is greatly appreciated.</em></p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://github.com/dingwilson/SwiftVideoBackground" target="_blank" rel="external">Wilson Ding and Quan Vo</a>. All rights reserved. (Last updated: 2020-04-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
